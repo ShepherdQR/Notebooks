@@ -1,0 +1,238 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	//\mathop{sup}\limits_x
+
+	"template" :{
+		"prefix": "template",
+		"body":[
+		"\\documentclass[UTF8]{article}",
+		"\\usepackage{ctex}",
+		"\\usepackage{multirow,booktabs}",
+		"\\usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek} ",
+		"\\usepackage[paper=a4paper,top=3.5cm,bottom=2.5cm,",
+			"left=2.7cm,right=2.7cm,",
+			"headheight=1.0cm,footskip=0.7cm]{geometry}",
+			"\\usepackage{color, graphicx, verbatim}",
+			"\\RequirePackage{setspace}%%ÐÐ¼ä¾à",
+			"\\setstretch{1.523}\n",
+			"\\DeclareMathOperator{\\rank}{rank}\n",
+			"\\DeclareMathOperator{\\sgn}{sgn}\n",
+		"\\begin{document}",
+		"$0",
+		"\n\n\n\n\n\n\n\n\n\n\n",
+		"\\end{document}"],
+		"description": "template"
+	},
+
+	"sect" :{
+	"prefix": "sect",
+	"body": 
+		"\\section{$1}\n $0",
+	"description": "section"},
+
+
+	"subs" :{
+		"prefix": "subs",
+		"body": 
+			" \\subsection{$1}\n $0",
+		"description": "subsection"
+	},
+	
+	"equa":{
+		"prefix": "equa",
+		"body": [
+			"\\begin{equation}",
+			"\\label{$1}",
+			"$2",
+			"\\end{equation}\n $0"
+		],
+		"description": "equation"
+	},
+
+	"mk":{
+		"prefix": "mk",
+		"body": [
+			"$ $1 $ $0",
+		],
+		"description": "make math"
+	},
+
+
+	"beg":{
+		"prefix": "beg",
+		"body": [
+			"\\begin{$1}",
+			"$0",
+			"\\end{$1}"
+		],
+		"description": "begin"
+	},
+
+	"fig":{
+		"prefix": "fig",
+		"body": [
+			"\\begin{figure*}[h]",
+			"\t\\centering",
+			"\t\\includegraphics[width=${3:0.5}\\textwidth]{Figures/$1.eps}",
+			"\t\\caption{$2}",
+			"\t\\label{fig:$4}",
+			"\\end{figure*}\n$0"
+		],
+		"description": "figure"
+	},
+
+	"tab":{
+		"prefix": "table",
+		"body": [
+			"\\begin{table}[${1:htpb}]",
+	"\\centering",
+	"  \\caption{${2:caption}}",
+	"  \\label{tab:${3:label}}",
+	"    \\begin{tabular}{${4:c}}",
+	"    \\toprule",
+	"    $5",
+	//"    $0${5/((?<=.)c|l|r)|./(?1: & )/g}",
+	"    \\midrule",
+	"    $0\n\n\n",
+	"    \\bottomrule",
+	"    \\end{tabular}",
+     "\\end{table}",
+
+
+		]
+	},
+
+	"bold":{
+		"prefix": "boldsymbol",
+		"body": "\\boldsymbol ",
+		"description": "boldsymbol"
+	},
+
+
+	"ra":{
+		"prefix": "=>",
+		"body": "\\Rightarrow",
+		"description": "implies"
+	},
+
+	"la":{
+		"prefix": "<=",
+		"body": "\\Leftarrow",
+		"description": "impliedby"
+	},
+	
+	
+	"frac":{
+		"prefix": "frac",
+		"body": "\\frac{$1}{$2}$0",
+		"description": "fraction"
+	},
+
+
+	"lr{":{
+		"prefix": "lr{",
+		"body": "\\left\\{ $1 \\right\\\\}$0",
+		"description": "lr{"
+	},
+
+	"lr[":{
+		"prefix": "lr[",
+		"body": "\\left[ $1 \\right]$0",
+		"description": "lr["
+	},
+
+
+	"lr(":{
+		"prefix": "lr(",
+		"body": "\\left( $1 \\right)$0",
+		"description": "lr("
+	},
+
+
+	"lr|":{
+		"prefix": "lr|",
+		"body": "\\left| $1 \\right|$0",
+		"description": "lr|"
+	},
+
+
+	"suml":{
+		"prefix": "sum",
+		"body": 
+		"\\sum\\limits_{${1:n=1}}^{${2:\\infty}} ${3:a_n z^n}$0",
+		"description": "sum"
+	},
+
+
+	"prod":{
+		"prefix": "prod",
+		"body": 
+		"\\prod_{${1:n=1}}^{${2:\\infty}} ${3:a_n z^n} $0",
+		"description": "product"
+	},
+
+
+	"lim":{
+		"prefix": "lim",
+		"body": 
+		"\\lim_{${1:n}\\to ${2:\\infty}}$0",
+		"description": "sum"
+	},
+	
+
+
+
+
+	"sq":{
+		"prefix": "sqrt",
+		"body": "\\sqrt{$1}$0",
+		"description": "sqrt"
+	},
+
+
+	"sr":{
+		"prefix": "sr",
+		"body": "^2",
+		"description": "sr"
+	},
+
+
+	"cb":{
+		"prefix": "cb",
+		"body": "^3",
+		"description": "cb"
+	},
+
+
+	"th":{
+		"prefix": "th",
+		"body": "^{$1}$0",
+		"description": "to the power"
+	},
+
+
+	"tl":{
+		"prefix": "tl",
+		"body": "_{$1}$0",
+		"description": "to the low"
+	},
+
+	
+
+
+
+
+}

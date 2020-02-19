@@ -1,0 +1,240 @@
+/*
+ * @Author: Shepherd Qirong
+ * @Date: 2019-06-20 10:46:07
+ * @Github: https://github.com/ShepherdQR
+ * @LastEditors: Shepherd Qirong
+ * @LastEditTime: 2020-02-19 19:20:03
+ * @Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+ */
+
+
+
+
+//左下角的齿轮进入setting中并搜索latex-workshop.latex.recipes
+
+{
+
+  // 001. edit style settings. -----
+
+  "files.associations": {
+    "*.qr": "cpp"
+  },
+  // ------------------------------
+
+
+  // 002. latex settings. ---------
+    "latex-workshop.latex.tools": [
+      {
+          "name": "xelatex",
+          "command": "xelatex",
+          "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              //"-pdf",
+              "%DOCFILE%"
+          ]
+      },
+
+      {
+          "name": "pdflatex",
+          "command": "pdflatex",
+          "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOCFILE%"
+          ]
+      },
+  
+      {
+        "name": "latexmk",
+        "command":  "latexmk",
+  
+        "args": [
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+             // "-outdir=%OUTDIR%",
+              "%DOCFILE%"
+          ]
+    },
+  
+  
+      {
+          "name": "bibtex",
+          "command": "bibtex",
+          "args": [
+              "%DOCFILE%"
+          ]
+      }
+  ],
+
+  
+
+ 
+
+  "latex-workshop.latex.recipes": [
+    
+    {
+      "name": "XeLaTeX",
+      "tools": [
+        "xelatex"
+      ]
+    },
+    
+    
+    {
+        "name": "xelatex -> bibtex -> xelatex*2",
+        "tools": [
+          "xelatex",
+          "bibtex",
+          "xelatex",
+          "xelatex"
+        ]
+      },
+    
+  {
+        "name": "latexmk -> bibtex -> latexmk*2",
+        "tools": [
+          "latexmk",
+          "bibtex",
+          "latexmk",
+          "latexmk"
+        ]
+      },
+    
+  {
+      "name": "PDFLaTeX",
+      "tools": [
+        "pdflatex"
+      ]
+    },
+    
+
+    {
+      "name": "latexmk",
+      "tools": [
+        "latexmk"
+      ]
+    },
+    {
+      "name": "BibTeX",
+      "tools": [
+        "bibtex"
+      ]
+    },
+    
+    {
+      "name": "pdflatex -> bibtex -> pdflatex*2",
+      "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+      ]
+    },
+  ],
+
+  // auto clear processed files after the pdf is generated.
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk"
+  ],// normally we save .synctex.gz
+
+
+
+  "latex-workshop.view.pdf.viewer": "tab",
+  // "editor.wordWrap": "on",
+  //"window.zoomLevel": 0,
+
+
+  // ------------------------------
+  
+
+  //"git.path": "C:\\Softwares\\Visual Studio 2017\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\Git\\mingw32\bin\\git.exe",
+  
+
+  // 003 vscode settings. ----------
+  "window.zoomLevel": 0,
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 140,
+  "C_Cpp.updateChannel": "Insiders",
+  // ------------------------------
+
+
+
+
+    // 004 koroFileHeader settings. ----------
+    //https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+  "fileheader.customMade": {
+    // 头部注释
+    "Author": "Shepherd Qirong",
+    "Date": "Do not edit", // 文件创建时间(不变)
+    "Github": "https://github.com/ShepherdQR",
+    "LastEditors": "Shepherd Qirong", // 文件最后编辑者
+    "LastEditTime": "Do not edit", // 文件最后编辑时间
+    "custom_string_obkoro1": "Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved."
+    
+    //"FilePath": "Do not edit" // 文件在项目中的相对路径 自动更新
+  }, 
+
+  "fileheader.cursorMode": {}, // 函数注释
+
+  // 设置
+  "fileheader.configObj": {
+    "createHeader": true,//donot add header when create a new file.
+    "language": {
+        // 普通后缀文件
+        "java": {
+            "head": "/$$",
+            "middle": " $ @",
+            "end": " $/"
+        },
+      // 一次匹配多种文件后缀文件 不用重复设置
+      "h/hpp/cpp/qr": {
+          "head": "/*** ", // 统一增加几个*号
+          "middle": " * @",
+          "end": "*/"
+        },
+        "tex": {
+          "head": "%************",
+          "middle": "%  * @",
+          "end": "%************"
+        },
+        "sh": {
+          "head": "#************",
+          "middle": "#  * @",
+          "end": "#************"
+        },
+        // 针对有特殊要求的文件如：test.blade.php
+        "blade.php":{
+          "head": "<!--",
+          "middle": " * @",
+          "end": "-->",
+        }
+    },
+}
+
+  // ----------
+  
+}
