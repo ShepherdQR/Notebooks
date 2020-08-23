@@ -3,12 +3,31 @@
  * @Date: 2020-02-19 16:43:31
  * @Github: https://github.com/ShepherdQR
  * @LastEditors: Shepherd Qirong
- * @LastEditTime: 2020-02-19 19:28:24
+ * @LastEditTime: 2020-08-23 22:02:48
  * @Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
  -->
 
+# Update logs
 
-# first push on 2020021919:26
+
+
+
+## qrNotebookday01 2020021919:28
+git init
+git remote add origin git@github.com:ShepherdQR/qrNotebook.git
+git pull origin master
+git add .
+git commit -m 'qrNotebookday02'
+git push -u origin master
+
+
+
+
+
+
+
+
+## first push on 2020021919:26
 
 1st upload to a new repository
 enter the folder with the same name of the repository,then:
@@ -21,9 +40,7 @@ git push -u origin master -f
 
 then upload to an old repository:
 
------------------------------
-
-# qrNotebookday01 2020021919:28
+## qrNotebookday01 2020021919:28
 git init
 git remote add origin git@github.com:ShepherdQR/qrNotebook.git
 git pull origin master

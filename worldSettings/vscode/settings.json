@@ -3,7 +3,7 @@
  * @Date: 2019-06-20 10:46:07
  * @Github: https://github.com/ShepherdQR
  * @LastEditors: Shepherd Qirong
- * @LastEditTime: 2020-02-19 19:20:03
+ * @LastEditTime: 2020-05-25 00:35:08
  * @Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
  */
 
@@ -76,6 +76,16 @@
  
 
   "latex-workshop.latex.recipes": [
+
+    {
+      "name": "xelatex -> bibtex -> xelatex*2",
+      "tools": [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+      ]
+    },
     
     {
       "name": "XeLaTeX",
@@ -85,15 +95,6 @@
     },
     
     
-    {
-        "name": "xelatex -> bibtex -> xelatex*2",
-        "tools": [
-          "xelatex",
-          "bibtex",
-          "xelatex",
-          "xelatex"
-        ]
-      },
     
   {
         "name": "latexmk -> bibtex -> latexmk*2",
@@ -138,6 +139,7 @@
   ],
 
   // auto clear processed files after the pdf is generated.
+  /*
   "latex-workshop.latex.autoClean.run": "onBuilt",
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux",
@@ -160,6 +162,7 @@
     "*.log",
     "*.fdb_latexmk"
   ],// normally we save .synctex.gz
+  */
 
 
 
@@ -202,7 +205,7 @@
 
   // 设置
   "fileheader.configObj": {
-    "createHeader": true,//donot add header when create a new file.
+    "createHeader": false,//donot add header when create a new file.
     "language": {
         // 普通后缀文件
         "java": {
@@ -212,16 +215,16 @@
         },
       // 一次匹配多种文件后缀文件 不用重复设置
       "h/hpp/cpp/qr": {
-          "head": "/*** ", // 统一增加几个*号
-          "middle": " * @",
+          "head": "/* ===========", 
+          "middle": "//  * ",
           "end": "*/"
         },
-        "tex": {
-          "head": "%************",
-          "middle": "%  * @",
-          "end": "%************"
+        "tex/bib": {
+          "head": "%%============",
+          "middle": "%%  ** ",
+          "end": "%%============"
         },
-        "sh": {
+        "sh/txt": {
           "head": "#************",
           "middle": "#  * @",
           "end": "#************"
@@ -233,8 +236,67 @@
           "end": "-->",
         }
     },
-}
+  },
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "[latex]": { }
 
   // ----------
+  // 005 Code Spell Checker settings. ----------
+  //-------- Code Spell Checker Configuration --------
+    // The Language local to use when spell checking. "en", "en-US" and "en-GB" are currently supported by default.
+    "cSpell.language": "en",
+
+    // Controls the maximum number of spelling errors per document.
+    "cSpell.maxNumberOfProblems": 100,
+
+    // Controls the number of suggestions shown.
+    "cSpell.numSuggestions": 8,
+
+    // The minimum length of a word before checking it against a dictionary.
+    "cSpell.minWordLength": 4,
+
+    // Specify file types to spell check.
+    "cSpell.enabledLanguageIds": [
+        "latex"
+        
+    ],//"go","javascript","javascriptreact","markdown","php","plaintext","typescript", "typescriptreact","yml"
+
+    // Enable / Disable the spell checker.
+    "cSpell.enabled": true,
+
+    // Display the spell checker status on the status bar.
+    "cSpell.showStatus": true,
+
+    // Words to add to dictionary for a workspace.
+    "cSpell.words": [],
+
+    // Enable / Disable compound words like 'errormessage'
+    "cSpell.allowCompoundWords": false,
+
+    // Words to be ignored and not suggested.
+    "cSpell.ignoreWords": ["behaviour"],
+
+    // User words to add to dictionary.  Should only be in the user settings.
+    "cSpell.userWords": [],
+
+    // Specify paths/files to ignore.
+    "cSpell.ignorePaths": [
+        "node_modules",        // this will ignore anything the node_modules directory
+        "**/node_modules",     // the same for this one
+        "**/node_modules/**",  // the same for this one
+        "node_modules/**",     // Doesn't currently work due to how the current working directory is determined.
+        "vscode-extension",    //
+        ".git",                // Ignore the .git directory
+        "*.dll",               // Ignore all .dll files.
+        "**/*.dll"             // Ignore all .dll files
+    ],
+
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"`
+    "cSpell.flagWords": ["hte"],
+
+    // Set the delay before spell checking the document. Default is 50.
+    "cSpell.spellCheckDelayMs": 50,
   
 }
