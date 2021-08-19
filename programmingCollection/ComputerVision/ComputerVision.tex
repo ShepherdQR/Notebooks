@@ -1,0 +1,74 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2019-08-19 20:32:26
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2021-08-19 00:02:46
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+\documentclass[UTF8]{article}
+\usepackage{ctex}
+\usepackage{multirow,booktabs}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek,chemarrow} 
+\usepackage[paper=a4paper,top=3.5cm,bottom=2.5cm,
+left=2.7cm,right=2.7cm,
+headheight=1.0cm,footskip=0.7cm]{geometry}
+\usepackage{color, graphicx, verbatim}
+\RequirePackage{setspace}%%行间距
+\setstretch{1.523}
+
+\DeclareMathOperator{\rank}{rank}
+
+\DeclareMathOperator{\sgn}{sgn}
+
+\begin{document}
+\section{Introduction}
+    寒武纪物种爆发，因为眼睛的出现
+    computer vision begins with Larry Robert,1963. the edges define the shape, 1966 mit AI group established. 
+    David Marr book < vision >
+    视觉是简单的形状开始的，视觉是分层的
+    视觉识别模型：1）Generalized Cylinder 简单物体组成Brooks 1979; 2）Pictorial Structure, 基础元素之间用弹簧连接。
+    语义分割：Normalized Cut， shi 1997
+    viola jones face detector
+    detection ，pascal imagenet，
+    sigmoid 换成relu，使得2012比赛冠军，和LeCun1998年的手写数字没有太大区别
+%
+
+
+\section{图片分类}
+    最近邻算法：L1 distance , 曼哈顿距离，
+    \begin{equation}
+        d_1=\sum \lvert I_1^i -I_2^i \lvert
+    \end{equation}
+    特点：每一个测试图片的计算时间是恒定的；Flann是实例库
+    L2 distance，l1距离的平方根
+    K nearest neighbor， k是超参数
+    train data分子集比较超参数，cross-validation 
+    线性分类器，需要识别纹理，对无纹理的识别困难
+    the threshold at zero \\(max(0,-)\\) function is often called the **hinge loss**. \\
+    $
+    L_i = \sum_{j\neq y_i} \max(0, s_j - s_{y_i} + \Delta)
+    $\\
+    初始w为0时，损失等于类数量-1
+    **regularization loss**\\
+    \begin{equation}
+        \label{}
+        L =  \underbrace{ \frac{1}{N} \sum_i L_i }_\text{data loss} + \underbrace{ \lambda R(W) }_\text{regularization loss}
+    \end{equation}
+
+    \begin{equation}
+        \label{}
+        L = \frac{1}{N} \sum_i \sum_{j\neq y_i} \left[ \max(0, f(x_i; W)_j - f(x_i; W)_{y_i} + \Delta) \right] + \lambda \sum_k\sum_l W_{k,l}^2
+    \end{equation}
+     
+%
+
+    weight regularization:
+    L2:$\sum W^2$\\
+    L1:$\sum |W|$\\
+    elastic net $\sum \alpha W^2+|W|$
+    max norm regularization
+    dropout 
+
+
+\end{document}

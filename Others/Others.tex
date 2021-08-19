@@ -1,14 +1,11 @@
-%************
-%  * @Author: Shepherd Qirong
-%  * @Date: 2020-02-19 18:46:38
-%  * @Github: https://github.com/ShepherdQR
-%  * @LastEditors: Shepherd Qirong
-%  * @LastEditTime: 2020-02-19 19:11:32
-%  * @Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
-%************
-
-
-
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2019-06-07 10:52:51
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2021-08-19 19:59:47
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
 \documentclass[UTF8]{article}
 \usepackage{ctex}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek} 
@@ -34,19 +31,24 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 
 
 
-\begin{align}% use align instead of equation
-\label{1}    
+\begin{equation}
+\label{1}
+\begin{split}
     \int _L - \vec r dl &=\int _L - x dx+\int _L -  y dy \\
-    &=\int _0 ^{2\pi} \frac {r^2 \sin (2t)}{4} dt\\
+    &=\int _0 ^{2\pi}   \frac {r^2 \sin (2t)}{4}   dt\\
     &=\int _0 ^{2\pi} 0 dt \\
-   &=0
-\end{align}
+   & =0\\
+\end{split}
+\end{equation}
  
  
 
+
+\begin{equation}
+\label{}
+\delta = (R-r)*(1-\cos \theta)
+\end{equation}
+ 
 Package amsmath: Erroneous nesting of equation structures;
 (amsmath)	trying to recover with `aligned'.
-
-
-
 \end{document}

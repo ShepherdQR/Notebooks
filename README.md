@@ -3,7 +3,7 @@
  * @Date: 2020-02-19 16:43:31
  * @Github: https://github.com/ShepherdQR
  * @LastEditors: Shepherd Qirong
- * @LastEditTime: 2020-08-23 22:02:48
+ * @LastEditTime: 2021-08-19 20:01:05
  * @Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
  -->
 
@@ -13,19 +13,6 @@
 
 
 ## qrNotebookday01 2020021919:28
-git init
-git remote add origin git@github.com:ShepherdQR/qrNotebook.git
-git pull origin master
-git add .
-git commit -m 'qrNotebookday02'
-git push -u origin master
-
-
-
-
-
-
-
 
 ## first push on 2020021919:26
 
