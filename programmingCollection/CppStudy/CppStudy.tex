@@ -3,7 +3,7 @@
 %%  ** Date: 2021-06-12 18:33:02
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2021-08-18 23:33:58
+%%  ** LastEditTime: 2021-12-01 23:23:39
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 \documentclass[UTF8]{article}
@@ -43,11 +43,23 @@ language=c++,
 \begin{document}
 \title{CPP Study Note}
  
+\section{代码规范}
+
+修改注释，例如
+---[[修改的代码]]-----
+
+
+
+
 
 
 \section{Basic Grammer}
 
 \subsection{Books}
+
+Bjarne Stroustrup推荐要掌握的的5种语言：
+C++、Java、Python、Ruby和JavaScript
+
 
 c++ primer v5, the author is the creator of the first c++ compiler.
 
@@ -80,6 +92,9 @@ rreference is a const pointer
     %* \dots *)
     int var(1);
     const int* pCanNotModifyVar = &var; //const T* p CANNOT modify the variable it points to.
+
+    const int& num = 10;//ok
+    int& num = 10;//wrong
 \end{lstlisting}
 const object function can only be called by const object.\\
 
@@ -121,8 +136,14 @@ Dynamic
 
 dec,hex, oct
 
+\subsection{RTTI与异常处理}
+RTTI，运行时类型信息，在类层次结构中漫游，可向上、向下、平行转换，可实现反射、高级调试等功能。
 
-
+异常处理：安全的longjmp机制。
+\begin{lstlisting}
+    void function(void) throw(something){//...}
+\end{lstlisting}
+构造函数中抛出异常会产生不完整的类，永远不会调析构。解决方法：做一个有T*数据成员的模板类A，我们创建的类B中的int* pVal要在B的构造中new，现在改为存A<int>pVal，在B的构造中new，这样new委托给了类A，在我们的类B的构造中throw也不会导致内存泄露。
 
 
 \section{Function}
@@ -143,8 +164,17 @@ We use Inline to tell Compiler to do copy-paste. The function is short and calle
 
 
 \section{Object}
+
+1) Do not set data member public.
+2) Try the best to use reference as the io of functions.
+3) Use const as most as possible.
+4) use initial list in constructor.
 结构化程序设计没有封装和隐藏的概念，导致数据结构与函数之间相互的关系、函数之间的调用关系不明确。
 把数据结构和对其进行的操作方法放在一起。
+
+stack object, also called auto object. 
+static object will be created once, it will not be delete until the program ends.
+global object, outside every {}, its scale is the whole program.
 
 类的实现也可以直接在.h中。
 \subsection{Basic}
@@ -152,11 +182,14 @@ We use Inline to tell Compiler to do copy-paste. The function is short and calle
 复制构造函数，只有1个
 \begin{lstlisting}
     C（const C& iC);
+    C();//临时对象，下一个语句就析构了。
 \end{lstlisting}
 返回值是类A的实例时，函数返回时调用A的复制构造函数
 
 声明时可给出变量的初始值，后面可在构造函数中重新赋值。
 
+
+解决菱形继承，在第一级继承时使用virtual:public,这样后面每次实例化时要调用虚基类的构造函数。
 \begin{lstlisting}
     //类型转换构造函数
     C（int iIn)
@@ -164,6 +197,26 @@ We use Inline to tell Compiler to do copy-paste. The function is short and calle
     c2 = 9;//error
     c2 = C(9); // ok
 \end{lstlisting}
+
+
+
+\begin{lstlisting}
+    //When we new a class: 
+    C* pC = new C(1,2);
+    // The compiler transformed into 3 steps:
+
+    void* mem = operator new(sizeof C);//Inside it calls malloc(n);
+    pC = static_cast<C*>(mem);
+    pC->C::C(1,2);
+
+    // When delete a class:
+    delete pC;
+    // It turns into:
+    C::`C(pC);//Clear the data.
+    operator delete(pC);//Insid it calls free(pC); //free the memory.
+\end{lstlisting}
+
+
 
 参数对象消亡时调用析构函数；函数返回时是生成临时对象返回，在临时对象调用的那条语句之后，临时对象消亡，调用析构。
 
@@ -186,10 +239,45 @@ friend relationship cannot be passed, or be inherited.\\
   委托构造函数 A():A(0,0,0){}
 \end{lstlisting}
 
+const function cannot modidfy class members. 
+final, means this function or class cannot be inherited.
+override, compiler will check the function, and if it is not override a function in its base, it tells you the error.
+Outsied, a const class can only use const functions.
 
+
+\section{Templatte}
+sortable, comparable, assignable.
+
+Data type int is a comparable modle.
+
+Iterators connects the containers with algorithms.
+
+\section{STL}
+\subsection{Contianer}
+\begin{lstlisting}
+
+Sequence and reversible:
+list 
+
+Sequence and random access:
+vector, deque
+
+Associative and reversible:
+    set, multiset, map, multimap  
+
+    array, , forward_list,  
+
+unordered_set, unordered_multiset, unordered_map, unordered_multimap  
+
+
+\end{lstlisting}
 
 \section{UML}
 united modeling language. 
+
+
+
+
 
 
 \section{Design Pattern}

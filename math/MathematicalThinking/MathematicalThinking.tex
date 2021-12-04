@@ -1,3 +1,11 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2019-06-20 20:04:18
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2021-11-03 21:20:22
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
 \documentclass[UTF8]{article}
 \usepackage{ctex}
 \usepackage{multirow,booktabs}
@@ -10,6 +18,10 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \setstretch{1.523}
 
 \begin{document}
+数学的思维方式与创新-84-北大(丘维声)
+
+6,1039. 
+
 \section{数学史上的重大创新}
 \subsection{分析：微积分的创立和完备化}
 观察现象主要特征，抽象出概念。探索。猜测。证明。\\
@@ -22,13 +34,21 @@ $\forall \varepsilon >0,\ \exists \delta >0$, that when $0<|x-x_0|<\delta$, we h
 从定义和公理，推导和推演。平行公设。高斯和波约，罗巴切夫斯基（1829年）,平行公设只是假设。现实世界如何实现非欧几何的用处。高斯想法把球面本身看做一个空间。后来黎曼发展了。弯曲空间的几何是黎曼几何，如球面上的直线定义为大圆的一部分，这样发现过已知直线外一点不存在其平行线。在双曲几何模型下可以实现罗巴切夫斯基几何。\\
 \subsection{代数学中}
 伽瓦罗，代数学从研究方程的根，到研究代数系统的结构和保持运算的映射。
+
 \section{集合的划分}
 交空并全的划分方法：模n同余是$\mathbb Z$的一个二元关系。两个集合的笛卡尔积\\
 a与b模n同余：$(a,b) \in \bigcup _{i=0}^{n-1} H_i \times H_i \subseteq \mathbb Z \times \mathbb Z$.抽象：非空集合s，$S\times S$的子集W是S是上的二元关系，有关系的记为aWb\\
-等价关系：反身性，对称性，传递性，$a \sim b$；$a \sim b \Leftrightarrow b \sim a$,$a \sim b,b \sim c \Rightarrow a \sim c$\\
-$\bar a$ 是a确定的等价类，$\left\{ x \in S |x \sim a \right\}$。\\
-S上建立等价关系，S的所有等价类的集合是S的一个划分，要证明这个，需要证明并全，交空。交空比较难，需要研究等价类的性质。等价类的代表不唯一。\\
-证明$\bar x \neq \bar y \Rightarrow \bar x \bigcap \bar y = \varnothing  $，证明逆否命题$ \bar x \bigcap \bar y \neq \varnothing \Rightarrow  \bar x = \bar y$\\
+
+\subsection{等价关系}
+反身性，对称性，传递性，$a \sim b$. $a \sim b \Leftrightarrow b \sim a$. $a \sim b , b \sim c \Rightarrow a \sim c$\\
+$\bar a$ 是a确定的等价类，$\left\{ x \in S |x \sim a \right\}$。易有
+$\bar x = \bar y \Leftrightarrow x \sim y$ 。\\
+
+
+定理1：集合S上等价关系$\sim$给出的等价类的集合是S的一个划分。\\
+证明思路：需要证明并全，交空。交空比较难，需要研究等价类的性质。等价类的代表不唯一。\\
+Step1)  It is obvious that $\cup _{a \in S} {\bar a} \subseteq S$，and for any $b \in S$, we have $b \in \bar b \in \cup _{a \in S} {\bar a}$, this means $S \subseteq \cup _{a \in S} {\bar a}  $, so $ \cup _{a \in S} {\bar a} =S $.\\
+Step2) To prove $\bar x \neq \bar y \Rightarrow \bar x \bigcap \bar y = \varnothing  $, we prove the contrapositive $ \bar x \bigcap \bar y \neq \varnothing \Rightarrow  \bar x = \bar y$, and this is easy to prove.\\
 
 
 
