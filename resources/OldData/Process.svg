@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Process.svg">
+  <defs
+     id="defs2">
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker1">
+      <polyline
+         id="polyline3725"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker2">
+      <polyline
+         id="polyline3732"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker3">
+      <polyline
+         id="polyline3745"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker4">
+      <polyline
+         id="polyline3752"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker5">
+      <polyline
+         id="polyline3771"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker6">
+      <polyline
+         id="polyline3778"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="9"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="startMarker1">
+      <polyline
+         id="polyline3796"
+         fill="solid"
+         points="10,0 0,5 10,10 9,5" />
+    </marker>
+    <marker
+       refY="5"
+       refX="1"
+       viewBox="0 0 10 10"
+       markerHeight="6"
+       markerWidth="8"
+       orient="auto"
+       markerUnits="strokeWidth"
+       id="endMarker7">
+      <polyline
+         id="polyline3801"
+         fill="solid"
+         points="0,0 10,5 0,10 1,5" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="299.40987"
+     inkscape:cy="822.69821"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="539"
+     inkscape:window-height="447"
+     inkscape:window-x="549"
+     inkscape:window-y="135"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       d="M 16.666339,78.911095 H 174.16634"
+       style="fill:none;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3713"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 16.666339,63.911099 H 174.16634"
+       style="fill:none;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3715"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 84.166335,-1.3389077 V 221.4111"
+       style="fill:none;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3717"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 69.166339,-1.3389077 V 221.4111"
+       style="fill:none;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3719"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 39.166347,-1.3389077 V 221.4111"
+       style="fill:none;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3721"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 24.16635,-1.3389077 V 221.4111"
+       style="fill:none;stroke:#7f7f7f;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3723"
+       inkscape:connector-curvature="0" />
+    <g
+       id="Layer1000"
+       transform="matrix(0.26458333,0,0,0.26458333,16.666339,-1.3389077)">
+      <g
+         id="Layer1001">
+        <defs
+           id="defs3728">
+          <marker
+             id="marker3842"
+             markerUnits="strokeWidth"
+             orient="auto"
+             markerWidth="8"
+             markerHeight="6"
+             viewBox="0 0 10 10"
+             refX="1"
+             refY="5">
+            <polyline
+               points="0,0 10,5 0,10 1,5"
+               fill="solid"
+               id="polyline3840" />
+          </marker>
+        </defs>
+        <path
+           d="m 85.0394,317.9843 v 21.0078 z m 113.3858,0 v 21.0078 z"
+           style="fill:#ffffff;fill-rule:evenodd;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#endMarker1)"
+           id="path3730"
+           inkscape:connector-curvature="0" />
+        <defs
+           id="defs3735">
+          <marker
+             id="marker3848"
+             markerUnits="strokeWidth"
+             orient="auto"
+             markerWidth="8"
+             markerHeight="6"
+             viewBox="0 0 10 10"
+             refX="1"
+             refY="5">
+            <polyline
+               points="0,0 10,5 0,10 1,5"
+               fill="solid"
+               id="polyline3846" />
+          </marker>
+        </defs>
+        <path
+           d="m 85.0394,317.9843 v 21.0078 z m 113.3858,0 v 21.0078 z m -56.6929,8 H 85.0394 m 56.6929,0 h 56.6929"
+           style="fill:none;stroke:#000000;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#endMarker2)"
+           id="path3737"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         x="129.8416"
+         y="318.71811"
+         id="text3742">
+        <tspan
+           font-size="8.0000"
+           id="tspan3740"
+           style="font-size:8px;font-family:'Times New Roman';fill:#000000;fill-opacity:1;stroke-opacity:1">kH, μ</tspan>
+      </text>
+    </g>
+    <g
+       id="Layer1002"
+       transform="matrix(0.26458333,0,0,0.26458333,16.666339,-1.3389077)">
+      <g
+         id="Layer1003">
+        <defs
+           id="defs3748">
+          <marker
+             id="marker3858"
+             markerUnits="strokeWidth"
+             orient="auto"
+             markerWidth="8"
+             markerHeight="6"
+             viewBox="0 0 10 10"
+             refX="1"
+             refY="5">
+            <polyline
+               points="0,0 10,5 0,10 1,5"
+               fill="solid"
+               id="polyline3856" />
+          </marker>
+        </defs>
+        <path
+           d="m 261.2913,303.3071 h 23.8426 z m 0,-56.6929 h 23.8426 z"
+           style="fill:#ffffff;fill-rule:evenodd;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#endMarker3)"
+           id="path3750"
+           inkscape:connector-curvature="0" />
+        <defs
+           id="defs3755">
+          <marker
+             id="marker3864"
+             markerUnits="strokeWidth"
+             orient="auto"
+             markerWidth="8"
+             markerHeight="6"
+             viewBox="0 0 10 10"
+             refX="1"
+             refY="5">
+            <polyline
+               points="0,0 10,5 0,10 1,5"
+               fill="solid"
+               id="polyline3862" />
+          </marker>
+        </defs>
+        <path
+           d="m 261.2913,303.3071 h 23.8426 z m 0,-56.6929 h 23.8426 z m 8,28.3464 v 28.3465 m 0,-28.3465 v -28.3464"
+           style="fill:none;stroke:#000000;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#endMarker4)"
+           id="path3757"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         x="258.48761"
+         y="274.9606"
+         transform="rotate(-90,262.4896,274.9606)"
+         id="text3762">
+        <tspan
+           font-size="8.0000"
+           id="tspan3760"
+           style="font-size:8px;font-family:SimSun;fill:#000000;fill-opacity:1;stroke-opacity:1">H</tspan>
+      </text>
+    </g>
+    <path
+       d="M 84.166335,63.911099 A 14.999996,14.999996 0 0 1 69.166339,78.911095"
+       style="fill:none;stroke:#000000;stroke-width:0.1984375;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3765"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 39.166347,78.911095 A 14.999996,14.999996 0 0 1 24.16635,63.911099"
+       style="fill:none;stroke:#000000;stroke-width:0.1984375;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3767"
+       inkscape:connector-curvature="0" />
+    <path
+       d="M 39.166347,78.911095 H 69.166339"
+       style="fill:none;stroke:#000000;stroke-width:0.1984375;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+       id="path3769"
+       inkscape:connector-curvature="0" />
+    <g
+       id="Layer1004"
+       transform="matrix(0.26458333,0,0,0.26458333,16.666339,-1.3389077)">
+      <g
+         id="Layer1005">
+        <defs
+           id="defs3774">
+          <marker
+             id="marker3877"
+             markerUnits="strokeWidth"
+             orient="auto"
+             markerWidth="8"
+             markerHeight="6"
+             viewBox="0 0 10 10"
+             refX="1"
+             refY="5">
+            <polyline
+               points="0,0 10,5 0,10 1,5"
+               fill="solid"
+               id="polyline3875" />
+          </marker>
+        </defs>
+        <path
+           d="M 11.8425,303.3071 H 35.685 Z m 0,-56.6929 H 35.685 Z"
+           style="fill:#ffffff;fill-rule:evenodd;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#endMarker5)"
+           id="path3776"
+           inkscape:connector-curvature="0" />
+        <defs
+           id="defs3781">
+          <marker
+             id="marker3883"
+             markerUnits="strokeWidth"
+             orient="auto"
+             markerWidth="8"
+             markerHeight="6"
+             viewBox="0 0 10 10"
+             refX="1"
+             refY="5">
+            <polyline
+               points="0,0 10,5 0,10 1,5"
+               fill="solid"
+               id="polyline3881" />
+          </marker>
+        </defs>
+        <path
+           d="M 11.8425,303.3071 H 35.685 Z m 0,-56.6929 H 35.685 Z m 8,28.3464 v 28.3465 m 0,-28.3465 v -28.3464"
+           style="fill:none;stroke:#000000;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#endMarker6)"
+           id="path3783"
+           inkscape:connector-curvature="0" />
+      </g>
+      <text
+         x="9.0388002"
+         y="274.9606"
+         transform="rotate(-90,13.0407,274.9606)"
+         id="text3788">
+        <tspan
+           font-size="8.0000"
+           id="tspan3786"
+           style="font-size:8px;font-family:SimSun;fill:#000000;fill-opacity:1;stroke-opacity:1">H</tspan>
+      </text>
+    </g>
+    <g
+       id="Layer1006"
+       transform="matrix(0.26458333,0,0,0.26458333,16.666339,-1.3389077)">
+      <path
+         d="m 39.685,246.6142 a 5.6693,5.6693 -180 1 1 -5.6693,-5.6693 5.6693,5.6693 -180 0 1 5.6693,5.6693 z"
+         style="fill:#ffffff;fill-rule:evenodd;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round"
+         id="path3791"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 39.685,246.6142 a 5.6693,5.6693 -180 1 1 -5.6693,-5.6693 5.6693,5.6693 -180 0 1 5.6693,5.6693 z"
+         style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="path3793"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       d="m 39.541341,71.411083 v 7.500012 h 7.499984"
+       style="fill:none;stroke:#000000;stroke-width:0.59531248;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#startMarker1);marker-end:url(#endMarker7)"
+       id="path3806"
+       inkscape:connector-curvature="0" />
+    <text
+       x="35.724674"
+       y="80.765266"
+       id="text3810"
+       style="font-size:3.17499995px;stroke-width:0.26458332">
+      <tspan
+         font-size="12.0000"
+         id="tspan3808"
+         style="font-size:3.17499995px;font-family:SimSun;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">O</tspan>
+    </text>
+  </g>
+</svg>
