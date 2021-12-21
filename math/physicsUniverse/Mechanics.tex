@@ -1,0 +1,111 @@
+
+
+\chapter{Mechanics}
+
+\section{Classical Mechanics}
+
+
+\subsection{Center of Mass}
+
+Algebra defination $\boldsymbol r_c := \frac{\sum m_i \boldsymbol r_i}{\sum m_i} $, it relays to the choice of the coordinate system. If the map of the two coordinate systems is $T: S \rightarrow S'$, the matrix is orthogonal matrix, and $m_i$ has no inflence to the space, $\boldsymbol r'_c = T\boldsymbol r_c$.
+
+The operator $\boldsymbol r_c $ simplifies the calculation, $(\sum m_i)\boldsymbol r_c = \sum m_i \boldsymbol r_i$.
+We define the energy of the system like this, the whole energy $E_{all} := \sum \frac{1}{2} m_i \boldsymbol {v}_i^2$, the explicit energy $E_{ext} = \frac{1}{2} (\sum  m_i) \boldsymbol {v}_c^2$, the intrenal energy $E_{int} := \sum \frac{1}{2} m_i (\boldsymbol {v}_i- \boldsymbol {v}_c)^2$, because $\sum m_i \boldsymbol{v}_c^2-2\sum m_i \boldsymbol {v}_i \boldsymbol{v}_c = -\boldsymbol{v}_c^2 \sum m_i$, we have $E_{int} = E_{all} - E_{ext}$.
+
+\subsection{Momentum}
+
+$\sum m_i \boldsymbol {\ddot{r}}_i= \sum ({\boldsymbol F}_i + \sum \delta_{ij}\boldsymbol{f}_{i \leftarrow j})  = \sum \boldsymbol F_i $. We define momentum $\sum \boldsymbol{P}_i  =  \sum m_i \boldsymbol {\dot{r}}_i$, therefore, $\frac{d}{dt} \sum \boldsymbol{P}_i  = \sum {\boldsymbol F}_i$. [So the speed of light is always a const number, means that no other force can be applied to light?]
+
+$\int \frac{d \boldsymbol{p}}{dt} = \boldsymbol{F}$, so $\int \boldsymbol{dp} = \int \boldsymbol F dt$.
+
+\subsection{Rigid Body}
+A rigid body changes from one position and orientation to another, the general movement can be represented as $\boldsymbol{v} = \boldsymbol \omega  \times \boldsymbol{r} $. 
+
+
+
+\begin{proposition}[One fixed rotation axis]
+
+Proof that the transformation of a rigid body has one fixed rotation axis. 
+
+As shown in the figure, supposed that point A and B are on a sphere, and are transformed to $A'$ and $B'$, and two perpendicular bisector lines meets at point N, the point N can be transformed to $N'$, because that $\bigtriangleup ABN \cong  \bigtriangleup A'B'N'$, and moving on the orientable surface the triangular cannot transfered from $\bigtriangleup ABC$ into $\bigtriangleup ACB$, we say $N = N'$, the line $ON$ is the axis that doesn't move during the transformation.
+    
+The basis of the coordinate system $\boldsymbol{Z}^T := [e_1,e_2,e_3]$, represented as one line and three columns. The transformation of the basis $\boldsymbol{Z}' = \boldsymbol Z \boldsymbol{\Gamma }$, $\boldsymbol Z \boldsymbol{\Gamma } \boldsymbol{r}' =\boldsymbol Z \boldsymbol r $, so $ \boldsymbol{r}' = \boldsymbol{\Gamma } ^{-1}\boldsymbol{r}$, $\boldsymbol{\Gamma } \boldsymbol{\Gamma } ^{-1} = \boldsymbol{I}$ is easy to say when we write left in detail and considering that the $\boldsymbol{\Gamma }$ is the unit orthogonal base. Then the $\boldsymbol{\Gamma } \in SO_3$.
+\end{proposition}
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../resources/T0004_20211212_ProvehasOneAxis.png}
+    \caption{[T0004:ProvehasOneAxis]}
+    %%\label{fig:1}
+\end{figure*}
+
+The eigen value of $\boldsymbol{\Gamma }$, $\left\lvert \boldsymbol{\Gamma }-\boldsymbol{\lambda I}\right\rvert = \boldsymbol{0}$, so $-x^3 +\alpha x^2 +\beta x +1 = 0$, since the image of the function is continuous through $(-\infty , + \infty )$, it must have one root. 1 is one of the root. If the three roots are all real, they are all 1, or 1,-1,-1. If the rest two roots are virtual, they are $e^{i\theta},e^{-i\theta}$, so $T \phi = e^{i\theta} \phi $. 
+
+
+
+\begin{equation}
+    \begin{split}
+    &\Gamma (\phi_1 + i \phi_2)   = e^{i\theta}(\phi_1 + i \phi_2) ,\\
+    & \Gamma (\phi_1 - i \phi_2)   = e^{-i\theta}(\phi_1 - i \phi_2) \\
+    &therefore:\\
+    & \Gamma (\phi_1 ) = \cos(\theta) \phi_1  - \sin(\theta) \phi_2, \\
+    &  \Gamma (\phi_2) = \sin(\theta) \phi_1  +\cos(\theta) \phi_2\\
+\end{split}
+\end{equation}
+$\theta$ is the rotation angle.
+
+
+
+
+
+
+
+\subsection{Anglar Momentum}
+$\boldsymbol{L}_i := \boldsymbol{r}_i \times \boldsymbol{p}_i  $, with the defination of $\boldsymbol{p}$, we have $\sum \boldsymbol{L}_i  =\sum m_i \boldsymbol{r}_i \times \boldsymbol{v}_i$, and $\sum \boldsymbol{L}_i  =\sum \boldsymbol{r}_i \times \boldsymbol{F}_i + \sum \boldsymbol{r}_i \times \sum_j \boldsymbol{f}_{i \leftarrow j}$. Since $\sum(\boldsymbol{r}_i -\boldsymbol{r}_j) \times \boldsymbol{f}_{i \leftarrow j}  = 0$, we have $\sum \boldsymbol{L}_i  =\sum \boldsymbol{r}_i \times \boldsymbol{F}_i $. We also call that Torque.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Reference}
+
+\subsection{Todo}
+%%https://wuli.wiki/changed/HerMat.html
+
+
+
+
+
+\subsection{Tmeplate}
+
+\subsubsection{Tmeplate}
+
+\begin{theorem}[均值不等式]
+
+    设$A,B$是两个实数, 则$2AB\leq 2 A^2+B^2$.
+    
+\end{theorem}
+
+\begin{proof}[均值不等式]
+
+    设$A,B$是两个实数, 则$2AB\leq 2 A^2+B^2$.
+    
+\end{proof}
+
+The free fall ball ends at $[1-\vert (\mu k)^{-1} \pmod 2 -1 \vert ]kH $
+
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../../resources/T0001.png}
+    \caption{[T0001:]}
+    \label{fig:1}
+\end{figure*}

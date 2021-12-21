@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.4.22)  20 DEC 2021 23:53
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7000 64-bit) (preloaded format=xelatex 2019.4.22)  21 DEC 2021 21:57
 entering extended mode
 **./mathUniverse.tex
 (mathUniverse.tex
@@ -545,6 +545,14 @@ File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 \Gin@req@height=\dimen185
 \Gin@req@width=\dimen186
 )
+("C:\Softwares\MiKTeX 2.9\tex/latex/graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Softwares\MiKTeX 2.9\tex/latex/graphics-cfg\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: xetex.def on input line 147.
+)
 ("C:\Softwares\MiKTeX 2.9\tex/latex/geometry\geometry.sty"
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
@@ -572,14 +580,6 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks27
 
 ("C:\Softwares\MiKTeX 2.9\tex/xelatex/xetexconfig\geometry.cfg"))
-("C:\Softwares\MiKTeX 2.9\tex/latex/graphics\color.sty"
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-("C:\Softwares\MiKTeX 2.9\tex/latex/graphics-cfg\color.cfg"
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: xetex.def on input line 147.
-)
 ("C:\Softwares\MiKTeX 2.9\tex/latex/multirow\multirow.sty"
 Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
 \multirow@colwidth=\skip67
@@ -641,8 +641,8 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \titlewidth=\dimen271
 \titlewidthlast=\dimen272
 \titlewidthfirst=\dimen273
-)
-No file mathUniverse.aux.
+) (mathUniverse.aux
+(Methodology.aux) (Introduction.aux) (Topology.aux) (GroupTheory.aux))
 \openout1 = `mathUniverse.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
@@ -661,6 +661,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
+
 ABD: EverySelectfont initializing macros
 LaTeX Info: Redefining \selectfont on input line 65.
 
@@ -887,15 +888,12 @@ Underfull \vbox (badness 4872) has occurred while \output is active []
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 17991 strings out of 427675
- 397095 string characters out of 3150089
- 465100 words of memory out of 3000000
- 21825 multiletter control sequences out of 15000+200000
+ 18005 strings out of 427675
+ 397297 string characters out of 3150089
+ 466574 words of memory out of 3000000
+ 21829 multiletter control sequences out of 15000+200000
  539679 words of font info for 84 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
  54i,21n,68p,459b,446s stack positions out of 5000i,500n,10000p,200000b,50000s
