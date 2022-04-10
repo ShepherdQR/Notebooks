@@ -3,7 +3,7 @@
 %%  ** Date: 2021-06-12 18:33:02
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2021-12-01 23:23:39
+%%  ** LastEditTime: 2022-04-10 23:42:33
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 \documentclass[UTF8]{article}
@@ -67,6 +67,26 @@ the c++ programming language v4, the author is the creator of the c++.
 
 the c++ standard library: a tutorial and reference.
 
+\subsection{sizeof}
+
+程序存储分布有三个区域：栈、静态和动态。
+
+sizeof 操作符，计算的是对象在栈上的投影体积。
+
+不管指针指向的内容在什么地方，sizeof 得到的都是指针的栈大小
+
+C++ 中对引用的处理比较特殊；sizeof 一个引用得到的结果是 sizeof 一个被引用的对象的大小。
+
+
+
+\begin{lstlisting}
+    关于sizeof的两个精巧的宏实现。
+非数组的sizeof:
+#defne _sizeof(T) ( (size_t)((T*)0 + 1) )
+
+数组的sizeof:
+#define array_sizeof(T)  ( (size_t)(&T+1)  - (size_t)(&T) )
+\end{lstlisting}
 
 
 \subsection{Reference}
@@ -116,6 +136,13 @@ const object function can only be called by const object.\\
 
 \subsection{Memory}
 %%\paragraph{Memory} \quad\\
+
+\begin{lstlisting}
+new是先分配memory（调用operator new,内部调用malloc返回void*，再static_cast转到类指针），再调用构造函数
+
+delete先调用析构函数，再调用operator delete（内部调用free）释放内存
+\end{lstlisting}
+
 Dynamic
 \begin{lstlisting}
     T* p = new T;
@@ -243,6 +270,31 @@ const function cannot modidfy class members.
 final, means this function or class cannot be inherited.
 override, compiler will check the function, and if it is not override a function in its base, it tells you the error.
 Outsied, a const class can only use const functions.
+
+
+
+\subsection{关系}
+Composition，复合， A has a B。类A有1个B的成员变量。
+deque 读作 dek， queue，读作 q。
+构造时由内而外；析构时由外而内。
+
+Delegation， 委托， 类A有1个B的指针的成员变量。Composition by reference。pimpl，pointer to implementation。 Handle, body。隔离了接口与具体的实现。编译防火墙。reference counting。共享。copy on write，当多人共享，其中某类想要改变共享的类时，拷贝一份，是他脱离共享。
+
+Inheritance, is a, 继承。子类的对象中有父类的成分。父类的析构函数需要是virtual的。
+非虚函数，不希望derived class override的函数。
+虚函数，希望derived class override的函数。通过子类对象调用父类的虚函数，这延缓了执行逻辑，设计模式叫做template method。Application framework的常用手法，例如打开文件的流程。
+pure virtual function, derived class 一定要override。
+\begin{lstlisting}
+(*(this->vptr)[n])(this);
+
+\end{lstlisting}
+
+
+1份数据，多个窗口，或多种表达形式。
+
+
+
+
 
 
 \section{Templatte}

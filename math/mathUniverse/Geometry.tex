@@ -1,0 +1,74 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-04-09 22:31:44
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2022-04-10 00:22:11
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+
+
+\chapter{Geometry}
+
+
+\section{Differential Geometry}
+\subsection{摘要}
+以梁灿彬课程为主。
+
+
+\subsection{Topological Space}
+
+
+$f: \mathbb{R} \to \mathbb{R} $ is $C^0$ (读作c nought，$C^k$意思是k阶导函数存在且连续 )， if Y得到任意开区间的“逆像”（$f^{-1}[B] := \{x \in X | f(x) \in B\}$）是x的开区间之并，open set 之并。
+
+$x \hookrightarrow y$, 一般用于表示 inclusion 或 embedding（嵌入）。在这里通常表示这个map具有2个性质，1）injective，1个y只对应1个x；2）structure-preserving，不同x之间的关系和对应y之间的关系保持，如$X1 < X2$,映射过去后$y1 < y2$.
+
+$f: \mathbb{R}^n \to \mathbb{R}^m $， m个n元函数。
+
+X的所有子集记为$\mathscr P$
+
+$\mathscr T$，X的一些开集的集合，称为X的一个拓扑。选拓扑是指定集合中的哪些子集的开的。先问set的拓扑是什么，再问开不开。
+
+\begin{equation}
+    \begin{split}
+    &X, \varnothing \in \mathscr T\\
+    &O_i \in\mathscr T, i=1, \cdots, n \Longrightarrow \bigcap _{i=1}^n O_i  \in\mathscr T, 即有限个的交也开 \\
+    &O_\alpha \in\mathscr T, \forall \alpha, \Longrightarrow \bigcup  _\alpha  O_\alpha \in\mathscr T,  即无限个的并也开 \\
+    \end{split}
+  \end{equation}
+
+
+$\mathscr T = \{ \cdots \}$, 离散拓扑，开集最多；
+$\mathscr T = \{ X, \varnothing \}$, 凝聚拓扑，开集最少。
+
+$\mathbb{R}^1$, open interval;$\mathbb{R}^2$, open disk;$\mathbb{R}^n$, open ball;
+
+$B(X_0, r) := \{ x_i \in \mathbb{R}^n |   |x_i - x_0| \leq r\}$
+
+usual topology: $\mathscr T_u := \{ \mbox{可表为开球之并的集合}\}$, 一般认为$\mathbb{R}^n \in \mathscr T_u $。$\in$属于。
+
+$(X, \mathscr T)$, 拓扑空间X；
+$A \subset X， (A, \mathscr S)$， 拓扑子空间。$ \subset $含于。
+
+其中$\mathscr S := \{  V \subset A | \exists O \in \mathscr T, s.t. O \cap A = V\}$, $\mathscr S$ 由$\mathscr T$诱导出。诱导拓扑的定义是，可由父集合中的拓扑定义的开集，交子集得到的集合。
+
+open subset, 能写成开区间之并的subset 
+
+
+\subsection{Homeomorphism, 同胚}
+
+有拓扑结构的空间，映射map的连续性有意义。
+
+$f:X \to Y$ is $C^0$ if $ O \in \mathscr S \rightarrow f^{-1}[O] \in \mathscr T$。即X中由X的拓扑定义的开集$O'$，映射到Y上后，变成了Y上的X的拓扑的诱导拓扑下的开集。即映射到Y上后，得到的这个集合O，这个集合O的子集可以由X的拓扑定义的开集，交上集合O得到。
+
+$C^0$ ， continus; 
+
+
+无附加structure, 只能说one one，onto， 有了附加structure可以讨论continus。
+
+同胚：存在一个one one，onto， $f$和$f^{-1}$均$C^0$。
+
+微分同胚：one one，onto， $f$和$f^{-1}$均$C^\infty$。即 one one，onto， 正反光滑。
+
+$f: \mathbb{R} \to \mathbb{R} $ is $C^0$ at $x\in  \mathbb{R}$, if $\forall \varepsilon >0, \exists \delta >0, s.t. |x' - x| < \delta \rightarrow |f(x') - f(x)| <   \delta$, 这样定义 $C^0$需要用到距离，附加的structure
+
