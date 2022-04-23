@@ -3,7 +3,7 @@
 %%  ** Date: 2022-04-09 22:31:44
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2022-04-10 00:22:11
+%%  ** LastEditTime: 2022-04-23 22:53:12
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -54,6 +54,8 @@ $A \subset X， (A, \mathscr S)$， 拓扑子空间。$ \subset $含于。
 
 open subset, 能写成开区间之并的subset 
 
+例如，$(\mathbb R^2, \mathscr T_u)$, 取子集为圆周，则A用$\mathscr T_u$衡量不是开集，但是用$\mathscr T_u$的诱导拓扑衡量，即$\mathscr T_u$决定的开集的交集，衡量是开集。
+
 
 \subsection{Homeomorphism, 同胚}
 
@@ -61,7 +63,7 @@ open subset, 能写成开区间之并的subset
 
 $f:X \to Y$ is $C^0$ if $ O \in \mathscr S \rightarrow f^{-1}[O] \in \mathscr T$。即X中由X的拓扑定义的开集$O'$，映射到Y上后，变成了Y上的X的拓扑的诱导拓扑下的开集。即映射到Y上后，得到的这个集合O，这个集合O的子集可以由X的拓扑定义的开集，交上集合O得到。
 
-$C^0$ ， continus; 
+$C^0$ ， continus; $C^1$，可微，是流形； $C^k$，直到k阶导数存在且连续， $C^\infty$，光滑。
 
 
 无附加structure, 只能说one one，onto， 有了附加structure可以讨论continus。
@@ -71,4 +73,29 @@ $C^0$ ， continus;
 微分同胚：one one，onto， $f$和$f^{-1}$均$C^\infty$。即 one one，onto， 正反光滑。
 
 $f: \mathbb{R} \to \mathbb{R} $ is $C^0$ at $x\in  \mathbb{R}$, if $\forall \varepsilon >0, \exists \delta >0, s.t. |x' - x| < \delta \rightarrow |f(x') - f(x)| <   \delta$, 这样定义 $C^0$需要用到距离，附加的structure
+
+
+\subsection{Manifold}
+
+局部像$\mathbb R ^n$
+
+
+Given a topological space $(M, \mathscr T)$, if $M = \cup _ \alpha O_\alpha , O_\alpha \in \mathscr T$, the $\{ O_\alpha\}$ is an open cover.
+
+\begin{displaymath}
+  \begin{split}
+    & O _\alpha \xrightarrow[homeo.]{\psi_\alpha } V_\alpha \subset \mathbb R^n \\
+    & O_\alpha \cap 0_\beta \neq \varnothing \Longrightarrow \psi_\beta \circ \psi_\alpha ^ {-1} \ is \ C^ \infty \mbox{，[注：compatibility, 相容]}
+  \end{split}
+\end{displaymath}
+Then $M$ is a manifold. 其中，复合映射$f \circ g$,从右向左结合，先作用g，再作用f。注意到上式的$\psi_\beta \circ \psi_\alpha ^ {-1}: \mathbb R^n \to \mathbb R^n$，$\psi_\alpha[O_\alpha \cap 0_\beta] \to \psi_\beta[O_\alpha \cap 0_\beta] $是n个n元函数。
+
+
+$\Psi$ 美国一般读作sai，$\xi$,这个一般读作c， 和英文字母c一个音。
+
+$( O_\alpha, \psi_\alpha)$叫做坐标系，或chart（图）, 其中$O_\alpha$是坐标域。$\{ O_\alpha, \psi_\alpha \}$叫做图册，atlas。
+
+拓扑空间M可由不同的图册定义不同的流形，这两个图册中，坐标域有交集时，若矛盾，称这2个流形的微分结构不同；否则就是同一个微分流形，将图册并起来。
+
+例子：Is $\mathbb R^2$ a manifold? We try to find an open cover, it is easy that  if $\{ O_\alpha, \psi_\alpha \}$ is trival, which means that $O_\alpha = \mathbb R^2$, and $\psi_\alpha (x) = x $. One set can cover means it is trival.
 
