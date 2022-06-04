@@ -1,0 +1,104 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-06-04 22:55:43
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2022-06-04 22:56:09
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+
+
+
+
+\chapter{Design Pattern}
+
+\section{UML}
+united modeling language. 
+\section{Design Pattern}
+
+\subsection{Principles}
+Open for extension, closed for modification. 对扩展开放，对修改封闭。类的改动通过增加而不是修改代码实现。
+Single Responsibility. 类对外提供一种功能。模块只能有一种被修改的理由。
+Dependence inversion. 依赖接口。业务层与实现层都向协议层靠拢。
+interface segegation. 一个接口提供一种功能。
+Liskov substitution. 抽象类出现的地方都可以用其实现类替换。
+composite or aggregate reuse. 优先使用组合，因为继承时父类的修改会影响子类，对象组合会降低依赖关系。
+law of demeter一个对象应对其他对象尽量少的了解。
+
+
+
+\section{Others}
+
+
+
+
+\begin{lstlisting}
+   http://api.open-notify.org/astros.json
+
+   https://openweathermap.org/current
+
+\end{lstlisting}
+
+
+建议把xy push到局部vector中，把局部vector push到vec中
+
+Notepad++里Run可以设置用.bat来编译运行，bat里面要先cd到其目录
+
+penetration test, using attack tools.
+
+进程因为创建而就绪，因为调度而运行，因为IO事件而阻塞，IO事件完毕或时间片用完回到就绪状态，运行完成后消亡。
+
+c++看gcc-cp目录
+
+它是个编译器，也可以画图写别的pythonjava之类的
+
+我都没有研究过，我需要找点资料好好学习一下，个人觉着c用起来更像是地址的别名，fortran的更像是地址的别名的别名，两个的比较应该找一些开源的转换库看看，
+
+\begin{lstlisting}
+    using namespace std;在局部使用挺好的
+   using FP = void (*) (int, const std::string&); //Replace using typedef
+\end{lstlisting}
+
+
+伸缩型数组，在c中比存指针成员的好处是1）不占1个地址的存储空间，2）最适合制作动态buffer，因为可以直接就把buffer的结构体和缓冲区一起分配。
+\begin{lstlisting}
+   struct MyStruct
+   {
+       int			i；
+       float		j；
+       double		arr[0];		//伸缩型数组成员
+       //double	arr[];		//这样声明也可以
+   }；
+   pf = malloc(sizeof(MyStruct) + N*sizeof(double));/*只分配一块内存*/
+\end{lstlisting}
+c\#生态还是局限
+
+
+假如一种语言不允许运行期动态分配内存的话，确实只要有stack就够了，内存的数据区只划分成两大块，一块用于独立于过程的数据（编译、连接时已知大小），剩下的全部做为一个stack。C、C++这样的允许动态分配内存的语言，当然还是要有一个heap的，这样内存就划分成三个区域了。在引入线程概念之前，确实如你所想的，除了运行时动态确定大小的数据必须放在heap里面，其他都可以放在stack里，我们可以把stack设置的足够大。然而，后来线程出现了。每个线程有自己独立的stack，一个程序可以创建成百上千个线程，那么stack的大小也就只能是一个很小的值，内存才不会被用光。在windows系统里，每个线程的stack默认只有1MB，LINUX默认8MB，这样，stack就成了紧缺资源，必须非常有节制地使用，体量比较大的数据都要由程序员手工分配到heap里去并手工管理其生命期。
+
+java 半编译半解释
+
+反码：符号位不变，其余位翻转。
+正整数的补码：是原码；
+负整数的补码：是反码+1；
+注意运算可能溢出。
+
+\begin{lstlisting}
+   a = 3*5,a*4;//60
+   typedef int MyINT;
+   using MyINT = int;
+
+   decltype(i) j = 2;//the type of j is the same as i.
+initializer_list
+
+
+ \end{lstlisting}
+
+ 每一个练习封装成一个函数收集在一个.hpp里面，在一个main里面调用相应的练习函数
+
+ 我认为核心还是数据，设计类的方法要围绕着数据来，公开出去的方法要维护好隐藏起来的成员变量
+
+ 量子加密RSA
+
+ 原来stl的模板采用的那叫静态多态，编译期间翻译，所以模板的声明实现分离在头文件里实例一份就行了
+
