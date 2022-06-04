@@ -3,12 +3,14 @@
 %%  ** Date: 2021-12-21 22:01:55
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2021-12-26 20:47:01
+%%  ** LastEditTime: 2022-05-03 14:38:27
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
 
 \chapter{Electromagnetics}
+
+注重发现的过程，物理思想。研究对象变化导致需要新的概念、手段。
 
 \section{Preference}
 
@@ -17,9 +19,99 @@ The energy is flowing through the space around the conductor.
 赵凯华，电磁学，高教出版社；
 陈秉乾，电磁学专题研究，高教。
 
+\section{电学}
+
+\subsection{静电场}
+
+\subsubsection{库仑定律和场强叠加原理}
+
+观察现象，提出问题，猜测，实验，规律，新物理量，公式（定量表述），成立条件，适用范围，精度，理论地位，发展，应用。 
+
+物理定律的内涵和外延。
+
+电力，非接触，和引力、电磁力一样非接触，最好先研究点电荷。猜测电力和距离平方成反比，因为均匀球壳中不受力，就像均匀球壳中心不受引力。1785库伦扭秤实验测电斥力。力弱，漏电。测电引力，类比单摆周期和到质心距离成正比，做单摆实验。
+物理规律有层次，空间对称性层次高。
+
+从特称判断到全称判断，从特殊到一般。
+
+库伦定理，真空（可以不真空），静止（必须，可以是相对于静止电荷对运动电核的作用，）运动电荷产生的场和速度有关，静电荷和动电荷之间的相互作用不遵循牛顿第三定律，牛三本质是动量守恒，说明除了两个电荷，还有第三者参与了且第三者的动量也变化了，这个第三者是场。在某个参考系中可能2电荷相对静止，只有库仑力，换个参考系2电荷运动，产生磁场，点作用+磁作用。电磁现象联系紧密。
+
+成立的尺度范围：原子级别，原子核内部可能有问题。大尺度到太阳星系范围可能也没有问题。
+
+库伦定理是迄今为止物理学中最精确的实验定律之一，电磁力和距离的$-2 \pm 10^{-16}$次方成正比（1971年测量数据）。因为这个比例系数和光子的静止质量有关，电磁波没有静止质量。
+
+\begin{displaymath}
+    \boldsymbol F_{ab} = \frac{1}{4 \pi \varepsilon _0} \frac{q_a \cdot q_b}{r^2} \boldsymbol {\hat{r} } 
+\end{displaymath}
+
+电荷性质：守恒性，量子性，非相对论性。电荷有正负，引力只有正，电荷可以屏蔽，引力不能。
+
+电场强度 $\boldsymbol E = \boldsymbol F / q_0$
+
+用试探电荷来描绘要测量的某点电荷的场强分布，因而试探电荷电量要小来减少对测量电荷场强分布的影响，尺寸要小来描绘精确。
+
+场强线性叠加 
+
+$$\boldsymbol E =  \int d \boldsymbol E
+= \frac{1}{4 \pi \varepsilon _0} \int \frac{\boldsymbol {\hat{r} } }{r^2} dq $$
+
+\subsubsection{高斯定理，环路定理，电势}
+
+非接触力的机制，这种作用是怎么进行的，有媒介物吗？有传递时间吗？
+
+先研究静态的力场，然后研究动态的力场，然后研究力场与其中电荷的相互作用。把场作为研究的对象。
+
+场：一定空间中连续分布的物体。如矢量场，标量场。
+
+静电场的几何描述：电场线，切线方向表示电场方向。如何从整体上描述一个场，或较容易一下子区分不同的场？因为电场线画出来眼花缭乱的。最早是麦克斯韦做的，用类比的方法。看看流体力学怎么做的。不可压缩流体的恒定流动可以画出流速场，流体力学抓住了何处有源、汇，何时有旋，并且发现可以用通量的概念描述这种特征，包围源的通量大于0，包围汇的通量小于0，其余情况等于0。
+
+$ \vec{A} \cdot d \vec{s} = A \cos \theta ds $,$\vec{A}$可取$\vec{v},\vec{E},\vec{B}$ 
+
+\begin{equation}
+\begin{split}
+    &\oiint _S  \vec{E}d \vec{s}  = \frac{1}{\varepsilon} \sum_{S_{in}} q_i,
+    \mbox{高斯定理, 有源场，通量不等于0}\\
+    &\oint _l  \vec{E}d \vec{l}  = 0,
+    \mbox{无旋场，闭合环路积分等于0}\\
+\end{split}
+\end{equation}
+
+定义电势：$U_p = \int _p ^ \infty \vec{E} \cdot d \vec{l} $
+
+场强和电势都可叠加，即$\vec{E} = \int d \vec{E}$, $U = \int dU$
+
+电场线和等势面的关系：处处正交，$\vec{E}$指向U减小的方向，两者的关系：$\vec{E} = -\nabla U = - (\frac{\partial U }{\partial x},\frac{\partial U }{\partial y},\frac{\partial U }{\partial z})$
 
 
 
 
+
+小结：
+\begin{equation}
+    \mbox{计算场强的3种方法：}
+    \left\{ 
+        \begin{aligned}
+            &\oiint _S  \vec{E}d \vec{s}  = \frac{1}{\varepsilon} \sum_{S_{in}} q_i\\
+            &\boldsymbol E =  \int d \boldsymbol E
+            = \frac{1}{4 \pi \varepsilon _0} \int \frac{\boldsymbol {\hat{r} } }{r^2} dq\\
+            &\vec{E} = -\nabla U = - (\frac{\partial U }{\partial x},\frac{\partial U }{\partial y},\frac{\partial U }{\partial z})
+        \end{aligned}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \mbox{计算电势的2种方法：}
+    \left\{ 
+        \begin{aligned}
+            &U_p = \int _p ^ \infty \vec{E} \cdot d \vec{l}\\
+            &U = \int dU = \frac{1}{4 \pi \varepsilon _0} \int \frac{dq}{r}
+        \end{aligned}
+    \right.
+\end{equation}
+
+
+\subsubsection{导体和电容}
+
+场与物质的相互作用。导体和绝缘体解释，提出自由电荷、束缚（极化）电荷。
 
 

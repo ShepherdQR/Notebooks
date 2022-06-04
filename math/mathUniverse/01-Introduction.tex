@@ -11,6 +11,12 @@
 \chapter{Introduction}
 Today is 20211204, and I deciede to note down all of my knowledge about the math in this notebook.
 
+\section{分类}
+数学史不单独作为一章，分布在各个章节中。
+
+\subsection{Methodology}
+方法论，数学重要思想。
+
 
 \section{Space}
 
@@ -18,11 +24,11 @@ Today is 20211204, and I deciede to note down all of my knowledge about the math
 
 \subsubsection{Element}
 
-we define the basic element $\boldsymbol x = [x_1, x_2,\dots]^T = \Sigma x_i \boldsymbol{e_i}$, $ \boldsymbol e_i $ means $x_i = 1, x_j = 0$ for all $j \neq i$. We define Kronecker sign to simply the description of $\boldsymbol e_i \cdot \boldsymbol e_j $.
+we define the basic element $ \vec{x}  = \boldsymbol x = [x_1, x_2,\dots]^T = \Sigma x_i \boldsymbol{e_i}$, $ \boldsymbol e_i $ means $x_i = 1, x_j = 0$ for all $j \neq i$. We define Kronecker sign to simply the description of $\boldsymbol e_i \cdot \boldsymbol e_j $.
 
 \begin{equation}
     \begin{split}
-    &\delta _{i,j}:=
+    &\delta _{ij}:=
     \begin{cases}
     &1,\qquad i = j\\
     &0,\qquad i \neq j\\
@@ -37,7 +43,7 @@ The set of bases $\{ \boldsymbol e_i  \}  \stackrel{apply}{\longrightarrow} \bol
 
 \subsubsection{Dot Product}
 
-We define in algebra, $ \boldsymbol{x} \cdot \boldsymbol{y} := \sum{x_iy_i\boldsymbol{e}_i} = \boldsymbol{x}^T \cdot \boldsymbol{y}$.
+We define in algebra, $ \boldsymbol{x} \cdot \boldsymbol{y} := \sum{x_iy_i \delta _{ij}} = \boldsymbol{x}^T \cdot \boldsymbol{y}$.
 
 Then the defination is restricted to the choose of the coordinate system. We take a look a the product with reflect $T : \boldsymbol x \rightarrow  \boldsymbol{T} \cdot \boldsymbol{x}$,
 
@@ -99,12 +105,4 @@ law $ (\boldsymbol{x} + \boldsymbol{y} )+ \boldsymbol{z} = \boldsymbol{x} +( \bo
 
 
 \section{Reference}
-
-
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{../../resources/T0001.png}
-    \caption{正则项的几何意义}
-    \label{fig:1}
-\end{figure*}
 

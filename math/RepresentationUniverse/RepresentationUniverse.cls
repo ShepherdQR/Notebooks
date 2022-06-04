@@ -1,19 +1,7 @@
-%%============
-%%  ** Author: Shepherd Qirong
-%%  ** Date: 2021-12-11 17:07:45
-%%  ** Github: https://github.com/ShepherdQR
-%%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2022-05-02 23:14:32
-%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
-%%============
 
 
-
-\documentclass[UTF8]{book}
-
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-
+\ProvidesClass{RepresentationUniverse}[2022/05/06 v0.1 ]
+\LoadClass[RepresentationUniverse]{book}
 
 \usepackage{ctex}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek} 
@@ -21,9 +9,9 @@
 \usepackage[paper=a4paper,top=3.5cm,bottom=2.5cm,
 left=2.7cm,right=2.7cm,
 headheight=1.0cm,footskip=0.7cm]{geometry}
+
 \usepackage{multirow,booktabs, verbatim}
 \usepackage{chemarrow}
-\usepackage{esint}
 
 \RequirePackage{setspace}%%linespace
 \setstretch{1.523}
@@ -41,31 +29,11 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 %%\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
 \renewcommand{\figurename}{Figure }
 
-\includeonly{
-    Methodology,
-    Mechanics,
-    Electromagnetics,
-    Quantum
-}
 
 
-%%Acoustics
-%% Optics
-%% AtomicAndMolecular, Nuclear
-%% Electrodynamics
-%% StatisticalPhysics
-%% Quantum
-%% ParticlePhysics
-%% SolidState
-%% Cryophysics
-%% Others
-\begin{document}
+%\usepackage[square,numbers,sectionbib]{natbib}      
+%% 引入natbib包，参考文献格式相关
+%\usepackage{chapterbib}								
+%% 引入chapterbib包，可以分章节显示参考文献，且参考文献编号各自独立
 
 
-\include{Methodology}
-\include{Mechanics}
-\include{Electromagnetics}
-\include{Quantum}
-
-
-\end{document}
