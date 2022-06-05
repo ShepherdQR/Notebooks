@@ -1,0 +1,153 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-04-09 22:31:44
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2022-06-05 22:35:50
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+
+
+\documentclass[UTF8]{../09-Mathematics}
+\begin{document}
+
+\title{09-05-Geometry}
+\date{Created on 20220605.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+\chapter{Introduction}
+这里把代数几何也包括进来。
+
+a: 几何学基础, 
+b: 欧氏几何学, 
+c: 非欧几何学（包括黎曼几何学等）, 
+d: 球面几何学, 
+e: 向量和张量分析, 
+f: 仿射几何学, 
+g: 射影几何学, 
+h: 微分几何学, 
+i: 分数维几何, 
+j: 计算几何学, 
+k: 几何学其他学科。
+l:代数几何
+
+\chapter{Basic Geometry}
+
+\chapter{欧氏几何学}
+\chapter{非欧几何学}
+非欧几何学（包括黎曼几何学等）
+
+\chapter{球面几何学}
+
+
+\chapter{向量和张量分析}
+\chapter{仿射几何学}
+\chapter{射影几何学}
+
+
+
+
+\section{Differential Geometry}
+\subsection{摘要}
+以梁灿彬课程为主。
+
+
+\subsection{Topological Space}
+
+
+$f: \mathbb{R} \to \mathbb{R} $ is $C^0$ (读作c nought, $C^k$意思是k阶导函数存在且连续 ),  if Y得到任意开区间的“逆像”（$f^{-1}[B] := \{x \in X | f(x) \in B\}$）是x的开区间之并, open set 之并。
+
+$x \hookrightarrow y$, 一般用于表示 inclusion 或 embedding（嵌入）。在这里通常表示这个map具有2个性质, 1）injective, 1个y只对应1个x；2）structure-preserving, 不同x之间的关系和对应y之间的关系保持, 如$X1 < X2$,映射过去后$y1 < y2$.
+
+$f: \mathbb{R}^n \to \mathbb{R}^m $,  m个n元函数。
+
+X的所有子集记为$\mathscr P$
+
+$\mathscr T$, X的一些开集的集合, 称为X的一个拓扑。选拓扑是指定集合中的哪些子集的开的。先问set的拓扑是什么, 再问开不开。
+
+\begin{equation}
+    \begin{split}
+    &X, \varnothing \in \mathscr T\\
+    &O_i \in\mathscr T, i=1, \cdots, n \Longrightarrow \bigcap _{i=1}^n O_i  \in\mathscr T, 即有限个的交也开 \\
+    &O_\alpha \in\mathscr T, \forall \alpha, \Longrightarrow \bigcup  _\alpha  O_\alpha \in\mathscr T,  即无限个的并也开 \\
+    \end{split}
+  \end{equation}
+
+
+$\mathscr T = \{ \cdots \}$, 离散拓扑, 开集最多；
+$\mathscr T = \{ X, \varnothing \}$, 凝聚拓扑, 开集最少。
+
+$\mathbb{R}^1$, open interval;$\mathbb{R}^2$, open disk;$\mathbb{R}^n$, open ball;
+
+$B(X_0, r) := \{ x_i \in \mathbb{R}^n |   |x_i - x_0| \leq r\}$
+
+usual topology: $\mathscr T_u := \{ \mbox{可表为开球之并的集合}\}$, 一般认为$\mathbb{R}^n \in \mathscr T_u $。$\in$属于。
+
+$(X, \mathscr T)$, 拓扑空间X；
+$A \subset X,  (A, \mathscr S)$,  拓扑子空间。$ \subset $含于。
+
+其中$\mathscr S := \{  V \subset A | \exists O \in \mathscr T, s.t. O \cap A = V\}$, $\mathscr S$ 由$\mathscr T$诱导出。诱导拓扑的定义是, 可由父集合中的拓扑定义的开集, 交子集得到的集合。
+
+open subset, 能写成开区间之并的subset 
+
+例如, $(\mathbb R^2, \mathscr T_u)$, 取子集为圆周, 则A用$\mathscr T_u$衡量不是开集, 但是用$\mathscr T_u$的诱导拓扑衡量, 即$\mathscr T_u$决定的开集的交集, 衡量是开集。
+
+
+\subsection{Homeomorphism, 同胚}
+
+有拓扑结构的空间, 映射map的连续性有意义。
+
+$f:X \to Y$ is $C^0$ if $ O \in \mathscr S \rightarrow f^{-1}[O] \in \mathscr T$。即X中由X的拓扑定义的开集$O'$, 映射到Y上后, 变成了Y上的X的拓扑的诱导拓扑下的开集。即映射到Y上后, 得到的这个集合O, 这个集合O的子集可以由X的拓扑定义的开集, 交上集合O得到。
+
+$C^0$ ,  continus; $C^1$, 可微, 是流形； $C^k$, 直到k阶导数存在且连续,  $C^\infty$, 光滑。
+
+
+无附加structure, 只能说one one, onto,  有了附加structure可以讨论continus。
+
+同胚: 存在一个one one, onto,  $f$和$f^{-1}$均$C^0$。
+
+微分同胚: one one, onto,  $f$和$f^{-1}$均$C^\infty$。即 one one, onto,  正反光滑。
+
+$f: \mathbb{R} \to \mathbb{R} $ is $C^0$ at $x\in  \mathbb{R}$, if $\forall \varepsilon >0, \exists \delta >0, s.t. |x' - x| < \delta \rightarrow |f(x') - f(x)| <   \delta$, 这样定义 $C^0$需要用到距离, 附加的structure
+
+
+\subsection{Manifold}
+
+局部像$\mathbb R ^n$
+
+
+Given a topological space $(M, \mathscr T)$, if $M = \cup _ \alpha O_\alpha , O_\alpha \in \mathscr T$, the $\{ O_\alpha\}$ is an open cover.
+
+\begin{displaymath}
+  \begin{split}
+    & O _\alpha \xrightarrow[homeo.]{\psi_\alpha } V_\alpha \subset \mathbb R^n \\
+    & O_\alpha \cap 0_\beta \neq \varnothing \Longrightarrow \psi_\beta \circ \psi_\alpha ^ {-1} \ is \ C^ \infty \mbox{, [注: compatibility, 相容]}
+  \end{split}
+\end{displaymath}
+Then $M$ is a manifold. 其中, 复合映射$f \circ g$,从右向左结合, 先作用g, 再作用f。注意到上式的$\psi_\beta \circ \psi_\alpha ^ {-1}: \mathbb R^n \to \mathbb R^n$, $\psi_\alpha[O_\alpha \cap 0_\beta] \to \psi_\beta[O_\alpha \cap 0_\beta] $是n个n元函数。
+
+
+$\Psi$ 美国一般读作sai, $\xi$,这个一般读作c,  和英文字母c一个音。
+
+$( O_\alpha, \psi_\alpha)$叫做坐标系, 或chart（图）, 其中$O_\alpha$是坐标域。$\{ O_\alpha, \psi_\alpha \}$叫做图册, atlas。
+
+拓扑空间M可由不同的图册定义不同的流形, 这两个图册中, 坐标域有交集时, 若矛盾, 称这2个流形的微分结构不同；否则就是同一个微分流形, 将图册并起来。
+
+例子: Is $\mathbb R^2$ a manifold? We try to find an open cover, it is easy that  if $\{ O_\alpha, \psi_\alpha \}$ is trival, which means that $O_\alpha = \mathbb R^2$, and $\psi_\alpha (x) = x $. One set can cover means it is trival.
+
+
+
+\chapter{分数维几何}
+\chapter{计算几何学}
+\chapter{代数几何}
+
+
+
+\chapter{Else}
+
+
+
+\end{document}
+

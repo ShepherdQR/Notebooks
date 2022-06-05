@@ -1,9 +1,0 @@
-\contentsline {chapter}{\numberline {1}Methodology}{5}% 
-\contentsline {section}{\numberline {1.1}Introduction}{5}% 
-\contentsline {section}{\numberline {1.2}Others}{5}% 
-\contentsline {subsection}{\numberline {1.2.1}图片分类}{5}% 
-\contentsline {chapter}{\numberline {2}Computer Graphics}{7}% 
-\contentsline {section}{\numberline {2.1}Rasterization}{7}% 
-\contentsline {section}{\numberline {2.2}Curves and Meshes}{7}% 
-\contentsline {section}{\numberline {2.3}Ray Tracing}{7}% 
-\contentsline {section}{\numberline {2.4}Animation and Simulation}{8}% 

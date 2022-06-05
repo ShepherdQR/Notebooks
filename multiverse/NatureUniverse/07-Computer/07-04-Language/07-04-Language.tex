@@ -1,0 +1,514 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-06-05 00:07:26
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2022-06-05 23:26:22
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+
+
+
+
+\documentclass[UTF8]{../computerUniverse}
+
+\begin{document}
+
+
+\title{07-04-Language}
+\date{Created on 20190819.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+\chapter{Introduction}
+
+主要包括
+
+
+\chapter{形式化方法（形式验证）}
+形式语义、代数规范、范畴论、类型论和重写技术等。
+\section{形式语义}
+
+
+\chapter{语义理论（自然语言、程序语言）}
+\section{计算语义}
+
+
+\chapter{类型理论}
+
+\chapter{多值逻辑}
+\chapter{模糊逻辑}
+\chapter{推理技术}
+
+
+
+
+
+\chapter{编译原理}
+
+
+【词法分析】根据词法规则，对源程序逐个字符扫描，识别出一个个“单词”符号，词汇检查。
+【语法分析】根据语法规则将单词符号序列分解成各类语法单位，如“表达式”“语句”和“程序”等。语法规则
+就是各类语法单位的构成规则，主要针对结构的检查。
+【语义分析】分析各语法结构的含义，检查源程序是否包含语义错误，主要针对句子含义的检查。
+
+
+
+\chapter{编程范式}
+
+\section{并发编程}
+\section{函数式编程}
+\section{命令式编程}
+\section{逻辑编程}
+
+\section{面向对象编程}
+    
+\subsection{UML}
+united modeling language. 
+
+通信图中，：冒号前面是对象名，后面是类名，之间连线上是消息。
+
+模块结构图的主要组成有：模块、调用、数据、控制信息和转接符号
+
+\subsection{Principles}
+Open for extension, closed for modification. 对扩展开放，对修改封闭。类的改动通过增加而不是修改代码实现。
+Single Responsibility. 类对外提供一种功能。模块只能有一种被修改的理由。
+Dependence inversion. 依赖接口。业务层与实现层都向协议层靠拢。
+interface segegation. 一个接口提供一种功能。
+Liskov substitution. 抽象类出现的地方都可以用其实现类替换。
+composite or aggregate reuse. 优先使用组合，因为继承时父类的修改会影响子类，对象组合会降低依赖关系。
+law of demeter一个对象应对其他对象尽量少的了解。
+
+
+\subsection{设计模式}
+观察者模式：具体的观察者将自己注册到事件，具体的事件知道自己的观察者、体现类对扩展开放，对修改关闭。
+
+
+\subsection{Others}
+
+
+
+
+\begin{lstlisting}
+   http://api.open-notify.org/astros.json
+
+   https://openweathermap.org/current
+
+\end{lstlisting}
+
+
+建议把xy push到局部vector中，把局部vector push到vec中
+
+Notepad++里Run可以设置用.bat来编译运行，bat里面要先cd到其目录
+
+penetration test, using attack tools.
+
+进程因为创建而就绪，因为调度而运行，因为IO事件而阻塞，IO事件完毕或时间片用完回到就绪状态，运行完成后消亡。
+
+c++看gcc-cp目录
+
+它是个编译器，也可以画图写别的pythonjava之类的
+
+我都没有研究过，我需要找点资料好好学习一下，个人觉着c用起来更像是地址的别名，fortran的更像是地址的别名的别名，两个的比较应该找一些开源的转换库看看，
+
+\begin{lstlisting}
+    using namespace std;在局部使用挺好的
+   using FP = void (*) (int, const std::string&); //Replace using typedef
+\end{lstlisting}
+
+
+伸缩型数组，在c中比存指针成员的好处是1）不占1个地址的存储空间，2）最适合制作动态buffer，因为可以直接就把buffer的结构体和缓冲区一起分配。
+\begin{lstlisting}
+   struct MyStruct
+   {
+       int			i；
+       float		j；
+       double		arr[0];		//伸缩型数组成员
+       //double	arr[];		//这样声明也可以
+   }；
+   pf = malloc(sizeof(MyStruct) + N*sizeof(double));/*只分配一块内存*/
+\end{lstlisting}
+c\#生态还是局限
+
+
+假如一种语言不允许运行期动态分配内存的话，确实只要有stack就够了，内存的数据区只划分成两大块，一块用于独立于过程的数据（编译、连接时已知大小），剩下的全部做为一个stack。C、C++这样的允许动态分配内存的语言，当然还是要有一个heap的，这样内存就划分成三个区域了。在引入线程概念之前，确实如你所想的，除了运行时动态确定大小的数据必须放在heap里面，其他都可以放在stack里，我们可以把stack设置的足够大。然而，后来线程出现了。每个线程有自己独立的stack，一个程序可以创建成百上千个线程，那么stack的大小也就只能是一个很小的值，内存才不会被用光。在windows系统里，每个线程的stack默认只有1MB，LINUX默认8MB，这样，stack就成了紧缺资源，必须非常有节制地使用，体量比较大的数据都要由程序员手工分配到heap里去并手工管理其生命期。
+
+java 半编译半解释
+
+反码：符号位不变，其余位翻转。
+正整数的补码：是原码；
+负整数的补码：是反码+1；
+注意运算可能溢出。
+
+\begin{lstlisting}
+   a = 3*5,a*4;//60
+   typedef int MyINT;
+   using MyINT = int;
+
+   decltype(i) j = 2;//the type of j is the same as i.
+initializer_list
+
+
+ \end{lstlisting}
+
+ 每一个练习封装成一个函数收集在一个.hpp里面，在一个main里面调用相应的练习函数
+
+ 我认为核心还是数据，设计类的方法要围绕着数据来，公开出去的方法要维护好隐藏起来的成员变量
+
+ 量子加密RSA
+
+ 原来stl的模板采用的那叫静态多态，编译期间翻译，所以模板的声明实现分离在头文件里实例一份就行了
+
+
+
+
+
+\chapter{程序设计语言的设计与实现}
+
+
+
+
+\chapter{程序设计语言学习}
+
+
+
+
+\section{CPP}
+
+\subsection{Introduction}
+
+
+\subsubsection{Books}
+
+
+Bjarne Stroustrup推荐要掌握的的5种语言：
+C++、Java、Python、Ruby和JavaScript
+
+
+c++ primer v5, the author is the creator of the first c++ compiler.
+
+the c++ programming language v4, the author is the creator of the c++.
+
+the c++ standard library: a tutorial and reference.
+
+
+
+\subsection{代码规范}
+
+修改注释，例如
+---[[修改的代码]]-----
+
+
+
+\subsection{Basic Grammer}
+
+\paragraph{sizeof}
+
+程序存储分布有三个区域：栈、静态和动态。
+
+sizeof 操作符，计算的是对象在栈上的投影体积。
+
+不管指针指向的内容在什么地方，sizeof 得到的都是指针的栈大小
+
+C++ 中对引用的处理比较特殊；sizeof 一个引用得到的结果是 sizeof 一个被引用的对象的大小。
+
+
+
+\begin{lstlisting}
+    关于sizeof的两个精巧的宏实现。
+非数组的sizeof:
+#defne _sizeof(T) ( (size_t)((T*)0 + 1) )
+
+数组的sizeof:
+#define array_sizeof(T)  ( (size_t)(&T+1)  - (size_t)(&T) )
+\end{lstlisting}
+
+
+\paragraph{Reference}
+The reference is ofen used as parameters of a function. 
+rreference is a const pointer
+
+\begin{lstlisting}
+    // const T& or const T cannot be passed to T&
+    %* \dots *)
+    int var(1);
+    int &ref = var; //ref is always the second name of var.
+    %*
+        \dots
+    *)
+    int& func(const double& iVal,...){...}
+    func() = 3; // We can use the function just as a variable
+\end{lstlisting}
+
+ 
+\paragraph{Const}
+
+\begin{lstlisting}
+    // const T* can be transformed to T* using (T*)
+    %* \dots *)
+    int var(1);
+    const int* pCanNotModifyVar = &var; //const T* p CANNOT modify the variable it points to.
+
+    const int& num = 10;//ok
+    int& num = 10;//wrong
+\end{lstlisting}
+const object function can only be called by const object.\\
+
+\begin{lstlisting}
+    void testFuncAdd20210718_2()
+{
+    const int a = 10;
+	int* pConstModifier = (int*)&a;// compiler finds and allocates memory
+	const int  *q = &a;
+	{
+		*pConstModifier = 20;
+	}
+	std::cout <<a <<std::endl;//10
+	std::cout <<*pConstModifier <<std::endl;//20
+	std::cout << (&a == pConstModifier ) <<std::endl;//1
+	std::cout << (q == pConstModifier ) <<std::endl;//1
+}
+\end{lstlisting}
+
+
+
+\paragraph{IO}
+
+dec,hex, oct
+
+\paragraph{RTTI与异常处理}
+RTTI，运行时类型信息，在类层次结构中漫游，可向上、向下、平行转换，可实现反射、高级调试等功能。
+
+异常处理：安全的longjmp机制。
+\begin{lstlisting}
+    void function(void) throw(something){//...}
+\end{lstlisting}
+构造函数中抛出异常会产生不完整的类，永远不会调析构。解决方法：做一个有T*数据成员的模板类A，我们创建的类B中的int* pVal要在B的构造中new，现在改为存A<int>pVal，在B的构造中new，这样new委托给了类A，在我们的类B的构造中throw也不会导致内存泄露。
+
+
+
+\subsection{Function}
+函数定义中可以为最右边连续若干参数有省却值,可以用于扩充函数参数时减少对原有代码的修改。
+\paragraph{Inline} \quad\\
+We use Inline to tell Compiler to do copy-paste. The function is short and called many times.调用时间少了，可执行文件体积增大
+
+完成形参的构造（如调用类的拷贝构造等）之后，再进入函数体内。
+\begin{lstlisting}
+
+
+    
+\end{lstlisting}
+\paragraph{Oveload} \quad\\
+重载。Functions with the same name but the variables are different.We donot care the returned type.
+
+
+
+
+\subsection{Object}
+
+1) Do not set data member public.
+2) Try the best to use reference as the io of functions.
+3) Use const as most as possible.
+4) use initial list in constructor.
+结构化程序设计没有封装和隐藏的概念，导致数据结构与函数之间相互的关系、函数之间的调用关系不明确。
+把数据结构和对其进行的操作方法放在一起。
+
+stack object, also called auto object. 
+static object will be created once, it will not be delete until the program ends.
+global object, outside every {}, its scale is the whole program.
+
+类的实现也可以直接在.h中。
+\subsubsection{Basic}
+给出了构造函数，编译器不默认提供无参构造函数。
+复制构造函数，只有1个
+\begin{lstlisting}
+    C（const C& iC);
+    C();//临时对象，下一个语句就析构了。
+\end{lstlisting}
+返回值是类A的实例时，函数返回时调用A的复制构造函数
+
+声明时可给出变量的初始值，后面可在构造函数中重新赋值。
+
+
+解决菱形继承，在第一级继承时使用virtual:public,这样后面每次实例化时要调用虚基类的构造函数。
+\begin{lstlisting}
+    //类型转换构造函数
+    C（int iIn)
+    C c1 = 12, c2;
+    c2 = 9;//error
+    c2 = C(9); // ok
+\end{lstlisting}
+
+
+
+\begin{lstlisting}
+    //When we new a class: 
+    C* pC = new C(1,2);
+    // The compiler transformed into 3 steps:
+
+    void* mem = operator new(sizeof C);//Inside it calls malloc(n);
+    pC = static_cast<C*>(mem);
+    pC->C::C(1,2);
+
+    // When delete a class:
+    delete pC;
+    // It turns into:
+    C::`C(pC);//Clear the data.
+    operator delete(pC);//Insid it calls free(pC); //free the memory.
+\end{lstlisting}
+
+
+
+参数对象消亡时调用析构函数；函数返回时是生成临时对象返回，在临时对象调用的那条语句之后，临时对象消亡，调用析构。
+
+When we do something in constructor, we need to make sure the function works well in copy constructor.
+
+在构造函数的初始化列表中对类的成员类进行初始化,，顺序是类中成员声明顺序。
+
+\subsubsection{Decoration}
+没有使用成员变量的方法，可以通过空的类指针调用，相当于翻译后传了一个空的this指针。static方法也可以空类指针调用，static方法参数中没有this指针 \\
+static和global在main结束后按入栈的顺序析构。\\
+sizeof doesn't contain static variables.\\
+friend function, a class must declare WhichClass::WhichFunction is its friend, so that the specific function can access its private members. Also the same as friend class.\\
+friend relationship cannot be passed, or be inherited.\\
+每个对象的空间中都有this指针。（x）\\
+
+\begin{lstlisting}
+  提示编译器不生成默认复制构造函数：A(CONST A&)=delete;
+  提示编译器提供默认构造函数 A()=default;
+  默认情况一旦写了构造函数，编译器就不生成无参的默认构造函数了。
+  委托构造函数 A():A(0,0,0){}
+\end{lstlisting}
+
+const function cannot modidfy class members. 
+final, means this function or class cannot be inherited.
+override, compiler will check the function, and if it is not override a function in its base, it tells you the error.
+Outsied, a const class can only use const functions.
+
+
+
+\subsubsection{关系}
+Composition，复合， A has a B。类A有1个B的成员变量。
+deque 读作 dek， queue，读作 q。
+构造时由内而外；析构时由外而内。
+
+Delegation， 委托， 类A有1个B的指针的成员变量。Composition by reference。pimpl，pointer to implementation。 Handle, body。隔离了接口与具体的实现。编译防火墙。reference counting。共享。copy on write，当多人共享，其中某类想要改变共享的类时，拷贝一份，是他脱离共享。
+
+Inheritance, is a, 继承。子类的对象中有父类的成分。父类的析构函数需要是virtual的。
+非虚函数，不希望derived class override的函数。
+虚函数，希望derived class override的函数。通过子类对象调用父类的虚函数，这延缓了执行逻辑，设计模式叫做template method。Application framework的常用手法，例如打开文件的流程。
+pure virtual function, derived class 一定要override。
+\begin{lstlisting}
+(*(this->vptr)[n])(this);
+
+\end{lstlisting}
+
+
+1份数据，多个窗口，或多种表达形式。
+
+
+
+
+
+
+\subsection{Template}
+sortable, comparable, assignable.
+
+Data type int is a comparable modle.
+
+Iterators connects the containers with algorithms.
+
+
+
+
+
+
+\subsection{Memory}
+%%\paragraph{Memory} \quad\\
+
+\begin{lstlisting}
+new是先分配memory（调用operator new,内部调用malloc返回void*，再static_cast转到类指针），再调用构造函数
+
+delete先调用析构函数，再调用operator delete（内部调用free）释放内存
+\end{lstlisting}
+
+Dynamic
+\begin{lstlisting}
+    T* p = new T;
+    if(p){
+        delete p;
+        p = nullptr;
+    }
+    int arraySize(6);
+    T* p = new T[arraySize];
+    if(p){
+        delete[] p;
+        p = nullptr;
+    }
+\end{lstlisting}
+
+
+
+\subsection{STL}
+\subsubsection{Contianer}
+\begin{lstlisting}
+
+Sequence and reversible:
+list 
+
+Sequence and random access:
+vector, deque
+
+Associative and reversible:
+    set, multiset, map, multimap  
+
+    array, , forward_list,  
+
+unordered_set, unordered_multiset, unordered_map, unordered_multimap  
+
+
+\end{lstlisting}
+
+
+
+
+\section{HTML}
+
+\subsection{Basic}
+Html,超文本标志语言。前端做的多。
+asp
+aspx
+jsp
+php
+
+用adobe的 Dw开发。
+
+
+\section{JAVA}
+
+\subsection{Basic Grammer}
+\begin{lstlisting}
+    DOS command
+    cd\      //back to the root
+    md xxx   // make directory
+    rd xxx   // remove directory
+    del test.txt     // delete the file
+    rd /s /q testFolder
+ \end{lstlisting}
+
+
+\chapter{Else}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,591 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-06-05 00:25:44
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2022-06-05 23:31:45
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+
+
+\documentclass[UTF8]{../computerUniverse}
+
+\begin{document}
+
+\title{07-10-Application}
+\date{Created on 20220605.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+\chapter{Introduction}
+
+\section{与自然科学相关}
+% %%在计算数学，自然科学，工程和医药：
+% \subsection{代数（符号）计算}
+% \subsection{计算生物学（生物信息学）}
+% \subsection{计算化学}
+% \subsection{计算数学}
+% \subsection{计算神经科学}
+% \subsection{计算数论}
+% \subsection{计算物理}
+% \subsection{计算机辅助工程}
+% \subsection{计算流体动力学}
+% \subsection{有限元分析}
+% \subsection{数值分析}
+% \subsection{科学计算（计算科学）}
+
+\section{与社会科学相关}
+% %%社会科学、艺术、人文和专业领域的计算：
+% \subsection{社区信息学}
+% \subsection{计算经济学}
+% \subsection{计算金融}
+% \subsection{计算社会学}
+% \subsection{数字人文（人文计算）}
+% \subsection{计算机硬件的历史}
+% \subsection{计算机科学史}
+% \subsection{人文信息学}
+
+\section{与数据相关}
+% \subsection{数据库}
+%     \subsubsection{分布式数据库}
+%     \subsubsection{对象数据库}
+%     \subsubsection{关系数据库}
+% \subsection{数据管理}
+% \subsection{数据挖掘}
+% \subsection{信息架构}
+% \subsection{信息管理}
+% \subsection{信息检索}
+% \subsection{知识管理}
+% \subsection{多媒体,超媒体}
+%     \subsubsection{声音和音乐计算}
+% \subsection{人机交互}
+% \subsection{图像处理与科学可视化}
+
+
+
+\subsection{科学计算（计算科学）}
+\section{工程与科学计算方面，对数值模拟进行的多学科的应用研究}
+
+\chapter{代数（符号）计算}
+\chapter{计算生物学（生物信息学）}
+\section{计算神经科学}
+
+\chapter{计算化学}
+
+\chapter{计算数学}
+\section{计算数论}
+\section{数值分析}
+
+\chapter{计算物理}
+\section{计算流体动力学}
+\section{有限元分析}
+
+\chapter{计算机辅助工程}
+\section{CAD/CAM技术的理论研究、CAD/CAM系统的软件开发平台研制}
+
+
+\chapter{计算社会学}
+\section{社区信息学}
+
+\chapter{计算经济学}
+\section{电子商务}
+\section{计算金融}
+
+
+\chapter{数字人文（人文计算）}
+
+\chapter{计算机历史}
+\section{计算机硬件的历史}
+\section{计算机科学史}
+
+
+
+\chapter{数据库}
+
+\section{基本概念}
+数据库，database，按照数据结构来组织、存储和管理数据的仓库。
+MySQL,需要熟练。关系型数据库。
+程序+数据=软件。
+应用程序是操作和查询数据库服务器，数据库服务器响应和提供数据。
+数据库：增删改查。
+数据库管理系统，dbms。
+MySQL免费，小项目，一百万以下的数据。\\
+甲骨文ORACLE，可以提供支持，大项目。\\
+老的：sybase，银行、电信系统。db2。\\
+分布式:HBASE，mongoDB。\\
+嵌入式SQLite
+SQL Server
+Postgre SQL
+数据库系统（Database System）包括数据库（Database），数据库管理系统（Database Management System），应用开发工具，管理员及用户。
+
+
+
+
+\section{数据库}
+B-S体系中，系统安装、修改、维护都只在服务器端。
+
+\subsection{三级模式}
+物理数据库（对应一个文件）《-》内模式（数据的存储形式）《-》概念模式（数据划分为表）《-》外模式（各种用户视图）《-》用户
+
+\subsection{数据库设计}
+需求分析：数据处理要求、应用要求，输出数据流图、数据字典、数据说明书；
+
+概念结构设计，输出ER模型【重点】，用户数据模型；
+
+逻辑结构设计：转换规则、规范化理论，输出关系模式，视图、完整性约束、应用处理说明书；
+
+物理设计：结合DBMS特性、硬件特性、OS特性等。
+
+\subsubsection{ER模型}
+实体，方框表示，如学生、课程；
+属性，椭圆表示，如学号、姓名；
+联系，菱形，如学生-----M-选课-N-----课程。
+
+集成：画局部，合成整体的。集成会存在属性冲突、命名冲突、结构冲突等。
+
+关系O对应的三个实体之间的联系数量分别为A,B,C，则最少转换为4个关系模式（每个实体1个，关系至少一个）。
+
+\subsubsection{关系代数}
+
+关系代数表达式的等价转换；
+业务场景对应的关系代数表达式。
+
+并
+交
+差
+笛卡尔积
+投影
+选择
+连接
+
+\subsection{规范化理论}
+解决数据冗余、更新异常、插入异常、删除异常等。
+
+\subsubsection{函数依赖}
+部分函数依赖：如当主键为（学号，课程）的复合键时，可以确定姓名；但是主键的一部分--学号，可以确定姓名。
+传递函数依赖：A->B->C，有A->C
+
+
+\subsubsection{键}
+超键：唯一标识元组，可以存在冗余属性。
+候选键：唯一标识元组，不存在冗余属性。
+主键：任选一个候选键。
+外键：其他关系的主键。关联各表。
+
+\subsubsection{范式}
+1NF，属性值不可分，原子值；
+2NF，由1NF消除非主属性对候选键的部分依赖得到；
+3NF，由2NF消除非主属性对候选键的传递依赖得到；
+BCNF，由3NF消除主属性对候选键的传递依赖得到。
+越高级，数据表拆分越细。粒度小，性能下降。
+
+\subsubsection{模式分解}
+表的拆分。
+保持函数依赖：冗余的依赖不需要保留。
+
+无损分解：可以还原。
+
+\subsection{并发}
+事务机制：一系列操作作为一个整体，原子性、一致性、隔离性、持续性。
+
+PV操作可实现资源互斥使用。
+
+\subsubsection{并发问题}
+
+丢失更新，T1与T2都读取A，分别将A-5,写回。有可能某个进程后写回导致A只是-5
+
+不可重读读取：T1读取数据计算后，在T1校验计算结果时，T2进程修改数据，导致T1校验失败。
+
+错误数据读出：T1修改了数据，T2读到了修改的数据，T1进行回滚恢复了数据，导致T2的数据无意义。
+
+\subsubsection{封锁协议}
+S封锁，X封锁。
+一级：事务T修改数据R之间必须加X锁。防止丢失修改。
+二级：一级，且T读取R之间S锁，读完释放S锁，防止丢失修改、读脏数据。
+三级：一级，且T读取R之间S锁，事务完成再释放S锁，防止丢失修改、读脏数据、数据重复读。
+两段锁协议：可串行，可能死锁。
+
+更新 = 读+写。
+
+\subsection{其他}
+\subsubsection{完整性约束}
+提高数据可靠性。
+
+实体完整性约束：主键不能为空、重复。
+参照完整性约束：外键，如员工的部门，应该是对应的部门表中的主键或还未分配部门时为空。
+用户自定义完整性约束：如性别、年龄的限制
+
+\subsubsection{安全}
+用户标识和鉴定，账户、校验
+存取控制，用户的操作权限
+密码存储和传输；
+视图和保护，视图授权；
+审计，记录用户对数据库的操作。
+
+\subsubsection{数据备份}
+静态备份，关闭数据库，复制。快速，易归档；
+动态备份，运行时复制。有选择性备份、恢复某个表，灵活，出错导致问题更大。
+
+备份策略，如连续7天：完增增增差增增
+完全备份
+差量备份，与上次完全备份的差异
+增量备份，与上次备份的差异。
+
+
+海量，
+转储，
+
+增删改查，先写日志文件，然后再实际处理。
+
+\subsubsection{故障与恢复}
+可预期故障：程序中预先设置rollback语句；
+不可预期：如算术溢出、违反存储保护等，可以由DBMS的恢复子系统通过日志，撤销对数据库的修改；
+系统故障：检查点法；
+介质故障：使用日志。
+
+\subsubsection{数据仓库}
+数据仓库特点：
+面向主题，而一般数据库面向业务组织数据。
+集成的，
+相对稳定的，一般不修改与删除。
+反映历史变化
+
+数据源进行抽取、清理、装载、刷新，得到数据仓库。
+OLAP服务器，提供查询、报表、分析、数据挖掘等工具。
+部门级的数据仓库整合，得到企业级的数据仓库。
+
+\subsubsection{数据挖掘}
+方法：决策树、神经网络、遗传算法、关联规则挖掘算法
+
+分类：
+关联分析，数据之间的隐藏关系分析；
+序列模式分析，分析数据之间的因果关系；
+分类分析，记录做标记，按标记分类；
+聚类分析
+
+
+\subsubsection{反规范化技术}
+规范化程度低，存在冗余；高了导致数据表多，查询效率低。
+
+牺牲空间和规范化程度来提高查询效率。
+
+技术：
+增加派生性冗余列；
+增加派生性冗余列；
+重新组织表；
+分割表
+
+
+\subsubsection{大数据}
+多种不同类型进行联合分析。
+
+数据量大，PB级或以上
+需要快速处理
+数据多样性
+数据有价值
+
+cookies售卖；百度广告推送。
+
+深度分析，关联分析，回归分析
+
+集群平台。
+
+大数据处理系统：高可扩展性；高性能；高度容错；支持异构环境；分析延迟小；开放接口易用；成本低；向下兼容。
+
+
+    \section{分布式数据库}
+    \section{对象数据库}
+    \section{关系数据库}
+
+    \section{MySQL基本操作}
+    \subsection{数据库基础操作}
+    \begin{comment}
+        创建的root密码是123456
+        登录：cmd:mysql -h主机名空格-u用户名空格-p密码
+        cmd mysql -uroot -p回车
+        mysql -hlocalhost -uroot -p -P3306
+        登录同时打开数据库：
+        mysql -uroot -p -D 数据库名字
+    
+        修改密码：mysqladmin -uroot -p旧密码 password 新密码\\
+        
+        
+        退出： exit
+        quit
+        \q
+        ctrl+c
+        
+        修改命令提示符的名称：如修改为shepherd,每次关闭mysql后失效
+        mysql -uroot -p --prompt='shepherd>'
+        mysql -uroot -p --prompt='\h~\a~\d~\D'
+        h是host，a是用户名，d是选择的数据库，D是日期
+    
+        查询版本号：mysql -V
+        mysql --version
+    
+        ;和\g 是执行改行命令
+        \c 不执行改行
+        help，\h或者 ？ 加上关键字可以查找帮助
+    
+        支持折行写，单引号不要折行；
+        MySQL关键字大写。
+        库、表、字段名称要避开关键字，否则需要反引号以区分。
+    
+    
+        批命令：
+        select user();
+        select version();
+        select now();
+        select current_date();
+        select current_time();
+        select current_timestamp();
+        以上几行保存，在cmd中输入以下：\\
+        \. E:\Notes\Notes_Latex\MySQL_study\Codes\t001.sql  
+    
+    
+    
+        数据库的基本操作
+    
+        DATABASE 和 SCHEMA 一样
+        show databases; -- 查看数据库
+        create database t001; -- 注意双减号注释，前后都需要空格
+        show databases;
+        select database(); -- a查看当前选定的库
+        use t001; -- 打开数据库
+        select database();
+        DROP DATABASE IF EXISTS t001; -- c删除库
+    
+        CREATE DATABASE IF NOT EXISTS t007 DEFAULT CHARACTER SET 'GBK'; -- 指定编码
+        SHOW WARNINGS;
+        SHOW CREATE DATABASE t007;
+        ALTER DATABASE t007 DEFAULT CHARACTER SET 'UTF8'; -- 修改编码
+        SHOW CREATE DATABASE t007;
+    
+    
+    \end{comment}
+    
+    
+    \subsection{表}
+    表由行row和列column组成
+    关系模型（二维表）：不同的属性叫字段；每行数据是一个记录；每个记录都不相同的字段叫主键。\\
+    做表，先确定字段，确定每个字段的类型。
+    
+    \begin{comment}
+        CREATE TABLE IF NOT EXISTS table_name(
+            字段名称 字段类型 [可选：完整性约束条件]
+    
+        ) EIGEN=存储引擎, charset=编码方式
+    
+        数值类型：
+            整形
+            TINYINT (-128, 127) or (0, 255)，即8次幂，1字节
+            SMALLINT 16次幂，2字节
+            MEDIUMINT 24次幂，3字节
+            INT (-2^31, 2^31-1) or (0, 2^24-1)，32次幂，4字节
+            BIGINT 64次幂，8字节
+            BOOL, BOOLEAN, 等价于TINYINT(1)，1字节
+    
+            浮点型
+            FLOAT[(M,D)],M是总位数，D是小数位数，单精度浮点数精度大约7位小数。不设置时根据硬件条件设置
+            取值范围(-3.4e38, -1.17e-38) & 0 & (1.175e-38, 3.4e38), 4字节
+            DOUBLE[(M,D)],M是总位数，D是小数位数，取值范围(-1.79e308, -2.22e-308) & 0 & (2.22e-308, 1.79e308), 8字节
+            DECIMAL[(M,D)],M是总位数，D是小数位数，类似DOUBLE，内部以字符串形式存储，字节M+2
+    
+            字符串类型
+            CHAR(M), 定长串, M字节, M=[0,255]
+            VAARCHAR(M), 变长串, 所占字节为L+1   小于M，M=[0,2^16-1],65536-1
+            TINYTEXT, L < 2^8，L+1字节
+            TEXT, L < 2^16，L+2字节
+            MEDIUMTEXT, L < 2^24，L+3字节
+            LONGTEXT, L < 2^32，L+4字节
+            ENUM('VALUE1', 'VALUE2',...), 枚举，1或2字节，取决于枚举个数，最多2^16-1个值
+            SET('VALUE1', 'VALUE2',...), 集合，1或2或3或4或8字节，取决于set成员个数，最多64个值
+    
+            日期类型:
+            DATE, 3字节
+            TIME, 3字节
+            YEAR, 1字节
+            DATETIME, 8字节
+            TIMESTAMP 4字节
+    
+            二进制类型：
+            不常用。
+        
+    
+    \end{comment}
+    
+    
+    
+    
+    \subsection{表间联系}
+    表a是学生表，有学生的学号姓名班级等信息，表b是课程表，是所有开课课程的序号、课名称、老师等信息，表a和b没有公共元素，表c是选课表，有学号和所选课程号、成绩等信息。表c联系起表a和b。
+    需要建5个键，3个表要有3个主键，同时表c要有2个外键投射到表a和表b\\
+    一对一的表，常用在登录表和详细表。方便查询。
+    
+    \subsection{SQL Language}
+    Structured Query Language,结构化查询语言。包括数据定义语言（DDL），数据操作语言（DML）。
+    
+    \subsubsection{DDL数据定义语言}
+        
+        \begin{comment}
+        CREATE TABLE 创建表
+        DROP TABLE 删除表
+        ALTER TABLE 修改表+( ADD 字段名 类型, MODIFY 字段名 新字段名 新字段类型, DROP 待删除字段, RENAME TO 表的新名字)
+        TRUNCATE TABLE 清空表
+        DESCRIBE 查看表结构
+        建立主键、外键等约束(PRIMARY KEY, NOT NULL, UNIQUE, DEFAULT '男', AUTO_INCREMENT)
+        UNIQUE 意思是不能有重复的。
+        \end{comment}
+    
+    \subsubsection{DML数据操作语言}
+    增删改
+    
+    INSERT INTO 表名（字段列表） VALUSES ('XX','XX'),...,('XX','XX'); 日期和字符串要加引号，int格式不需要引号。注意顺序，数值，数量对应好。
+    
+    UPDATE 表名 SET 字段名=字段值 WHERE 条件
+    DELETE FROM 表名 WHERE 条件
+    
+    数据查询最重要：
+    （1）单表查询
+    SELECT DISTINCT 字段列表 FROM 表名 WHERE 条件
+    ORDER BY 排序依据
+    GROUP BY 分组依据
+    HAVING 分组筛选条件
+    
+    limit语句
+    
+    单表查询
+    
+    特殊查询
+    
+    \subsubsection{DQL数据查询语言}
+    数据查询
+    
+    \subsubsection{DCL数据控制语言}
+    控制数据的使用权限
+    
+    
+    
+    \subsubsection{视图}
+    SQL-> 外模式，包括各个视图 -> 模式，包括各个基本表， -> 内模式，包括各个存储文件
+    
+    create view 名称 as select 选择的项目
+    
+    
+    
+    
+    \subsubsection{索引}
+    普通索引
+    
+    唯一索引：可以空
+     
+    主键索引：不能空
+    
+    组合索引
+    
+    create [unique] index 名称 on 表名（字段名）
+    几十万行记录能感觉到几毫秒的速度提高。
+    加入索引会提高查询速度，增删的速度会降低。
+    大表，表中数据经常查询，建索引。
+    like 查询不支持索引
+    
+    
+    \subsection{数据库设计}
+    需求分析：分析业务和数据处理要求
+    
+    概要设计：设计数据库和E-R模型图
+    详细设计：E-R图转换为多张表，逻辑设计，
+    代码编写：
+    
+    
+    
+    subsubsection{概念模型}
+    实体，客观世界中的对象
+    实体的属性
+    实体间的联系:n对m的
+    
+    
+    subsubsection{E-R图}
+    entity-relationship
+    E-R图：矩形是实体，属性是圆形，联系是菱形
+    比如，教师-学生-课程；
+    比如，论坛用户-发帖-跟帖-版块
+    比如，商店-顾客
+    
+    subsubsection{e-R图到关系范式的转换}
+    1对1的关系：部门-经理，部门这个表中加入经理编号这个自造的字段，把经理表中的主键加入。
+    1对多：科室-医生，把医生表加入科室编号。
+    m对n：学生-课程，构造3个表，中间的联系做一个表，转化成1对多
+    顾客-商品，构建新表（订购）
+    
+    subsubsection{关系范式}
+    评估表的质量，评估规范标准。
+    1NF,2NF, 3NF, BCNF,  4NF, 5NF。范式越高，质量越高，代码难度越难写。
+    项目快就范式低，项目人力资源充足，就提高范式
+    通常3范式就可以。
+    1NF，目标是确保每列的原子性，每一列不可分割。不满足1NF的数据库不是关系数据库。
+    2NF，实体属性完全依赖主键，不能只依赖主键的一部分。如选课表（学号，姓名，课程号，成绩，系名，系主任），复合主键（学号+课程号），这不符合2NF，因为这里如姓名，姓名之和主键的一部分（学号）有关系，不是和整个主键有关系。更好的做法是分成两个表选课表（学号，课程号，成绩），学生表（学号，姓名，系名，系主任）
+    3NF，在2NF基础上，任意非主属性都不传递依赖于主关键字。
+    如系主任之和系名有关，系名和学号有关。相当于把一些部件放在子装配体里面。应该把学生表分成两个表，学生表（学号，姓名，系代号），系别表（系代号，系名，系主任）；
+    
+    
+    冗余设计：
+    在业务频繁的时候增加冗余。
+    
+    水平分表与垂直分表：
+    数据大时。
+    水平分表，把数据放在不同表中，如按照学号奇偶划分，大表可以提高查询速度，表中数据有独立性时如记录数据中的不同时期等的数据。缺点是会增加复杂度。
+    垂直分表，把不常用的信息放在另外表中。管理有冗余，查询所有信息时需要join命令。
+    
+    读写分离
+    数据库备份三份，1个master库用于更新insert，update，delete，2个slave库用于查询select，read，
+    
+    
+
+
+
+
+    \section{多数据库系统集成技术研究}
+
+\chapter{数据处理}
+\section{数据管理}
+\section{数据挖掘}
+\section{信息架构}
+\section{信息管理}
+\section{信息检索}
+\section{知识管理}
+\section{知识工程}
+
+\section{多媒体,超媒体}
+\subsection{声音和音乐计算}
+
+\chapter{人机交互}
+\chapter{图像处理与科学可视化}
+
+
+
+\chapter{Else}
+\section{高性能存储系统，处理机同步通信机制}
+\section{超常指令字（VLIW）系统结构}
+\section{格点计算模型及体系结构的研究}
+\section{波分复用WDM全光网中的路由及波长分配算法的研究}
+\section{计算机在信息产业中的应用}
+\section{计算机在制造产业中的应用}
+\section{各个领域中计算机应用软件的开发技术}
+\section{过程工程}
+\section{计算机应用工程化}
+\section{以机器人足球为标准问题的MAS体系结构与合作规划}
+\section{MAS中的策略协作学习}
+\chapter{CIMS及其它先进制造技术}
+\section{信息系统}
+\section{大规模科学与工程计算}
+\section{计算机图形学及可视化技术,计算机辅助设计}
+
+
+
+\end{document}
+
+
+
+
+
