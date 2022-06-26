@@ -1,3 +1,11 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-05-06 20:21:51
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2022-06-12 15:05:47
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
 
 
 \documentclass[UTF8]{../09-Mathematics}
@@ -47,6 +55,21 @@ e: 偏微分方程其他学科。
 \chapter{Integral equation}
 
 积分方程
+
+
+\subsection{椭圆周长近似计算公式}
+
+\begin{equation}
+    \begin{split}
+        & h = \frac{(a-b)^2}{(a+b)^2}\\
+        &L_{\text{Pade}} = \pi (a+b)\frac{64-3h^2}{64-16h}\\
+        &L_{\text{Jocobsen}} = \frac{256-48h^2-21h^4}{256-112h^2+3h^4}\\
+        & L_{\text{Pade}} = \pi (a+b)(1+\frac{3h}{10+\sqrt{4-3h}})\\
+        &L_{\text{Rackaukas}} = \pi (a+b)\frac{135168-85760h-5568h^2+3867h^3}{135168-119552h+22208h^2-345h^3}
+    \end{split}
+\end{equation}
+ 
+
 
 \end{document}
 
