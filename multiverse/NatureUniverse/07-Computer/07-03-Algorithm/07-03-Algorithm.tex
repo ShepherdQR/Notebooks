@@ -3,7 +3,7 @@
 %%  ** Date: 2022-06-05 00:00:41
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2022-06-05 20:28:59
+%%  ** LastEditTime: 2023-02-15 23:45:46
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -25,6 +25,14 @@
 各种高效实用的计算模型
 
 \chapter{数据结构}
+
+
+
+
+
+
+
+
 
 
 \subsubsection{数组}
@@ -83,15 +91,57 @@ so:        15
 
 
 
+
+\chapter{随机算法}
+
+
+\section{随机数生成}
+
+\subsection{Mersenne Twister}
+梅森旋转（Mersenne Twister, MT）算法，常用是伪随机数生成算法。算法描述如算法\ref{algo:2ch001MersenneTwister}所示。
+
+      \begin{algorithm}[ht]
+        \caption{Mersenne Twister}\label{algo:2ch001MersenneTwister}
+        \SetAlgoLined
+        \KwIn{the index is noted as $x_{in}$, the seed number is noted as ${\rm seed}$}
+        \KwOut{random number $x_{out}$}
+        Initialization:$[w, n, m, r], a, f$,$(u,d),(s,b),(t,c),l$, $MT_0 \leftarrow {\rm seed}$\;
+        \For{$i \leftarrow 1$ \KwTo $n-1$}{
+          $MT_{i} \leftarrow f \cdot \left\{ MT_{i-1} \oplus [MT_{i-1} >> (w-2)] +i \right\}$
+        }
+        \For{$i \leftarrow 0$ \KwTo $n-2$}{
+          $M_c \leftarrow$ the commposition of the higest $w-r$ bits of $MT_i$ and the lowest $r$ bits of $MT_{i+1}$\;
+          $M_c \leftarrow M_c >> 1$\;
+          \If{the lowest bit of $M_c$ is $1$}{
+            $M_c \leftarrow M_c \oplus a$
+          }
+          $MT_i \leftarrow MT_{i+m} \oplus M _c$
+        }
+        $x \leftarrow MT_{x_{in}}$\;
+        $x_{out} \leftarrow x \oplus [ (x >> u) \ \& \  d]$\;
+        $x_{out} \leftarrow x \oplus [ (x << s) \ \& \ b]$\;
+        $x_{out} \leftarrow x \oplus [ (x << t) \ \& \  c]$\;
+        $x_{out} \leftarrow x \oplus  (x >> l) $\;
+        \KwRet $x_{out}$\;
+      \end{algorithm}
+
+
+
+
+
+
 \chapter{算法合集}
 一般难解问题的高效实用算法
+
+
+
 
 
 \subsection{计算几何}
 
 \subsection{分布式算法}
 \subsection{并行算法}
-\subsection{随机算法}
+
 
 
 

@@ -60,3 +60,27 @@ rulesepcolor=\color{red!20!green!20!blue!20},
 % identifierstyle=\color{red},
 language=c++,
 }
+
+
+\usepackage[ruled,linesnumbered]{algorithm2e}
+
+\theoremstyle{plain}
+
+  \newtheorem{algo}{算法~}[chapter]
+  \newtheorem{thm}{定理~}[chapter]
+  \newtheorem{lem}[thm]{引理~}
+  \newtheorem{prop}[thm]{命题~}
+  \newtheorem{cor}[thm]{推论~}
+\theoremstyle{definition}
+  \newtheorem{defn}{定义~}[chapter]
+  \newtheorem{conj}{猜想~}[chapter]
+  \newtheorem{exmp}{例~}[chapter]
+  \newtheorem{rem}{注~}
+  \newtheorem{case}{情形~}
+%\theoremstyle{break}
+ % \newtheorem{bthm}[thm]{定理~}
+ % \newtheorem{blem}[thm]{引理~}
+ % \newtheorem{bprop}[thm]{命题~}
+ % \newtheorem{bcor}[thm]{推论~}
+\renewcommand{\proofname}{\bf 证明}
+
