@@ -13,6 +13,8 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \usepackage{multirow,booktabs, verbatim}
 \usepackage{chemarrow}
 
+\usepackage{tikz}
+
 \usepackage{arydshln} %% vertex line in matrix
 
 \RequirePackage{setspace}%%linespace
