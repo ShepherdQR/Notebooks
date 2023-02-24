@@ -1,7 +1,11 @@
 
 
-\ProvidesClass{09-Mathematics}[2022/05/06 v0.1 ]
-\LoadClass[09-Mathematics]{book}
+\ProvidesClass{03-Chemistry}[2022/06/05 v0.1 ]
+\LoadClass[03-Chemistry]{book}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 
 \usepackage{ctex}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek} 
@@ -9,14 +13,9 @@
 \usepackage[paper=a4paper,top=3.5cm,bottom=2.5cm,
 left=2.7cm,right=2.7cm,
 headheight=1.0cm,footskip=0.7cm]{geometry}
-
 \usepackage{multirow,booktabs, verbatim}
 \usepackage{chemarrow}
-
-\usepackage{tikz}
-\usetikzlibrary{arrows, shapes, chains}
-
-\usepackage{arydshln} %% vertex line in matrix
+\usepackage{esint}
 
 \RequirePackage{setspace}%%linespace
 \setstretch{1.523}
@@ -33,12 +32,3 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \titleformat{\chapter}{\raggedright\Huge\bfseries}{Chapter\,\thechapter\,}{1em}{}
 %%\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
 \renewcommand{\figurename}{Figure }
-
-
-
-%\usepackage[square,numbers,sectionbib]{natbib}      
-%% 引入natbib包，参考文献格式相关
-%\usepackage{chapterbib}								
-%% 引入chapterbib包，可以分章节显示参考文献，且参考文献编号各自独立
-
-
