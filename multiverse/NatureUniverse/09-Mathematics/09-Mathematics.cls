@@ -4,7 +4,9 @@
 \LoadClass[09-Mathematics]{book}
 
 \usepackage{ctex}
-\usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek} 
+\usepackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs,upgreek}
+\usepackage{extarrows}
+
 \usepackage{graphicx, color}
 \usepackage[paper=a4paper,top=3.5cm,bottom=2.5cm,
 left=2.7cm,right=2.7cm,

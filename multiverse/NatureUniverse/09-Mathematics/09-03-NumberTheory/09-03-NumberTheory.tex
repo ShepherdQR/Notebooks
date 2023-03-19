@@ -3,7 +3,7 @@
 %%  ** Date: 2022-05-06 19:57:56
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2022-06-05 22:40:47
+%%  ** LastEditTime: 2023-03-19 19:21:57
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -35,6 +35,286 @@ j: 算术代数几何
 k: 数论其他学科
 
 \chapter{初等数论}
+
+\section{整数的整除性}
+
+\subsection{因数和倍数}
+
+\subsection{质数和合数}
+
+\subsection{质数分布}
+不大于x的质数的个数$\pi(x)$
+
+\begin{proposition}
+    质数定理
+    $$  \lim_{x \to \infty} \frac{\pi(x)}{x/ \log (x)}  =1  $$
+\end{proposition}
+
+
+\begin{proposition}
+    Goldbach猜想：大于4的偶数都是2个奇质数的和。
+\end{proposition}
+
+
+是否存在无数个形如$2^p-1$的数是质数
+
+
+Fermat数：$F_n = 2^{2^{n}}-1, F_5$不是质数
+
+
+\subsection{最大公因数和最小公倍数}
+
+最大公因数：$(a, b)$
+
+最小公倍数：$\{a, b\}$
+
+a能被b除尽，即a是b的整数倍：$b|a$
+
+辗转相除法
+
+$a = q \cdot b + r, prove \ that:(a,b) = (r,b).$
+Mark as to prove $L =R$, Prove:
+\begin{equation}
+    \begin{aligned}
+        &(1)\\
+        &\because L|a, L|b\\
+        &\because r = a-qb\\
+        &\therefore L|r\\
+        &\because L|b\\
+        &\therefore L|(r,b) \Rightarrow L|R;\\
+        &(2)\\
+        &\because R|b, R|r\\
+        &\because a = qb + r\\
+        &\therefore R|a\\
+        &\because R|b\\
+        &\therefore R|(a,b) \Rightarrow R|L;\\
+        &\because (1) and (2)\\
+        &\therefore L = R
+    \end{aligned}
+\end{equation}
+
+\begin{proposition}
+     $ab = (a,b) \cdot \{a, b\}$
+\end{proposition}
+
+\begin{proposition}
+    $  (a,b) = 1, a|bc \Rightarrow a|c  $
+\end{proposition}
+
+\begin{proposition}
+    $ a| \prod a_i,  (a,a_1) = \cdots =(a,a_{n-1}) = 1, \Rightarrow a|a_n  $
+\end{proposition}
+
+\begin{proposition}
+    算术基本定理：不计质因数的次序，正整数分解成质数连乘的形式是唯一的。
+    $a =\prod p_i = L =  \prod q_i = R, \because p_1 | R, set \  p_1 = q_1, let \ L = L / p_1, R = R / q_1, keep \ doing, \therefore p_i = q_i  $
+
+    $a =\prod p_i^{n_i}  $
+
+\end{proposition}
+
+
+\begin{proposition}
+    任意4个连续整数的乘积加1是一个平方数$ a(a+1)(a+2)(a+3)+ 1 = qq \Rightarrow a(a+3) \cdot (a+1)(a+2)=(q-1)(q+1) $
+\end{proposition}
+
+\begin{proposition}
+    a是整数，$6|a(a-1)(2a-1)$.Proof$a = 2m \Rightarrow a(a-1)(2a-1)=2m(9m^2 -6m-(m-1)(m+1)),a = 2m+1 \Rightarrow a(a-1)(2a-1)=2m(9m^2 +6m-(m-1)(m+1))  $
+\end{proposition}
+
+\begin{proposition}
+    $ a\nmid 2 , a \nmid 3, \Rightarrow 24 | a^2+23$.Proof,分类讨论即可。
+\end{proposition}
+
+\begin{proposition}
+    $ (a^n, b^n) = (a,b)^n$
+
+    $ (na, nb) = n(a,b)$
+\end{proposition}
+
+\begin{proposition}
+    $a,b \in \mathbb Z_+, \sqrt[a]{b}$如果不是整数，则不是有理分数。
+\end{proposition}
+
+\begin{proposition}
+    代数方程$\prod a_ix^i = 0, a_i  \in \mathbb Z$如果有有理数根，根一定是整数。\\
+    证明，设$x = \frac{p}{q}$,即需要证明$q = 1$. 带入x，有$\sum \frac{a_i p^i}{q^i} = 0$, 两边乘以$q^n$, $\sum a_i p^iq^{n-i} = 0, \therefore p^n = q \times T \Rightarrow q|p^n, \therefore q = 1$
+\end{proposition}
+
+\begin{proposition}
+    $A:\{ 4t-1, t \in \mathbb Z\}$,证A中有无限质数。\\
+
+    假设最多有k个，尝试推出矛盾。\\
+    (step1) 记质数分解$m = \prod^{n}p_i \in A, \because (4T+1)(4U-1)=4\alpha -1, (4T+1)(4U+1)=4\beta +1, \therefore \exists p_i \in A$, 设A中最多有k个质数，考察$a =\prod^{k}p_i-1 $\\
+    (step2) 设a是质数,$\because 1 =\prod^{k}p_i - a, \therefore p_i \nmid a, \therefore $a是第k+1的质数，矛盾；\\
+    设a不是质数，a一定有质数$b \in A, b\notin \{ p_i\}$，所以存在第k+1的质数，矛盾。\\
+    综上，有无限个。
+
+
+
+\end{proposition}
+
+\begin{proposition}
+    证明$F_5 = 2^32+1 = 641 \times 6700417$不是质数?
+\end{proposition}
+
+
+
+
+\section{进制}
+
+二进制的加减乘除
+
+
+\section{不定方程}
+
+\subsection{一元不定方程}
+$\prod_{i=0} a_ix^i = 0, a_i  \in \mathbb Z$,对于整数解$\alpha$, we have$a_0 = -\prod_{i=1} a_i\alpha^i \Rightarrow \alpha | a_0 $
+
+
+\subsection{二元一次不定方程}
+
+$ax + by = c, a \neq 0, b \neq 0, a, b, c \in \mathbb Z$.方程总可化简，直到$(a,b) = 1$
+该型方程找到特解$x_1, y_1$后，通解：$x = x_1 + bu, y = y_1 + au, u \in \mathbb Z$
+
+
+\begin{proposition}
+    $ (a,b) = 1 \Rightarrow \exists x,y \in \mathbb Z, ax+by = 1$
+
+    Prove:\\
+    (step1) for set $A:\{  ax+by | a,b \ is \ fixed\}$, we have$c_1, c_2 \in A \Rightarrow c_1 + c_2 \in A$.\\
+    (step2) $a>b, let \ b = r_0$, we have
+    \begin{equation}
+        \begin{bmatrix}
+           a= q_{1}r_{0} + r_{1} & (a,r_0) = (r_0, r_1) & r_1 = a -  q_{1}r_{0}\\
+           r_0= q_{2}r_{1} + r_{2} & (r_0,r_1) = (r_1, r_2) & r_2 = r_0 -  q_{2}r_{1}\\
+           \vdots & \vdots & \vdots\\
+           r_n= q_{n+2}r_{n+1} + r_{2} & (r_{n},r_{n+1}) = (r_{n+1}, r_{n+2}) & r_2 = r_n - q_{n+2}r_{n+1}\\
+           r_{n+1}= q_{n+3}r_{n+2} + 0 & (r_{n+1},r_{n+2}) = r_{n+2} & 0= r_{n+1} - q_{n+3}r_{n+2}\\
+        \end{bmatrix}
+    \end{equation} 
+    from column 2, we have $(a,r_0) = r_{n+2} = 1$. From cloumn 3, and $\because a, b \in A, \therefore r_i \in A, \therefore \exists x, y, ax+by = r_{n+2} = 1$
+
+\end{proposition}
+
+
+
+
+\subsection{勾股数}
+
+$ x^2 + y^2 = z^2$, 做如下限定后$x,y,z \in \mathbb Z_+, (x,y) = 1, 2|x$， 有：$x = 2ab, y = a^2-b^2, z = a^2 + b^2, a>b, (a,b) = 1, 2\nmid (a+b)$
+
+
+\begin{proposition}
+    整数边长的直角三角形，斜边与一直角边长差1,3个边可表示成：$ 2b+1, 2b^2+2b, 2b^2+2b+1, b \in \mathbb Z$
+
+    Proof $x^2 + y^2 = z^2$, 改写成等式集合A$x = 2ab, y = a^2-b^2, z = a^2 + b^2$, let $z= x+1$, so $a^2 + b^2 -2ab = 1\Rightarrow a=b+1$，带入等式集合A，即得。
+\end{proposition}
+
+\subsection{费马问题}
+$ x^n + y^n = z^n$,这个不定方程没有正整数解。
+
+
+\begin{proposition}
+    $x^4 + y^4 = z^4$没有整数解
+\end{proposition}
+证明$x^4 + y^4 = z^4$没有整数解。令$u = z^2$, 即证$x^4 + y^4 = u^2$没有整数解。
+
+step1）设存在解，即最小的正解为$u_1$，证明$(x,y) = 1$\\
+设$(x,y) =d> 1, \because d^4|x^4, d^4|y^4, \Rightarrow (\frac{x}{d})^4+(\frac{y}{d})^4=(\frac{u_1}{d^2})^2 $, $ \because \frac{u_1}{d^2} < u_1$,矛盾，即证。
+
+step2）$(x,y) = 1$,so x, y 是2个奇数，或是1奇1偶。分类讨论都是不可能的。\\
+
+step2.1）证明不可能是2个奇数。\\
+假设是2个奇数，$x = 2m+1, n=2n+1$, $L = x^4 + y^4 = (2m+1)^4 + (2n+1)^4 = 4T+2$, so $2|L= R = u^2, 4\nmid L= R = u^2$,不存在这样的u，所以不能是2个奇数。
+
+step2.2）证明不可能是1奇1偶。\\
+$x^4 + y^4 = u_1^2$改写为$(x^2)^2 + (y^2)^2 = u_1^2$,可进一步改为：
+$x^2 = 2ab, y^2 = a^2-b^2, u_1 = a^2 + b^2, a>b, (a,b) = 1, 2\nmid (a+b)$
+
+step2.2.1）设$a=2n, b=2m+1$ \\
+$y^2 = a^2-b^2 \Rightarrow a^2  = b^2 + y^2 = 4U+2, \therefore 4 \nmid a^2$, 与$a=2n$矛盾。
+
+step2.2.2）设$a=2m+1, b=2n$ \\
+$\because (a,b) = 1, \therefore (a,m) = 1$, and $\because x^2 = 2ab,\therefore (\frac{x}{2})^2 = am$,因为a和m互质，所以a需要能分解为$a = c^2$, 即$am = c^2 d^2, (c,d) = 1, \therefore 2 \nmid c, b=2m = 2d^2$, \\
+$y^2 = a^2-b^2 \Rightarrow b^2 + y^2 = a^2   \Rightarrow (2d^2)^2 + y^2= (c^2)^2 $,可改写为$2d^2 = 2kl, y=k^2-l^2, c^2 = k^2+l^2, (k,l)=1, d^2 = kl$\\
+$d^2 = kl$,所以k和l可分解为$k = K^2, l=L^2, \therefore c^2 = K^4 + L^4$\\
+$c \leqslant c^2 = a\leqslant a^2<a^2+b^2 = u_1 $,与$u_1$最小的正整数解矛盾。
+
+step3）综上，即证不存在。
+
+
+\begin{proposition}
+    证明整数方程没有整数解：$x^4-4y^4 = z^2, x,y,z \in \mathbb Z$
+
+    Proof:两边平方，有$z^4 = (x^4+4y^4)^2 - 16x^4y^4 \Rightarrow (2xy)^4 + z^4 = (x^4+4y^4)^2$，此式无解，所以原式无解。
+\end{proposition}
+
+\section{一次同余式}
+
+\subsection{同余}
+
+\begin{proposition}
+    $10^n \mod 9 \equiv 1$, for example, $5874192 \mod 9 = (5+8+7+4+1+2) \mod 9  = 0$
+\end{proposition}
+
+\begin{proposition}
+    $(a \times b) \mod 9 =  ((a \mod 9 )\times (b \mod 9) ) \mod 9 $
+
+    $28997 \times 39459  \neq 1144192613, L = 8 \times 3 = 6 \neq 5=R$, 不相等一定没有算对，但是相等却不一定算对。
+\end{proposition}
+
+
+\begin{proposition}
+    $(a,m) \nmid b \Rightarrow (ax+b) \mod (m) \neq 0$. Prove:$suppose \ \exists c, m | (ac+b), \therefore \exists \alpha, \alpha m = ac+b \Rightarrow b=\alpha m -ac, \because (a,m) = L, \therefore b = \alpha L, \therefore L | b$, 矛盾，即证。
+
+    例：$2x \equiv 179(mod 562)$没有整数解
+\end{proposition}
+
+\begin{proposition}
+    $(a,m) =1, m \nmid a \Rightarrow \exists x, m | (ax+b)$，证明$\exists ax+my = z, z = -b$
+
+    例：$256x \equiv 179 (mod 337)$有整数解
+\end{proposition}
+
+
+\begin{proposition}
+    $ad \equiv bd (\mod md) \Rightarrow a \equiv b (\mod m)$, 证明，改写一下即显然$md |(ad-bd) \Rightarrow m|(a-b)$
+\end{proposition}
+
+
+\begin{proposition}
+    $1935|(1296x-1125) \Rightarrow 215|144x-125, x = 80,295,510,725,940,1155,1370,1585,1800$?
+\end{proposition}
+
+\subsection{孙子定理}
+解同余式组
+\begin{proposition}
+    $x \equiv a(\mod 3), x \equiv b(\mod 5),x \equiv c(\mod 7) \Rightarrow x = 70a + 21b + 15c (\mod 105)$
+\end{proposition}
+
+
+\begin{proposition}
+    $\{ m_k\}, \forall i,j, (m_i, m_j) = 1, \prod m_i = m_i M_i$,方程组$x \equiv b_i (\mod m_i)$的解为$x = (\sum b_i M'_i M_i)(\mod \prod m_i),  M'_i M_i \equiv 1(\mod m_i)$.\\
+    Prove: $i = j, (m_i, M_j) = 1, \therefore \exists n_i, M'_j,  n_i m_i  + M'_j M_j = 1 \Rightarrow M'_j M_j \equiv 1(\mod m_i)$\\
+    $i \neq j, m_i|M_j, \therefore \exists b_j, b_j M'_j M_j \equiv 0 (\mod m_i), \therefore \sum b_j M'_j M_j \equiv b_i M'_i M_i \equiv b_i (\mod m_i) $
+
+    例：$1= x \mod 2, 2= x \mod 5, 3= x \mod 7, 4= x \mod 9$, 
+    解$M = 2 \times 5 \times 7 \times 9 = 630, M_i =[315,126,90,70], M_i' =[1,1,6,4], \therefore x = 315 + 2\times 126 + 3 \times 6\times 90 + 4\times 4\times 70 = 157(\mod 630), \therefore x = 157 + 630k, k\in \mathbb Z$
+\end{proposition}
+
+\begin{proposition}
+    $a \equiv x \mod m_1  \equiv x \mod m_2$,所有解是$x \equiv a \mod \{ m_1, m_2\}$, 证明的话，两边改写一下即可$m_1|(a-x),m_2|(a-x),\{ m_1, m_2\}|(a-x) $
+\end{proposition}
+
+\begin{proposition}
+    $(m_1, m_2) = d, d|(b_1, b_2)$, 方程组A$x \equiv b_1(\mod m_1  ), x \equiv b_2(\mod m_2  )$，解为$x =\equiv x_0(\mod (\{ m_1, m_2\}))$，其中$x_0$是方程组A的解。
+\end{proposition}
+
+\begin{proposition}
+    $(n_i, n_j) = 1, n_i | m_i, \{n_1, \cdots, n_k  \}= \{m_1, \cdots, m_k  \}, \therefore $,方程组$x \equiv b_i (\mod m_i)$与方程组$x \equiv b_i (\mod n_i)$同解
+\end{proposition}
+
 \chapter{解析数论}
 \chapter{代数数论}
 \chapter{超越数论}
