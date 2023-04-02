@@ -23,6 +23,10 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \RequirePackage{setspace}%%linespace
 \setstretch{1.523}
 
+
+\newtheorem{question}{\hspace{2em}Question}[chapter] %%问题
+\newtheorem{solution}{\hspace{2em}Solution}[chapter] %%问题解决
+\newtheorem{definition}{\hspace{2em}Definition}[chapter] %%定义
 \newtheorem{theorem}{\hspace{2em}Theorem}[chapter] %%定理
 \newtheorem{axiom}{\hspace{2em}Axiom}[chapter] %%公理
 \newtheorem{lemma}{\hspace{2em}Lemma}[chapter] %%引理
@@ -43,4 +47,6 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 %\usepackage{chapterbib}								
 %% 引入chapterbib包，可以分章节显示参考文献，且参考文献编号各自独立
 
+\usepackage{listings}
 
+\usepackage[ruled,linesnumbered]{algorithm2e}

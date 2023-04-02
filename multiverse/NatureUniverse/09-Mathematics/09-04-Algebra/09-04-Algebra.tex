@@ -3,7 +3,7 @@
 %%  ** Date: 2019-06-10 18:32:30
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-03-25 18:51:54
+%%  ** LastEditTime: 2023-04-02 20:56:46
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -20,8 +20,7 @@
 \chapter{Introduction}
 
 
-
-
+\begin{lstlisting}
 
 a: 线性代数, linear algebra
 b: 群论, group theory
@@ -40,6 +39,7 @@ n: 微分代数,
 o: 代数编码理论, 
 p: 代数学其他学科。
 
+\end{lstlisting}
 
 
 \chapter{linear algebra}
@@ -104,7 +104,7 @@ If $\boldsymbol b = \boldsymbol 0$, called homogeneous linear equations, homogen
 
 构造增广矩阵$[\boldsymbol A,\boldsymbol b ]$后，初等行变换化为阶梯型，如\ref{fig:number_of_solution}所示，解的个数讨论。
 
-\begin{figure*}[h]
+\begin{figure}[h]
   \centering
     \begin{tikzpicture}
       \draw (0,0) rectangle (6,8);
@@ -118,7 +118,7 @@ If $\boldsymbol b = \boldsymbol 0$, called homogeneous linear equations, homogen
       \draw (5,1.3) node {d};
     \end{tikzpicture}
   \caption{【number of solution】}\label{fig:number_of_solution}
-\end{figure*}
+\end{figure}
 
 $r \neq 0$, no solution;
 
@@ -240,7 +240,8 @@ Jordan型、根子空间分解、循环子空间、多项式矩阵相抵不变�
     \toprule
     名称 & 运算 & 性质 & 举例\\
     \midrule
-    \multirow{2}{*}{ring}&  加法;& 交换, 结合, 0元, 负元;&\multirow{2}{*}{\tabincell{c}{整数集$\mathbb Z$, 偶数集$2\mathbb Z$,\\一元实系数多项式$\mathbb R(x)$,实n阶矩阵$M_n(\mathbb R)$}}\\
+    \multirow{2}{*}{ring}&  加法& 交换, 结合, 0元, 负元&\multirow{2}{*}{\tabincell{c}{整数集$\mathbb Z$, 偶数集$2\mathbb Z$,\\一元实系数多项式$\mathbb R(x)$,实n阶矩阵$M_n(\mathbb R)$}}\\
+    \cline{2-3}
     & 乘法 & 结合, 左右分配律 & \\
     \bottomrule
     \end{tabular}

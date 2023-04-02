@@ -3,7 +3,7 @@
 %%  ** Date: 2022-05-06 19:57:56
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-03-19 19:21:57
+%%  ** LastEditTime: 2023-04-02 21:05:58
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -20,19 +20,33 @@
 
 \chapter{Introduction}
 
+\section{Contents}
+
+\begin{lstlisting}
+    a: 初等数论
+    b: 解析数论
+    c: 代数数论
+    d: 超越数论
+    e: 丢番图逼近
+    f: 数的几何(几何数论)
+    g: 概率数论
+    h: 计算数论
+    i: 组合数论
+    j: 算术代数几何
+    k: 数论其他学科
+\end{lstlisting}
 
 
-a: 初等数论
-b: 解析数论
-c: 代数数论
-d: 超越数论
-e: 丢番图逼近
-f: 数的几何(几何数论)
-g: 概率数论
-h: 计算数论
-i: 组合数论
-j: 算术代数几何
-k: 数论其他学科
+
+
+\section{Symbol}
+
+\begin{definition}
+    模m后余数相同：$a \equiv b (\mod m)$
+\end{definition}
+
+
+
 
 \chapter{初等数论}
 
@@ -72,7 +86,8 @@ a能被b除尽，即a是b的整数倍：$b|a$
 
 辗转相除法
 
-$a = q \cdot b + r, prove \ that:(a,b) = (r,b).$
+$a = q \cdot b + r, prove \ that:(a,b) = (r,b)$, which means that $(r+qb, b) = (r, b)$.
+
 Mark as to prove $L =R$, Prove:
 \begin{equation}
     \begin{aligned}
@@ -189,7 +204,7 @@ $ax + by = c, a \neq 0, b \neq 0, a, b, c \in \mathbb Z$.方程总可化简，�
            a= q_{1}r_{0} + r_{1} & (a,r_0) = (r_0, r_1) & r_1 = a -  q_{1}r_{0}\\
            r_0= q_{2}r_{1} + r_{2} & (r_0,r_1) = (r_1, r_2) & r_2 = r_0 -  q_{2}r_{1}\\
            \vdots & \vdots & \vdots\\
-           r_n= q_{n+2}r_{n+1} + r_{2} & (r_{n},r_{n+1}) = (r_{n+1}, r_{n+2}) & r_2 = r_n - q_{n+2}r_{n+1}\\
+           r_n= q_{n+2}r_{n+1} + r_{n+2} & (r_{n},r_{n+1}) = (r_{n+1}, r_{n+2}) & r_{n+2} = r_n - q_{n+2}r_{n+1}\\
            r_{n+1}= q_{n+3}r_{n+2} + 0 & (r_{n+1},r_{n+2}) = r_{n+2} & 0= r_{n+1} - q_{n+3}r_{n+2}\\
         \end{bmatrix}
     \end{equation} 
@@ -254,6 +269,32 @@ step3）综上，即证不存在。
 
 \subsection{同余}
 
+
+\subsubsection{同余性质}
+
+\begin{proposition}
+    reflection: $a \equiv a (\mod m) $
+
+    symmetry:$ a \equiv b (\mod m) \Rightarrow b \equiv a (\mod m)$
+
+    transitivity:
+    $a \equiv b (\mod m), b \equiv c (\mod m) \Rightarrow a \equiv c (\mod m)$
+    Proof: $a-b = q_1 m, b-c = q_2 m, \therefore a-c = tm$
+\end{proposition}
+
+\begin{proposition}\label{proposition_congruence_ka}
+    $(m, n) = 1, ac \equiv bc (\mod m) \Rightarrow a \equiv b (\mod m)$
+    Proof: $ac-bc = q m, \therefore a-b = tm$
+\end{proposition}
+
+\begin{proposition}
+    $a \equiv b (\mod m) \Rightarrow a^n \equiv b^n (\mod m)$
+    Proof: $a-b = q m, and \  a^n  =(b + qm)^n   \therefore a^n-b^n = tm$
+\end{proposition}
+
+
+\subsubsection{应用}
+
 \begin{proposition}
     $10^n \mod 9 \equiv 1$, for example, $5874192 \mod 9 = (5+8+7+4+1+2) \mod 9  = 0$
 \end{proposition}
@@ -308,12 +349,308 @@ step3）综上，即证不存在。
 \end{proposition}
 
 \begin{proposition}
-    $(m_1, m_2) = d, d|(b_1, b_2)$, 方程组A$x \equiv b_1(\mod m_1  ), x \equiv b_2(\mod m_2  )$，解为$x =\equiv x_0(\mod (\{ m_1, m_2\}))$，其中$x_0$是方程组A的解。
+    $(m_1, m_2) = d, d|(b_1, b_2)$, 方程组A$x \equiv b_1(\mod m_1  ), x \equiv b_2(\mod m_2  )$，解为$x \equiv x_0(\mod (\{ m_1, m_2\}))$，其中$x_0$是方程组A的解。
 \end{proposition}
 
 \begin{proposition}
     $(n_i, n_j) = 1, n_i | m_i, \{n_1, \cdots, n_k  \}= \{m_1, \cdots, m_k  \}, \therefore $,方程组$x \equiv b_i (\mod m_i)$与方程组$x \equiv b_i (\mod n_i)$同解
 \end{proposition}
+
+
+\section{剩余系}
+
+
+
+\subsection{完全剩余系}
+
+Complete residue system
+
+\begin{proposition}
+    m的完全剩余系$\forall k \in \mathbb Z, \varphi_m (k) =  k \mod m = \alpha \in A = \{ 0, 1, \cdots, m-1 \}$, a set B, that $ \varphi_m(B) = A$
+    Proof: $a-b = q m, and \  a^n  =(b + qm)^n   \therefore a^n-b^n = tm$
+\end{proposition}
+
+\begin{proposition}
+    m的完全剩余系K, $\forall a, b \in K, a \neq b (\mod m)$
+
+    给定集合T, $\forall a, b \in T, a \neq b (\mod m)$, therefore T是m的完全剩余系K
+\end{proposition}
+
+\begin{proposition}
+    m的完全剩余系K, K的每个元素加a，得到的集合仍是完全剩余系。相当于平移$a\mod m$
+
+    m的完全剩余系K,$(b,m)= 1$, K的每个元素乘以b，得到的集合仍是完全剩余系。证明参考\ref{proposition_congruence_ka}。
+\end{proposition}
+
+\subsubsection{应用}
+
+\begin{proposition}\label{Complete_residue_system_Porduct}
+    $m_1, m_2$的完全剩余系记为$R_{m_1},R_{m_2}, (m_1,m_2) = 1, \therefore R_{m_1m_2} = \{m_2x_1 + m_1x_2 | x_1 \in R_{m_1},x_2 \in R_{m_2} \}$
+
+    Proof,即证明这$m_1m_2$个数对$m_1m_2$不同余。
+    $m_2x_1 + m_1x_2 \equiv m_2y_1 + m_1y_2 (\mod m_1m_2)$, therefore
+    $m_2(x_1-y_1)= m_1m_2q - m_1(x_2-y_2)$,therefore
+    $m_1 | m_2(x_1-y_1) \Rightarrow m_1 | (x_1-y_1)$,therefore
+    $x_1 \equiv y_1 (\mod m_1)$,即证。
+\end{proposition}
+
+\begin{proposition}
+    $\{m_i\}$是k个互质的正整数，$x_i \in R_{m_i},\prod m_i = m_iM_i$, therefore $\{\sum M_i x_i \} =  R_{\prod m_i}$.证明如\ref{Complete_residue_system_Porduct}
+
+    $\{m_i\}$是k个互质的正整数，$x_i \in R_{m_i} $, therefore 
+    $$\{x_1 + m_1 x_2 + m_1m_2x_3 + \cdots + m_1m_2\cdots m_{k-1}x_k \} =  R_{\prod m_i}$$
+    证明如\ref{Complete_residue_system_Porduct}
+\end{proposition}
+
+
+
+\subsection{简化剩余系}
+\begin{proposition}
+    m的简化剩余系：m的完全剩余系中，挑出与m互质的，包括1+mk不包括km。
+
+    m的简化剩余系K,$(b,m)= 1$, K的每个元素乘以b，得到的集合仍是简化剩余系。
+\end{proposition}
+
+
+
+\subsection{欧拉函数、欧拉定理、费马定理}
+
+\subsubsection{欧拉函数}
+
+\begin{definition}
+    欧拉函数$\varphi(m)$：不大于m的和m互质的正整数的个数。
+
+    对于质数p，有$\varphi(p^l) = p^l - p^{l-1} $
+    Proof:$1p, 2p, \cdots, p^{l-1}p$是p的倍数，即证。
+\end{definition}
+
+\begin{proposition}
+    $a = \prod p_i ^{a_i} \Rightarrow \varphi(a) = \prod p_i^{a_i-1}(p_i-1)$
+
+    Proof: n=1,is obvious.n=2, $p_1$的倍数$1p_1, 2p_i, \cdots, \frac{a}{p_1}p_1$,有$\frac{a}{p_1}$个，考虑$p_1p_2$的倍数，所以$\varphi(a) = a(1-\frac{a}{p_1}-\frac{a}{p_1}+\frac{a}{p_1p_2}) = a(1-\frac{a}{p_1})(1-\frac{a}{p_2})$, 继续考虑下去可以证明。
+
+    It is easy to see that $(a,b) = 1 \Rightarrow \varphi(ab) = \varphi(a)\varphi(b)$
+\end{proposition}
+
+\begin{proposition}
+    $\forall m>2, 2 |\varphi(m)$
+
+    Proof:如果m因数分解后，若m的因数含有2，易知成立；m的因数没有2则肯定有一个奇数p，$p-1$是偶数，即证。
+
+    因而，不大于m的和m互质的正整数，之和是$\frac{m \varphi(m)}{2}$, 证明：从小到大排列后，$\{n_k\}$, $(n_{i}, n_{\varphi(m)-i}) = 1$,求和即证。m等于1的时候也成立。
+\end{proposition}
+
+\begin{proposition}
+    质数p$$\sum_0\varphi(p^i) = p^n$$
+\end{proposition}
+
+
+
+
+
+\subsubsection{欧拉定理}
+\begin{definition}
+    欧拉定理:$(a,m) = 1, a^{\varphi_m} \equiv 1 (\mod m)$
+
+    Proof:对于m的简化剩余系中的元素$a_i$, we have$aa_i = a_j \Rightarrow \prod_{\varphi_m}aa_i = \prod_{\varphi_m}a_i$，即证。
+\end{definition}
+
+
+\begin{definition}
+    费马定理：对于质数p，$p \nmid a, a^{p-1} \equiv 1 (\mod m)$
+
+    Proof:a整除不了的质数p和a互质，$\varphi_p = p-1$，带入欧拉定理，即证。
+\end{definition}
+
+\subsubsection{应用}
+
+\begin{proposition}
+    今天周六，$t = a^{b^c}$天后是周几呢？
+    Answer: $a \equiv a_1(\mod 7), 0 \leqslant a_1 leqslant 6 $, $a_1 = 0$ is Saturday too. When $1 \leqslant a_1 leqslant 6$, 费马定理$\because (a_1, 7) =1, \therefore a_1^6 \equiv 1 (\mod 7)$. \\
+    $b \equiv b_1(\mod 6)$, $b_1 = 0,a_1^{b^c}\equiv 1(\mod 7)$\\
+    $b_1 = 1, b^c = 6n+1, \therefore a_1^{b^c}\equiv a_1(\mod 7)$\\
+    $b_2 = 2, b^c = 6n+2,or\ b^c = 6n+4 \therefore a_1^{2}, a_1^{4}$\\
+    $b_2 = 3, b^c = 6n+3 \therefore a_1^{3}$\\
+    $b_2 = 4, b^c = 6n+4 \therefore a_1^{4}$\\
+    $b_2 = 5, b^c = 6n+5 \therefore a_1^{5}$\\
+    \begin{equation}
+        \begin{bmatrix}
+           a_1^1 & a_1^2 & a_1^3 & a_1^4 & a_1^5\\
+           1 & 1 & 1 & 1 & 1\\
+           2 & 4 & 1 & 2 & 4\\
+           3 & 2 & 6 & 4 & 5\\
+           4 & 2 & 1 & 4 & 2\\
+           5 & 4 & 6 & 2 & 3\\
+           6 & 1 & 6 & 1 & 6\\
+        \end{bmatrix}
+      \end{equation}
+    例如，$t = 773^{3169^c}, a_1 = 1, b\equiv 1(\mod 6), \therefore 3$,如今天周日则t天后是周三
+\end{proposition}
+
+
+\begin{proposition}
+    $(a+b)(\mod m) =[a(\mod m)+b(\mod m)](\mod m) =[a(\mod m)+b(\mod m)]^n(\mod m)$
+
+    Proof, compare$ (a+b)^2, (tm+a_1 + b)^2$, we can see it is true.
+\end{proposition}
+
+\begin{proposition}
+    $(12371^{56}+34)^{28}(\mod 111) 
+    \equiv = (50^{56}+34)^{28}
+    \equiv ((125000^9 \times 50)^2+34)^{28}
+    \equiv ((14^9 \times 50)^2+34)^{28}
+    \equiv ((14^9 \times 50)^2+34)^{28}
+    \equiv ((80^3 \times 50)^2+34)^{28}
+    \equiv ((68 \times 50)^2+34)^{28}
+    \equiv ((70)^2+34)^{28}
+    \equiv ((70)^2+34)^{28}
+    \equiv 70
+    $
+
+    $\varphi(111) = 72 \Rightarrow (12371^{56}+34)^{72c} \equiv 1 (\mod 111)$
+\end{proposition}
+
+
+\begin{proposition}
+    $3^{8232010}-3^{10} \equiv 0 (\mod 24010000)$
+    Proof:$t =24010000 = 2^4\times 5^4\times7^4, \therefore \varphi(t)=8232000,3^{\varphi(t) \equiv 1(\mod t)}, \therefore 3^{8232010} \Rightarrow 3^{10} $
+\end{proposition}
+
+\begin{proposition}
+    $21 | (121^6-1)$
+
+    Proof: $\varphi(21) = 12, \therefore 11^{12} \equiv 1 (\mod 21), \Box $
+\end{proposition}
+
+\begin{proposition}
+    $primer \ p, p \neq 2, p \neq 5, p|9\cdots 9, (p-1)k$个9.
+    
+    Proof: $(p,10) = 1, (10^k, p) = 1, \therefore (10^k)^{p-1} \equiv 1 (\mod p), \Box $
+\end{proposition}
+
+\begin{proposition}
+    $641 | F_5$
+    
+    Proof: equals to prove $641 |(2^{32}+1) 
+    \Rightarrow 640 \equiv -1(\mod 641)
+    \Rightarrow 5 \times 2^7 \equiv -1(\mod 641)
+    \Rightarrow 5^4 \times 2^{28} \equiv 1(\mod 641)
+    $. And $ \because 5^4 \equiv -2^4(\mod 641), \therefore -2^{32} \equiv 1(\mod 641), \Box$
+\end{proposition}
+
+\begin{proposition}
+    primer p, $(\sum a_i)^p \equiv (\sum(a_i^p) )(\mod p)$
+    
+    Proof: we need to prove $L \equiv R(\mod p)$
+    
+    (step1) $\exists k, p|a_k, L = (\sum_{i \neq k}a_i + a_k)^p = R+Tp$
+
+    (step2)$\forall k, p \nmid a_k, \because a_i^{p-1} \equiv 1 ( \mod p), \therefore a_i^{p} \equiv a_i ( \mod p), \therefore R \equiv (\sum a_i)(\mod p)$, so we need to prove $(\sum a_i)^p \equiv (\sum a_i)(\mod p)$. Mark $S = \sum a_i$, if$p|S$, is obvious. If$p\nmid S, S^{p-1} \equiv 1 (\mod p), \Box$
+\end{proposition}
+
+
+\begin{proposition}
+    $1978^m \equiv 1978^n(\mod 1000), \min(m+n), m? n?$
+    
+    Solve: $1000 | 1978^{n-m} \Rightarrow  (2^3 \times 5^3) | 2^m \times 989^m (1978^{n-m}-1)$.
+
+    because $989^m (1978^{n-m}-1)$ is odd, therefore $m \geqslant 3$, and therefore $5^3 | (1978^{n-m}-1), \therefore 1978^{n-m} \equiv 1 (\mod 125)$. $\because \varphi(125) = 100, \therefore 1978^{100}\equiv 1 (\mod 125)$.
+
+    We now prove that $(n-m)|100$. Suppose $(n-m) \neq 100,  \therefore 100 = q(n-m) + r, \therefore 1978^{r}\equiv 1 (\mod 125), \because r < n-m$, 矛盾。
+
+    For now, we have $(n-m)|100, 125 | (1978^{n-m}-1)$. $\because 125 | (1978^{n-m}-1) \therefore 1 | 1978^{n-m}, or \ 6 | 1978^{n-m}$. $\because (n-m)|100, \therefore 4 | (m-n), \therefore m-n = 4,20,100$. 
+
+    For now we test if $1978^4 \equiv 1 (\mod 125)$.
+    $L \equiv (125 \times 15 + 103)^4 
+    \equiv 103^4 \equiv (3+4 \times 5^2)^{2+2} \equiv (3^2 + 2 \times 3 \times 4 \times 5^2)^2\equiv 609^2 \equiv (-16^2) \equiv 6$
+
+    For now we test if $1978^{20 \times 5} \equiv 1 (\mod 125)$.
+    $L \equiv 6^{25} \equiv [36 \times(125+91)]^5 \equiv (36 \times 91)^5 \equiv 26^5 $.We can see that for 20, we have 26, and 100 we have 1. So $m = 3, n = 103$.
+\end{proposition}
+
+
+
+\begin{proposition}
+    分针目前在12，问分针走$a^{b^c}$，是几点。
+
+\begin{equation}
+    \begin{bmatrix}
+       a_1^1 & a_1^2 & a_1^3 & a_1^4\\
+       0 & \cdots &  &  \\
+       1 & \cdots &  &  \\
+       2 & 4 & 8 & 4\cdots  \\
+       3 & 9 & 3\cdots & \\
+       4 & 4\cdots &  &  \\
+       5 & 1\cdots &  &  \\
+       6 & 0\cdots &  &  \\
+       7 & 1\cdots &  &  \\
+       8 & 4 & 8\cdots &  \\
+       9 & 9\cdots &  &   \\
+       10 & 4 & 4\cdots &   \\
+       11 & 1\cdots & &   \\
+    \end{bmatrix}
+\end{equation}
+
+
+\begin{table}[htbp]
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end
+{tabular}}
+\centering
+    \caption{mode12}
+    \label{tab:mode12}
+    \begin{tabular}{cc}
+    \toprule
+    $a_1$ & 讨论\\
+    \midrule
+    \multirow{2}{*}{1,5,7,11}   & b is odd: $a_1$\\
+                                & b is even: 1\\
+    \midrule
+    \multirow{3}{*}{2}          & b = 1: 2\\
+                                & b is even: 4\\
+                                & b is odd and $b>1$: 8\\
+    \midrule
+    \multirow{2}{*}{3}          & b is odd: 3\\
+                                & b is even: 9\\
+    \midrule
+    \multirow{1}{*}{4}          & 4\\
+    \midrule
+    \multirow{2}{*}{6}          & b =1: 6\\
+                                & b >1: 0\\
+    \midrule
+    \multirow{2}{*}{8}          & b is odd: 8\\
+                                & b is even: 4\\
+    \midrule
+    \multirow{1}{*}{9}          & 9\\
+    \midrule
+    \multirow{2}{*}{10}          & b =1: 10\\
+                                & b >1: 4\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\end{proposition}
+
+\section{小数、分数、实数}
+
+
+
+
+
+\section{连分数}
+
+\subsection{连分数基本性质}
+
+\subsection{无限连分数}
+
+\subsection{数论函数}
+
+
+
+
+\section{复数和三角和}
+
+
+
 
 \chapter{解析数论}
 \chapter{代数数论}

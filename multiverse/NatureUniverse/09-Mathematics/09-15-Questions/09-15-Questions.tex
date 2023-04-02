@@ -3,7 +3,7 @@
 %%  ** Date: 2022-05-06 20:40:40
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-02-24 22:08:47
+%%  ** LastEditTime: 2023-04-01 21:46:49
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -19,6 +19,80 @@
 \chapter{Introduction}
 
 
+\begin{lstlisting}
+  T0001-连续抛硬币
+  T0002-三点画弧
+
+\end{lstlisting}
+
+
+\chapter{Geometry}
+
+
+
+\begin{question}
+  给定3个点，绘制圆弧$\alpha, \beta, \gamma$
+
+  \begin{figure}[h]
+    \centering
+      \begin{tikzpicture}
+        \draw (-6,0)--(6,0);
+        \draw (0,-6)--(0,6);
+        \draw[-latex] (0,0) -- (8,6);
+        \draw[dashed] (0,0) -- (-8,-6);
+        \fill (4,3) circle (2pt);
+        \node at(4.4,3) {$\beta$};
+        \draw[-latex] (0,0) -- (6,-6);
+        \draw[dashed] (0,0) -- (-6,6);
+        \fill (3,-3) circle (2pt);
+        \node at(3.4,-3) {$\alpha$};
+        \filldraw (0,0) circle (0.2);
+        \draw (0,0) circle (0.4);
+
+        \draw (-4+0.5,-3) rectangle (-4+0.5+0.2,-3+0.2);
+        \draw (-4,-3+0.5) rectangle (-4+0.2,-3+0.2+0.5);
+
+      \end{tikzpicture}
+    \caption{【number of solution】}\label{fig:number_of_solution}
+  \end{figure}
+  
+  \paragraph{S1} solution 1
+  作为一维问题，use algorithm\ref{algorithm:Judge_alpha_beta}.
+
+  \begin{algorithm}[ht]
+    \caption{JudgeAlphaBeta}\label{algorithm:Judge_alpha_beta}
+    \SetAlgoLined
+    \KwIn{$\alpha, \beta$}
+    \KwOut{+ for anticlockwise, - for clockwise, 0 for invalid}
+    \uIf{$\beta > \alpha$}{
+      \uIf{$\beta - \alpha > \pi$}{
+        \KwRet JudgeAlphaBeta($\alpha, \beta- 2 \pi$)\;
+      }
+      {
+        \KwRet $+1$ or $\beta - \alpha$\;
+      }
+    }
+    \ElseIf{$\alpha > \beta$}
+    {
+      \uIf{$\alpha - \beta > \pi$}{
+        \KwRet JudgeAlphaBeta($\alpha- 2 \pi, \beta$)\;
+      }
+      {
+        \KwRet $-1$ or $\beta - \alpha > \pi$\;
+      }
+    }
+    \KwRet 0\;
+  \end{algorithm}
+
+  \paragraph{S2} solution 2
+
+  升高一个维度，不利用极坐标表示，避免$0 = 2\pi$的问题。We test the of the point $\beta$ of the line $\vec{O\alpha}$, noted as $S_{\beta \alpha} = \vec {OZ} \times \vec{O\alpha} \cdot \vec{O\beta}$, and for $t>0$, the left side, means anticlockwise; for $t<0$, the right side, means clockwise;
+
+  If the sign $S_{\gamma \alpha}, S_{\beta \alpha}$ is the same, and the sign $S_{\gamma \beta}, S_{\alpha \beta}$ is the same, meas that the $\gamma$ is between $\alpha, \beta$. And $S_{\beta \alpha}>0$, means the arrow of the point $\alpha$ is anticlockwise.
+
+  For calculate the nearest point of $\gamma$, we can use algorithm \ref{algorithm:Judge_alpha_beta}, test with $\min{|JudgeAlphaBeta(\gamma, \alpha)|, |JudgeAlphaBeta(\gamma,\beta)|}$
+
+  \end{question}
 
 
 
@@ -26,7 +100,7 @@
 \chapter{ProbabilityTheory}
 
 \section{状态空间}
-\subsection{T0001 连续抛硬币}
+\subsection{T0001-连续抛硬币}
 
 Q1: with a random sequence of ${0, 1}$, when comes a subset ${1,0,0}$ A wins, when comes a subset ${1,1,0}$ B wins, otherwise the game keeps. The probability of A wins.
 
@@ -35,7 +109,7 @@ Q1: with a random sequence of ${0, 1}$, when comes a subset ${1,0,0}$ A wins, wh
 
 We draw the state-transfer graph, and calculate the probability A wins of each state as the initial state.
 
-\begin{figure*}[h]
+\begin{figure}[h]
     \centering
       \begin{tikzpicture}[->,>=stealth',shorten >=1pt, auto, node distance=2cm,thick,
         base node/.style={circle,draw,minimum size=16pt},
@@ -75,7 +149,7 @@ We draw the state-transfer graph, and calculate the probability A wins of each s
         
       \end{tikzpicture}
     \caption{【number of solution】}\label{fig:number_of_solution}
-\end{figure*}
+\end{figure}
 
 
   We calculate the probability of the machines stops at state 100.
@@ -113,5 +187,10 @@ we write the squence, which step has two posibilities.
 \end{equation}
 
 It is easily to find that, when we focus to locate the sequence of ${1,0,0}$, we find that the start index of the sequence is ${0, 2,4,6,8, \cdots}$, because the index 1(which means $1,1,0,0$, and that means B wins.), we can also Analysis the index 3, 5 as the same. While the start index of the sequence is ${0,1, 2,3, \cdots}$, therefore the probability of B wins is two times of A wins.
+
+
+
+
+
 
 \end{document}

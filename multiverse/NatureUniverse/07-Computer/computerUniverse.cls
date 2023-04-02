@@ -62,7 +62,7 @@ language=c++,
 }
 
 
-\usepackage[ruled,linesnumbered]{algorithm2e}
+
 
 \theoremstyle{plain}
 
@@ -83,4 +83,6 @@ language=c++,
  % \newtheorem{bprop}[thm]{命题~}
  % \newtheorem{bcor}[thm]{推论~}
 \renewcommand{\proofname}{\bf 证明}
+
+\usepackage[ruled,linesnumbered]{algorithm2e}
 
