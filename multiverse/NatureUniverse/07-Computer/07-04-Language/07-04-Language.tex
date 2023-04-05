@@ -3,7 +3,7 @@
 %%  ** Date: 2022-06-05 00:07:26
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-04-03 22:46:09
+%%  ** LastEditTime: 2023-04-05 22:58:35
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -32,6 +32,8 @@
 
 
 \chapter{语义理论（自然语言、程序语言）}
+
+
 \section{计算语义}
 
 
@@ -54,6 +56,9 @@
 【语义分析】分析各语法结构的含义，检查源程序是否包含语义错误，主要针对句子含义的检查。
 
 
+语法分析和语义分析交替进行；完成一步语法分析，接着进行语义分析。
+
+编译器后端：代码优化【目的：使机器码短小、质量高、访问存储单元次数少】、机器码生成。
 
 \chapter{编程范式}
 
@@ -203,16 +208,255 @@ the c++ standard library: a tutorial and reference.
 
 
 
-\subsection{代码规范}
+\subsubsection{代码规范}
 
 修改注释，例如
 ---[[修改的代码]]-----
 
 
 
-\subsection{Basic Grammer}
+\subsection{数据类型}
 
-\paragraph{sizeof}
+\subsubsection{基础数据类型}
+
+\begin{lstlisting}
+整形: 
+42, short, 2bytes, [-32768,32767]
+42, int, 4bytes
+42l, 42L, long,l, L, 4bytes
+42ll, 42LL, long long, ll,LL
+
+无符号整形：
+unsigned short, 2bytes, [0,65535]
+42u, unsigned int, 4bytes
+42LU, 42uL, unsigned long, 4bytes
+
+
+__int8 // 8位整形
+__int16 // 16位整形
+__int32 // 32位整形
+__int64 // 64位整形
+
+进制： 
+42 // 10
+042 // 8
+0xF8 or 0XF8 // 16
+
+浮点：
+1.2f, 1.2F, float,f,F, 4bytes
+1.2, 1., double, 8bytes
+1.2L, long double
+
+科学计数法：
+3e2
+1.2E-2
+
+字符型：
+char; 'a'=97; 'A'=65, 1byte
+unsigned char
+L'a', wchar_t
+
+'\n'    换行
+'\r'    回车
+'\t'    制表
+'\v'    垂直制表
+'\b'    退格
+'\a'    蜂鸣
+'\\'    反斜杠
+'\''    单引号
+'\'''    双引号
+'\ddd'    3位8进制
+'\xdd'    2位16进制
+
+bool
+
+\end{lstlisting}
+
+
+
+\subsubsection{自定义数据类型}
+
+\begin{lstlisting}
+struct
+class
+
+union
+
+enum; enum class
+
+\end{lstlisting}
+
+
+
+\subsubsection{数组}
+
+长度固定且不可变。
+\begin{lstlisting}
+一维数组：
+int a[3]; // 3个int，下标从0开始
+int a[3] = {10,20}; //前2个数初始化
+int a[3]{10,20,30};
+int a[]{10,20,30};
+
+
+\end{lstlisting}
+
+
+\subsection{语句}
+
+\subsubsection{语句和表达式}
+
+\begin{lstlisting}
+
+语句：以分号结束
+语句块：{}
+表达式：操作数+运算符
+只有1个三目运算符：条件运算符，"?:"
+逗号运算符：从左向右计算，取最右边部分的值
+
+位运算：
+~, 按位非
+<<, 左移
+^, 按位异或
+&, 按位与
+|, 按位或
+
+\end{lstlisting}
+
+
+
+\subsubsection{运算符优先级}
+
+\begin{lstlisting}
+1: LR
+()  括号、函数调用
+[]  数组
+->  指向成员
+.   成员
+
+2: RL
+!   逻辑非
+~   取反
+++
+--
++   正号
+-   负号
+*   指针
+(type)  类型转换
+sizeof  字节操作符
+
+3:  LR
+*   乘法
+/   除法
+\%  取模
+
+4:  LR
++
+-
+
+5: LR
+>>
+<<
+
+6: LR
+<, <=
+>, >=
+
+7: LR
+==
+!=
+
+8: LR
+&
+
+9: LR
+^
+
+10: LR
+|
+
+11: LR
+&&
+
+12: LR
+||
+
+13: RL
+?:
+
+14: RL
+=
++=,-=,*=,/=,\%=
+&=,^=,|=
+<<=,>>=
+
+15: LR
+,   逗号
+\end{lstlisting}
+
+
+
+\subsubsection{类型转换}
+
+隐式类型转换：double转为int舍去小数；char转为int取对应的ASCII码。
+
+
+\subsubsection{控制流程}
+
+
+\begin{lstlisting}
+    描述方法：
+伪码
+流程图
+UML(顺序图、活动图)
+
+
+【分支】
+if(expression) B;
+if(expression) B else C;
+
+switch(expression)
+{
+    case 常量1:
+        A;
+        break;
+    case 常量2:
+        B;
+        break;
+        
+    default:
+        C;
+        break;
+}
+
+
+【循环】
+while(expression) A; //先判断，再执行
+while(expression) {...} //先判断，再执行
+
+do A; while(expression); //先执行1次，再判断
+do {...} while(expression); //先执行1次，再判断
+
+for(int i=0;i<10;++i){std::cout << i << std::endl;}
+
+
+【循环控制】
+break; // 用于switch和循环，退出1层
+continus; //用于循环，结束当前循环，进入下一次循环
+
+
+【流程跳转】
+AAAAA: // 标签
+goto AAAAA; // 直接到标签处运行
+
+
+\end{lstlisting}
+
+
+
+\subsection{细节}
+
+\subsubsection{sizeof}
 
 程序存储分布有三个区域：栈、静态和动态。
 
@@ -234,7 +478,7 @@ C++ 中对引用的处理比较特殊；sizeof 一个引用得到的结果是 si
 \end{lstlisting}
 
 
-\paragraph{Reference}
+\subsubsection{Reference}
 The reference is ofen used as parameters of a function. 
 rreference is a const pointer
 
@@ -251,7 +495,7 @@ rreference is a const pointer
 \end{lstlisting}
 
  
-\paragraph{Const}
+\subsubsection{Const}
 
 \begin{lstlisting}
     // const T* can be transformed to T* using (T*)
@@ -282,11 +526,11 @@ const object function can only be called by const object.\\
 
 
 
-\paragraph{IO}
+\subsubsection{IO}
 
 dec,hex, oct
 
-\paragraph{RTTI与异常处理}
+\subsubsection{RTTI与异常处理}
 RTTI，运行时类型信息，在类层次结构中漫游，可向上、向下、平行转换，可实现反射、高级调试等功能。
 
 异常处理：安全的longjmp机制。
@@ -294,6 +538,11 @@ RTTI，运行时类型信息，在类层次结构中漫游，可向上、向下�
     void function(void) throw(something){//...}
 \end{lstlisting}
 构造函数中抛出异常会产生不完整的类，永远不会调析构。解决方法：做一个有T*数据成员的模板类A，我们创建的类B中的int* pVal要在B的构造中new，现在改为存A<int>pVal，在B的构造中new，这样new委托给了类A，在我们的类B的构造中throw也不会导致内存泄露。
+
+
+
+
+
 
 
 
