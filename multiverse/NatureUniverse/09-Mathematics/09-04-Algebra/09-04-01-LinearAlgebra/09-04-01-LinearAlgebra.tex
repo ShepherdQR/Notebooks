@@ -3,7 +3,7 @@
 %%  ** Date: 2023-04-05 10:23:55
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-04-06 21:40:26
+%%  ** LastEditTime: 2023-05-01 18:53:24
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -163,6 +163,49 @@ Distance function satisfies the following:
 
 完备、赋范、线性。
 
+
+\subsection{Inner Product Space}
+
+\begin{equation}\label{}
+\begin{aligned}
+  &(\alpha x + \beta y ) \cdot z = \alpha x \cdot z + \beta y \cdot z, &   \mbox{线性}\\
+  &x \cdot (\alpha y + \beta z) = \bar{ \alpha}    x \cdot y + \bar{ \beta}    x \cdot z,&   \mbox{共轭线性}\\
+  &x \cdot y = \bar{ y \cdot x}, &   \mbox{共轭对称}\\
+  &x \cdot x \geqslant 0 , &\mbox{正定} \Rightarrow || x || = \sqrt{x \cdot x} \\
+  &|x \cdot y| \leqslant || x || \cdot || y ||, &satisfies  Cauchy-Schwarz \\
+\end{aligned}
+\end{equation}
+ 
+
+\subsection{Hilbert Space}
+
+完备，内积。
+
+内积$\Rightarrow$范数$\Rightarrow$完备
+
+
+\begin{proposition}
+  $[0,1]$上的复连续函数空间$ C([0, 1])$,定义内积$f \cdot g = \int_{0}^{1} f(t)g(t) \,dt $, proof that $ C([0, 1])$不是Hilbert Space
+
+  \begin{equation}
+    \begin{aligned}
+    &f_n(t) =
+    \begin{cases}
+    &1,\qquad 0 \leqslant t \leqslant \frac{1}{2}\\
+    &-2n(t- \frac{1}{2}) + 1,\qquad \frac{1}{2} < t \leqslant \frac{1}{2n} + \frac{1}{2}\\
+    &0, \qquad \frac{1}{2n} + \frac{1}{2} < t \leqslant 1\\
+    \end{cases}\\
+    &|| f_n - f_m|| \leqslant (\frac{1}{n} + \frac{1}{m})^{\frac{1}{2}} \rightarrow 0, is \  Cauchy \  Sequence.\\
+    & \lim f_n = 
+    \begin{cases}
+      &1,  0 \leqslant t \leqslant \frac{1}{2}\\
+      &0,  \frac{1}{2} < t \leqslant 1\\
+    \end{cases}\\
+    & \therefore \lim f_n \notin C([0, 1])
+    \end{aligned}
+  \end{equation}
+
+\end{proposition}
 
 
 \subsection{Euclid Space}
