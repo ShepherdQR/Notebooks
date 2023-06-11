@@ -3,7 +3,7 @@
 %%  ** Date: 2019-06-10 18:32:30
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-04-05 10:25:47
+%%  ** LastEditTime: 2023-06-04 23:27:35
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -133,7 +133,26 @@ $S(\Omega)$:$\Omega$的全变换群, Full Transformation Group on Set $\Omega$, 
 3.$\mathbb Z_m$中每个元素要么是可逆元要么是零因子；\\
 4. $M_n(\mathbb F)$中, 每个矩阵是可逆矩阵或者是零因子。
 
+
 \subsection{Abel群的表示}
+
+
+\subsubsection{集合(Set)}
+\begin{equation}
+  \begin{aligned}
+  Idempotent & & A \cup A = A \cap A = A \\
+  Absorption & &A \cup (A \cap B) = A \cap (A \cup B) = A\\
+  Commutative & &A \cup B = B \cup A, A \cap B = B \cap A\\
+  Associative & &(A \cup B) \cup C = A \cup (B \cup C)\\
+              & &(A \cap B) \cap C = A \cap (B \cap C)\\
+  Distributive & &A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\\
+                & &A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\\
+  \end{aligned}
+\end{equation}
+
+
+
+
 \subsubsection{映射(Map)}
 映射: $f:a \mapsto b \Leftrightarrow f(a)=b$。$f(x)读作f \ of \ x$原象, 象。映射$f$的定义域(domain)A, 陪域(codomain)B。映射得到的所有象的集合叫值域, 记作$f(A)$,或Imf。
 \begin{equation}
@@ -144,9 +163,9 @@ $S(\Omega)$:$\Omega$的全变换群, Full Transformation Group on Set $\Omega$, 
 \end{equation}
 
 映射通常关心is it one one? Is is onto? \\
-满射, onto,到上: $f(A)=B$\\
-单射, 1-1, 一一的, 每个a对应的b是不同的。\\
-双射, 两个集合一一对应。\\
+Surjection, 满射, onto,到上: $f(A)=B$, $\forall b \in B, \exists a \in A, f(a) = b$. If left inverse, such as $\xi (\eta (x_A)) = x_B$, therefore surjection.\\
+Injection, 单射, 1-1, 一一的, 每个a对应的b是不同的。$\forall x, y \in A, x \neq y, \therefore f(x) \neq f(y)$. If right inverse, such as $ \eta (\xi (x_C)) = x_B$, therefore injection\\
+Bijection, 双射, 两个集合一一对应, isomorphic。\\
 逆映射。对于$f:A \to B, g: B \to A$,有$g \circ f =1_A, f \circ g =1_B$。可逆的f是双射。\\
 
 线性映射、线性变换是线性空间的同态映射, 有点乘和加法。\\
@@ -154,7 +173,72 @@ $S(\Omega)$:$\Omega$的全变换群, Full Transformation Group on Set $\Omega$, 
 投影变换: 域$\mathbb F$上的线性空间$V=U \oplus W$,有$\mathbf \alpha =\mathbf \alpha _U+\mathbf \alpha _W$, 有投影变换$P_U:\mathbf \alpha \mapsto \mathbf \alpha _U$.投影变换保持加法和数乘, 是V上的线性变换。投影是同态映射。\\
 几何空间: 以原点O为起点的定位向量组成的实线性空间。知道一空间点在两个坐标面的投影坐标可完全确定点。
 
-\subsubsection{群的同态}
+
+
+
+\subsubsection{Relation}
+
+\begin{equation}
+  \begin{aligned}
+  &Reflective & & \forall x \in M, x R x\\
+  &Antisymmetry & & \forall x,y \in M, x R y, yRx \Rightarrow x = x\\
+  &Transitive & & \forall x,y,y \in M, x R y, y R z \Rightarrow x R z\\
+  \end{aligned}
+\end{equation}
+
+
+partial order set, poset, $(M, \preceq )$. Anti-circularity law $x_1 \preceq \cdots \preceq x_n \preceq x_1  \Rightarrow x_1 = \cdots = x_n$
+
+quasi-order set, quoset, the relation only satisfies reflective law and transitive law, noted as $(M, \bullet \prec )$.
+
+\begin{proposition}
+  Any subset of a quoset is a quoset.
+  Any subset of a poset is a poset.
+  Any subset of a chain is a chain. 
+\end{proposition}
+
+
+\subsubsection{等价关系}
+
+\begin{equation}
+  \begin{aligned}
+  &Symmetry & & \forall x,y \in M, x R y \Rightarrow  y R x\\
+  &Alternative & & \forall x,y \in M, x \npreceq  y \Rightarrow  y \preceq x\\
+  \end{aligned}
+\end{equation}
+
+
+\begin{proposition}
+  Linear order, or total order: $\preceq$ and Alternative law.
+
+  Chain: a set with a total order.
+
+  Tower, 域扩张的塔：E>F>k, 有大小包含关系.
+
+  nest, or sleeve: $A_1 \subset A_2 \subset \cdots  \subset A_n$,包含关系
+\end{proposition}
+
+反身性，对称性，传递性，$a \sim b$. $a \sim b \Leftrightarrow b \sim a$. $a \sim b , b \sim c \Rightarrow a \sim c$\\
+$\bar x$ 是x确定的等价类，$x(M) = \left\{ y | y \in M, y \sim x \right\}$。易有
+$\bar x = \bar y \Leftrightarrow x \sim y$ 。\\
+
+
+定理1：集合S上等价关系$\sim$给出的等价类的集合是S的一个划分。\\
+证明思路：需要证明并全，交空。交空比较难，需要研究等价类的性质。等价类的代表不唯一。\\
+Step1)  It is obvious that $\cup _{a \in S} {\bar a} \subseteq S$，and for any $b \in S$, we have $b \in \bar b \in \cup _{a \in S} {\bar a}$, this means $S \subseteq \cup _{a \in S} {\bar a}  $, so $ \cup _{a \in S} {\bar a} =S $.\\
+Step2) To prove $\bar x \neq \bar y \Rightarrow \bar x \bigcap \bar y = \varnothing  $, we prove the contrapositive $ \bar x \bigcap \bar y \neq \varnothing \Rightarrow  \bar x = \bar y$, and this is easy to prove.\\
+
+
+\begin{proposition}
+  equivalence, define $x\sim _{\bullet \prec } y:= (x \bullet \prec y) \wedge (y \bullet \prec x)$.
+\end{proposition}
+
+\begin{proposition}
+  A quoset $(M, \bullet \prec)$ is a poset, if and only if, the quotient set $M / \sim _{\bullet \prec} =  M$, or say, it satisfies the anti-circularity law.
+\end{proposition}
+
+
+\subsubsection{群的同态Isomorphic}
 同态映射: G到G'的映射$\sigma: \sigma(a,b)=\sigma(a) \sigma(b)$。单射的话是单同态。满射是满同态。双射是同构, 此时两个群同构, $G \cong G'$。\\
 同态的性质: 1）单位元、逆元、子群映射过去是G’的单位元、逆元、子群。例如$G<G \Rightarrow \sigma(G)=Im\sigma <G'$, 同态的像是G'的子群\\
 刻化单同态: 找到映射成单位元的原象, 定义同态的核, $Ker\sigma:=\left\{ a \in G | \sigma(a)=e' \right\}$.易有同态的核是G的子群。对于单同态, $Ker\sigma=\left\{ e \right\}$.\\
