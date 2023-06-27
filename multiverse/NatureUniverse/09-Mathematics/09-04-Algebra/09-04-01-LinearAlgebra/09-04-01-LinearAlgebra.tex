@@ -3,7 +3,7 @@
 %%  ** Date: 2023-04-05 10:23:55
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-05-01 18:53:24
+%%  ** LastEditTime: 2023-06-23 10:54:32
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -66,6 +66,64 @@ The set of bases $\{ \boldsymbol e_i  \}  \xrightarrow{apply} \boldsymbol{x} \lo
 We define in algebra, $ \boldsymbol{x} \cdot \boldsymbol{y} := \sum{x_iy_i \delta _{ij}} = \boldsymbol{x}^T \cdot \boldsymbol{y}$.
 
 Then the defination is restricted to the choose of the coordinate system. 
+
+
+\subsection{Cross Product}
+
+$a, b \in \mathbb F^m, a \wedge b = c \in \mathbb F^n $, if m = n, we have m = 0, 1, 3, 7. Therefore, we define cross product in 3d.
+
+\begin{equation}
+  u \times  v = 
+  \begin{vmatrix}
+     i & j & k\\
+     u_1 & u_2 & u_3\\
+     v_1 & v_2 & v_3\\
+  \end{vmatrix}
+\end{equation}
+
+
+\begin{proposition}
+  外积对于u、v双线性。从定义易知。
+\end{proposition}
+
+\begin{proposition}
+  $(a \times b) \times c =  (c \cdot a) b -  (b \cdot c) a   $
+
+  证明：
+  \begin{equation}
+    \begin{vmatrix}
+       i & j & k\\
+       23 & 31 & 12\\
+       1 & 2 & 3\\
+    \end{vmatrix}
+  \end{equation}
+\end{proposition}
+例如对i分量，有$31 \cdot 3-12\cdot2$，形式上ijk一样，因而证明i即可。展开后，按正负号分类，we have $(313+212) - (133+122)$, 两部分都加上111即得。b和-a的线性组合。
+
+
+\begin{proposition}
+
+  混合积$(u, v, w) = (u \times  v ) \cdot w$，其具有轮换对称性。
+
+  证明：
+  for $\cdot w$, we have $23 \cdot 1 + 31 \cdot 2 + 12 \cdot 3$
+
+  $231-321, 312-132, 123-213$
+
+  对$\cdot v$，即中间元素按1,2,3顺序组合，易有wu；同样对$\cdot u$，易有vw。即证。
+  
+
+  另外，从展开后的分量对应上，易有
+  \begin{equation}
+    (u, v, w)  =
+    \begin{vmatrix}
+      u_1 & u_2 & u_3\\
+      v_1 & v_2 & v_3\\
+      w_1 & w_2 & w_3\\
+    \end{vmatrix}
+  \end{equation}
+
+\end{proposition}
 
 
 
