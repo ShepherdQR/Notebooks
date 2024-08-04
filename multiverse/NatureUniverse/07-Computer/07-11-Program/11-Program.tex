@@ -1,0 +1,190 @@
+%%============
+%%  ** Author: Shepherd Qirong
+%%  ** Date: 2022-06-05 00:25:44
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Shepherd Qirong
+%%  ** LastEditTime: 2024-05-05 21:39:39
+%%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
+%%============
+
+
+\documentclass[UTF8]{../computerUniverse}
+
+\begin{document}
+
+\title{11-Program}
+\date{Created on 20240413.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+高项
+
+
+\chapter{重点}
+
+
+\section{阶段二}
+五大过程组，十大知识域，输入，输出，工具，49个子过程的定义、作用、ITTO工具
+
+单代号、双代号、时标网络图的绘制，计算关键路径；
+PV,EV,AC公式
+
+
+\section{概念}
+\subsubsection{区分1}
+
+项目日历： 规定可以开展进度活动的可用工作日和工作班次，区分开展进度活动的可用时间段和不可用时间段。
+
+资源日历：识别每种具体资源的可用时间、班次、上下班时间、周末、节假日。
+
+物质资源分配单： 材料、设备、用品、地点、其他实物资源。
+
+项目团队派工单：团队成员的角色和职责、姓名、姓名插入到项目管理计划的其他部分，如项目组织图、进度计划。
+
+
+
+
+\chapter{基础}
+
+\chapter{案例分析}
+
+\chapter{English}
+
+\begin{lstlisting}
+    三点估算/计划评审技术(PERT)
+    关键路径法(CPM) 
+
+    precede event  紧前事件
+    successor event  紧后事件,
+    dummy activity  虚活动,
+
+    analogous estimating 类比估算
+    parametric estimating 参数估算
+    opreation costs 运营成本
+    implement costs 实施成本
+    contingency reserve 应急储备
+    management reserve 管理储备
+    budget at completion, bac, 完工预算
+    earned value management, evm, 挣值管理
+
+    EV, earned value,  挣值
+    
+    PV,  planned value, 计划价值
+    SV,schedule variance, 进度偏差 SV = EV-PV
+    SPI, schedule performance index, 进度绩效指数 SPI = EV/PV
+    
+    AC, actual cost, 实际成本
+    CV, cost variance, 成本偏差 CV = EV-AC
+    CPI,cost performance index, 成本绩效指数 CPI = EV/AC
+
+    BAC, budget at completion, 完工预算
+    ETC, estimate to completion, 完工尚需估算 EAC = BAC - EV ; EAC = (BAC-EV)/CPI
+    EAC, estimate at completion,完工估算 EAC = AC + ETC
+    VAC, variance at completion, 完工偏差，VAC = BAC - EAC
+    TCPI, to-complete performance index ，完工尚需绩效指数, TCPI = (BAC-EV)/(BAC-AC)
+
+
+
+\end{lstlisting}
+
+
+
+\chapter{计算}
+
+
+\section{立项管理}
+
+\section{整合管理}
+
+\section{范围管理}
+包括范围、需求
+
+\section{进度管理【重点】}
+
+\subsection{单代号网络图}
+单代号网络图，active on node，AON，又称
+前导图，Precedence diagramming method, PDM。方框是活动节点，箭头是逻辑关系。
+
+依赖关系，根据紧前活动和紧后活动的关系，按照FS排列有4种。
+
+FS:A finishes,才有B starts，如比赛与颁奖；系统设计与设计评审；系统分析与需求评审；确定项目范围与制定WBS；装硬件与装软件；验证身份合法与数据传输；
+FF:如文件编写与文件编辑；
+SS:如地基浇灌与找平；设备运行与设备实时监控；
+SF:如第2个人值班与第1个人值班。新系统上线与旧系统下线。
+
+FS配合earlist和latest，英国标准BS6046有节点标示，分别是ES,工期，EF；活动名称；LS,总浮动时间,LF
+
+提前量（lead）,正数，如FS+6,意思是紧前活动结束，+6个时间单位，紧后活动开始。
+
+\subsection{双代号网络图}
+双代号网络图，箭线图，arrow diagramming method，ADM
+
+箭线图，active on the arrow，AOA
+
+箭头是活动，节点是事件。箭尾是活动的紧前事件，箭头是活动的紧后事件。
+
+\subsection{关键路径法【*****】}
+关键路径法，critical path method，最长活动路径。
+
+总浮动时间,total float，不影响进度的最早开始时间可推迟。
+自由浮动时间,free float，不影响所有紧后活动的最早开始时间可推迟。是紧后工作的最早开始时间减去本任务的最早完成时间。
+
+浮动float，等于 时差slack。
+
+时标逻辑图，又称时标网格图。
+
+计算方法：
+关键路径时长：找时间最长的。
+某活动最早开始时间：流到某活动前最长时间。
+
+关键路径的总浮动时间通常为0.最早开始时间和最晚开始时间不同的任务是非关键任务。
+
+某活动延期x天，计算总工期延后多少天：从左开始计算每个事件完成的时间，计算。注意可伸缩的，注意虚活动。
+
+\subsection{PERT估算}
+
+PERT估算，program evaluation and technique.
+
+最可能时间，ml；
+最乐观时间，o；
+最悲观时间，p；
+期望E = (o+4*ml+p)/6;
+标准差，standard deviation, $\sigma = (p-o)/6$
+
+\section{成本管理【重点】}
+
+\section{质量管理}
+
+\section{资源管理}
+
+\section{沟通管理}
+
+
+
+\section{风险管理}
+
+\section{采购管理}
+
+\section{干系人管理}
+
+\section{其他}
+\subsection{版本管理}
+\subsection{组合管理}
+\subsection{知识产权}
+
+
+\section{信息技术}
+
+\section{运筹学}
+
+
+\chapter{论文}
+
+
+\end{document}
+
+
+
+
+
