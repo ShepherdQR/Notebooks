@@ -3,7 +3,7 @@
 %%  ** Date: 2022-06-05 00:00:41
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2024-03-31 23:06:42
+%%  ** LastEditTime: 2024-08-09 00:43:24
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -31,6 +31,57 @@
 
 
 
+
+
+\chapter{思想}
+
+\section{递推}
+
+\subsection{逆推}
+执果索因。
+
+
+\begin{question}
+ 车从A到B共akm，油耗bL每km，载油容量cL，问需要沿途如何建立储油点，耗油最少到B？
+
+  \paragraph{S1} solution 1
+
+  从B倒推，插入的首个储油点P0，P0到B走1趟，需要存最少cL，距离c/bkm；
+  P1，P1到P0走1+2趟，需要存最少c+cL，距离c/(3b)km；
+
+
+
+  $\min k, with \ \frac{c}{b}\sum\frac{1}{2i+1} > a, k\in \{ \mathbb{Z} ^+, 0\}$ and 油耗是$a \times (i+1) + b \times(2i+1) \times (a - \sum\frac{1}{2i-1})$
+
+\end{question}
+
+\subsection{正推}
+
+\section{贪心}
+
+局部最优是全局最优。
+
+
+
+matroid，矩阵胚，$M = [S,I]$,如S是n个m维的行向量，I是S中挑选的所有的那些线性无关的r个m维的行向量。给m维附加上权值维度信息，则贪心即是在I中找到最优的一组行向量，怎么找呢，每次收集最优的1个行向量即可。为什么每次收集最优的1个行向量即可呢？马上证明。
+
+\begin{question}
+  给定a是n位数，删掉s位后，余下的数最小。如178543删掉4位，最小是13
+ 
+   \paragraph{S1} solution 1
+
+   从左向右遍历a各位s遍，每次做的处理：有递减区间A，删除区间A的首；否则删除最后一位。继续下次遍历。
+
+ 
+ \end{question}
+
+\section{递归}
+
+\section{分治}
+
+\section{枚举}
+
+\section{模拟}
 
 
 
