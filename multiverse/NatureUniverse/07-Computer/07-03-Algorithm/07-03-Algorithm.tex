@@ -3,7 +3,7 @@
 %%  ** Date: 2022-06-05 00:00:41
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2024-08-26 23:22:03
+%%  ** LastEditTime: 2024-09-15 20:54:11
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -158,11 +158,18 @@ c) 训练营：国内如字节跳动和wls
 
 \section{贪心}
 
-局部最优是全局最优。
+
+\subsection{key thoughts}
+
+\subsubsection{k-optional}
 
 
 
-matroid，矩阵胚，$M = [S,I]$,如S是n个m维的行向量，I是S中挑选的所有的那些线性无关的r个m维的行向量。给m维附加上权值维度信息，则贪心即是在I中找到最优的一组行向量，怎么找呢，每次收集最优的1个行向量即可。为什么每次收集最优的1个行向量即可呢？马上证明。
+
+\subsubsection{局部最优是全局最优}
+
+matroid，矩阵胚，$M = [S,I]$,如S是n个m维的行向量，I是S中挑选的所有的那些线性无关的r个m维的行向量。给m维附加上权值维度信息，则贪心即是在I中找到最优的一组行向量，怎么找呢，每次收集最优的1个行向量即可。为什么每次收集最优的1个行向量即可呢？马上证明。假设最优集是T，挑选的是B，证明B=T。假设不相等，可从B中取出一个x，并加入在T中不在B中的一个y，由于T最优，所以$w_x \leqslant w_y$, 但是构造B的时候选择了x而不是y，说明$w_y \leqslant w_x$， 所以$w_y = w_x$，即证。
+
 
 \begin{question}
   给定a是n位数，删掉s位后，余下的数最小。如178543删掉4位，最小是13
@@ -174,9 +181,26 @@ matroid，矩阵胚，$M = [S,I]$,如S是n个m维的行向量，I是S中挑选�
  
  \end{question}
 
+
+
+
+
 \section{递归}
 
 \section{分治}
+
+\section{DP}
+
+背包问题：\\
+a是10kg，60元，单位价值6；\\
+b是20kg，100元，单位价值5；\\
+c是30kg，120元，单位价值4；\\
+背包50kg，求如何放入总价值最大。
+
+部分背包问题，按单位价值从大到小，(a,b,c)=(10,20,20);
+
+0-1背包问题，需要考虑有物体x和无物体x的情况 => 重叠子问题 => 存表、记忆、DP
+
 
 \section{枚举}
 

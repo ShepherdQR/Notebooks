@@ -39,7 +39,17 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \titleformat{\chapter}{\raggedright\Huge\bfseries}{Chapter\,\thechapter\,}{1em}{}
 %%\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
 \renewcommand{\figurename}{Figure }
+\renewcommand{\tablename}{Table }
 
+
+% \newcommand{\forthsection}[1]{\paragraph{#1}\mbox{}\\}
+% \setcontour{secnumdepth}{4}
+% \setcontour{tocdepth}{4}
+
+% \newcommand{\fifthsection}[1]{\subparagraph{#1}\mbox{}\\}
+%  \setcontour{secnumdepth}{7}
+%  \setcontour{tocdepth}{7}
+\setcounter{secnumdepth}{7}
 
 
 %\usepackage[square,numbers,sectionbib]{natbib}      
@@ -50,3 +60,7 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \usepackage{listings}
 
 \usepackage[ruled,linesnumbered]{algorithm2e}
+
+
+% 表格的脚注
+\usepackage[flushleft]{threeparttable}

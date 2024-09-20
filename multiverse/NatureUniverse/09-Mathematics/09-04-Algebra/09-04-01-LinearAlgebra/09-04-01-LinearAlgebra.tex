@@ -3,7 +3,7 @@
 %%  ** Date: 2023-04-05 10:23:55
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2023-06-23 10:54:32
+%%  ** LastEditTime: 2024-09-15 21:33:30
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -11,12 +11,165 @@
 \documentclass[UTF8]{../../09-Mathematics}
 \begin{document}
 
+
+
 \title{09-04-01-LinearAlgebra}
 \date{Created on 20230405.\\   Last modified on \today.}
 \maketitle
 \tableofcontents
 
 
+\chapter{Overall}
+
+
+
+2条主线：linear space, linear mapping
+
+
+
+
+
+\chapter{Space}
+
+
+
+
+线性空间（加法、乘法） -> 线性映射 <->矩阵
+
+现实几何空间还有距离和角度的概念，可用内积（双线性函数）来刻画。具有度量的线性空间。分类：欧几里得空间（实数域、有限维、线性空间、内积，内积有交换律）、酉空间（复数域、有限维、线性空间、内积，内积有共轭交换律）。
+
+线性变换：空间A到空间AZ自身的线性映射。
+
+\subsection{Linear Space}
+
+向量加法、标量乘法构成的单位环。
+
+
+\subsection{Metric Space}
+
+\begin{definition}
+    The set X with a distance function d, d satisfies\ref{Defination:Distance_function}. Metric Space is noted as $(X,d)$.
+\end{definition}
+
+\begin{definition}
+    紧集：$(X,d)$中的子集A，A中任意序列都存在一子列$x_n$,$x_n$收敛到A中某点。
+\end{definition}
+
+\begin{definition}
+    稠密集：$(X,d)$中的子集A，对于X中的任意点x，A中存在点a，使得$d(x,a)< \varepsilon $
+\end{definition}
+
+\begin{definition}
+    X可分：$(X,d)$中存在一个可数稠密集。
+\end{definition}
+
+
+\subsubsection{Complete Metric Space}
+
+\begin{definition}
+    收敛：sequence $\{ x_n \}$ 收敛到c，means that $\lim_{x \to \infty} d(x_n, c) = 0$, noted as $\lim_{x \to \infty} x_n = c $
+\end{definition}
+
+\begin{definition}
+    Cauchy基本列：$\lim_{m \to \infty,n \to \infty}d(x_m, x_n)=0  $
+\end{definition}
+
+\begin{definition}
+    完备距离空间：所有Cauchy基本列收敛于一点
+\end{definition}
+
+\begin{definition}
+  不完备：对于苹果空间，从宇宙开始到宇宙结束的所有苹果序列，收敛到我，则不完备。
+\end{definition}
+
+\subsection{Banach Space}
+
+完备、赋范、线性。
+
+
+\subsection{Inner Product Space}
+
+\begin{equation}\label{}
+\begin{aligned}
+  &(\alpha x + \beta y ) \cdot z = \alpha x \cdot z + \beta y \cdot z, &   \mbox{线性}\\
+  &x \cdot (\alpha y + \beta z) = \bar{ \alpha}    x \cdot y + \bar{ \beta}    x \cdot z,&   \mbox{共轭线性}\\
+  &x \cdot y = \bar{ y \cdot x}, &   \mbox{共轭对称}\\
+  &x \cdot x \geqslant 0 , &\mbox{正定} \Rightarrow || x || = \sqrt{x \cdot x} \\
+  &|x \cdot y| \leqslant || x || \cdot || y ||, &satisfies  Cauchy-Schwarz \\
+\end{aligned}
+\end{equation}
+ 
+
+\subsection{Hilbert Space}
+
+完备，内积。
+
+内积$\Rightarrow$范数$\Rightarrow$完备
+
+
+\begin{proposition}
+  $[0,1]$上的复连续函数空间$ C([0, 1])$,定义内积$f \cdot g = \int_{0}^{1} f(t)g(t) \,dt $, proof that $ C([0, 1])$不是Hilbert Space
+
+  \begin{equation}
+    \begin{aligned}
+    &f_n(t) =
+    \begin{cases}
+    &1,\qquad 0 \leqslant t \leqslant \frac{1}{2}\\
+    &-2n(t- \frac{1}{2}) + 1,\qquad \frac{1}{2} < t \leqslant \frac{1}{2n} + \frac{1}{2}\\
+    &0, \qquad \frac{1}{2n} + \frac{1}{2} < t \leqslant 1\\
+    \end{cases}\\
+    &|| f_n - f_m|| \leqslant (\frac{1}{n} + \frac{1}{m})^{\frac{1}{2}} \rightarrow 0, is \  Cauchy \  Sequence.\\
+    & \lim f_n = 
+    \begin{cases}
+      &1,  0 \leqslant t \leqslant \frac{1}{2}\\
+      &0,  \frac{1}{2} < t \leqslant 1\\
+    \end{cases}\\
+    & \therefore \lim f_n \notin C([0, 1])
+    \end{aligned}
+  \end{equation}
+
+\end{proposition}
+
+
+\subsection{Euclid Space}
+有序的n元组的全体称为n维Euclid空间，记为$\mathbb R^n$，称$\boldsymbol p=(p_i)_{i=1}^n \in \mathbb R^n$是$\mathbb R^n$的一个点。\\
+为便于研究，本论文以$ \mathbb R^3$为背景空间，所涉及的函数默认为可微实值函数。如果实函数$f$的任意阶偏导数存在且连续，则称函数是可微的（或无限可微的，或光滑的，或$C^\infty$的）。\\
+由于微分运算是函数的局部运算，限制所讨论函数的定义域在$ \mathbb R^3$中的任意开集，所讨论的结论仍然成立。\\
+自然坐标函数：定义在$\mathbb R^n$上的实值函数$x_i: \mathbb R^n \to  \mathbb R$，使得$\boldsymbol p=(p_i)_{i=1}^n = \left( x_i(\boldsymbol p) \right)_{i=1}^n   $\\
+切向量：由$\mathbb R^n$ 中的二元组构成，$\boldsymbol v_{\boldsymbol p}=(\boldsymbol p,\boldsymbol v)$，其中$\boldsymbol p$是作用点，$\boldsymbol v$是向量部分\\
+切空间$T_p  \mathbb R^n$: 作用点$\boldsymbol p \in \mathbb R^n$的所有切向量的集合。利用向量加法与数量乘法使某点的切空间称为向量空间，与背景空间存在非平凡同构。\\
+向量场$\boldsymbol V$:作用于空间点的向量函数，$\boldsymbol V(\boldsymbol p)\in T_p  \mathbb R^n $\\
+逐点化原理：$(\boldsymbol V+\boldsymbol W)(\boldsymbol p)=\boldsymbol V(\boldsymbol p)+\boldsymbol W(\boldsymbol p),\ (f \boldsymbol V)(\boldsymbol p)= f(\boldsymbol p)\boldsymbol V (\boldsymbol p)$\\
+自然标架场：定义$\boldsymbol U_i=(\delta _j^i)_{j=1}^n$，按Einstein求和约定，有$\boldsymbol V(\boldsymbol p)=v^i(\boldsymbol p)\boldsymbol U_i(\boldsymbol p)$,称$v^i$为场的Euclid坐标函数，其中Kronecker $\delta$函数定义为：
+\begin{equation}
+\label{Kronecker_delta}
+\delta _i^j=\left\{ 
+    \begin{aligned}
+    1,\  & i =j\\
+    0,\  & i \neq j\\
+    \end{aligned}
+     \right.
+\end{equation}
+
+
+与度量有关的线性变换：
+正交变换
+对称变换
+
+
+
+\subsection{Unitary Linear Space}
+
+酉空间 
+
+
+与度量有关的线性变换：
+酉变换
+Hermite变换
+
+
+
+\chapter{linear mapping}
 
 
 \chapter{Vector}
@@ -172,132 +325,16 @@ Distance function satisfies the following:
 \end{split}
 \end{equation}
 
-\chapter{Space}
 
 
-\subsection{Linear Space}
-
-向量加法、标量乘法构成的单位环。
+\chapter{Matrix Theory}
 
 
-\subsection{Metric Space}
-
-\begin{definition}
-    The set X with a distance function d, d satisfies\ref{Defination:Distance_function}. Metric Space is noted as $(X,d)$.
-\end{definition}
-
-\begin{definition}
-    紧集：$(X,d)$中的子集A，A中任意序列都存在一子列$x_n$,$x_n$收敛到A中某点。
-\end{definition}
-
-\begin{definition}
-    稠密集：$(X,d)$中的子集A，对于X中的任意点x，A中存在点a，使得$d(x,a)< \varepsilon $
-\end{definition}
-
-\begin{definition}
-    X可分：$(X,d)$中存在一个可数稠密集。
-\end{definition}
-
-
-\subsubsection{Complete Metric Space}
-
-\begin{definition}
-    收敛：sequence $\{ x_n \}$ 收敛到c，means that $\lim_{x \to \infty} d(x_n, c) = 0$, noted as $\lim_{x \to \infty} x_n = c $
-\end{definition}
-
-\begin{definition}
-    Cauchy基本列：$\lim_{m \to \infty,n \to \infty}d(x_m, x_n)=0  $
-\end{definition}
-
-\begin{definition}
-    完备距离空间：所有Cauchy基本列收敛于一点
-\end{definition}
-
-\begin{definition}
-  不完备：对于苹果空间，从宇宙开始到宇宙结束的所有苹果序列，收敛到我，则不完备。
-\end{definition}
-
-\subsection{Banach Space}
-
-完备、赋范、线性。
-
-
-\subsection{Inner Product Space}
-
-\begin{equation}\label{}
-\begin{aligned}
-  &(\alpha x + \beta y ) \cdot z = \alpha x \cdot z + \beta y \cdot z, &   \mbox{线性}\\
-  &x \cdot (\alpha y + \beta z) = \bar{ \alpha}    x \cdot y + \bar{ \beta}    x \cdot z,&   \mbox{共轭线性}\\
-  &x \cdot y = \bar{ y \cdot x}, &   \mbox{共轭对称}\\
-  &x \cdot x \geqslant 0 , &\mbox{正定} \Rightarrow || x || = \sqrt{x \cdot x} \\
-  &|x \cdot y| \leqslant || x || \cdot || y ||, &satisfies  Cauchy-Schwarz \\
-\end{aligned}
-\end{equation}
- 
-
-\subsection{Hilbert Space}
-
-完备，内积。
-
-内积$\Rightarrow$范数$\Rightarrow$完备
-
-
-\begin{proposition}
-  $[0,1]$上的复连续函数空间$ C([0, 1])$,定义内积$f \cdot g = \int_{0}^{1} f(t)g(t) \,dt $, proof that $ C([0, 1])$不是Hilbert Space
-
-  \begin{equation}
-    \begin{aligned}
-    &f_n(t) =
-    \begin{cases}
-    &1,\qquad 0 \leqslant t \leqslant \frac{1}{2}\\
-    &-2n(t- \frac{1}{2}) + 1,\qquad \frac{1}{2} < t \leqslant \frac{1}{2n} + \frac{1}{2}\\
-    &0, \qquad \frac{1}{2n} + \frac{1}{2} < t \leqslant 1\\
-    \end{cases}\\
-    &|| f_n - f_m|| \leqslant (\frac{1}{n} + \frac{1}{m})^{\frac{1}{2}} \rightarrow 0, is \  Cauchy \  Sequence.\\
-    & \lim f_n = 
-    \begin{cases}
-      &1,  0 \leqslant t \leqslant \frac{1}{2}\\
-      &0,  \frac{1}{2} < t \leqslant 1\\
-    \end{cases}\\
-    & \therefore \lim f_n \notin C([0, 1])
-    \end{aligned}
-  \end{equation}
-
-\end{proposition}
-
-
-\subsection{Euclid Space}
-有序的n元组的全体称为n维Euclid空间，记为$\mathbb R^n$，称$\boldsymbol p=(p_i)_{i=1}^n \in \mathbb R^n$是$\mathbb R^n$的一个点。\\
-为便于研究，本论文以$ \mathbb R^3$为背景空间，所涉及的函数默认为可微实值函数。如果实函数$f$的任意阶偏导数存在且连续，则称函数是可微的（或无限可微的，或光滑的，或$C^\infty$的）。\\
-由于微分运算是函数的局部运算，限制所讨论函数的定义域在$ \mathbb R^3$中的任意开集，所讨论的结论仍然成立。\\
-自然坐标函数：定义在$\mathbb R^n$上的实值函数$x_i: \mathbb R^n \to  \mathbb R$，使得$\boldsymbol p=(p_i)_{i=1}^n = \left( x_i(\boldsymbol p) \right)_{i=1}^n   $\\
-切向量：由$\mathbb R^n$ 中的二元组构成，$\boldsymbol v_{\boldsymbol p}=(\boldsymbol p,\boldsymbol v)$，其中$\boldsymbol p$是作用点，$\boldsymbol v$是向量部分\\
-切空间$T_p  \mathbb R^n$: 作用点$\boldsymbol p \in \mathbb R^n$的所有切向量的集合。利用向量加法与数量乘法使某点的切空间称为向量空间，与背景空间存在非平凡同构。\\
-向量场$\boldsymbol V$:作用于空间点的向量函数，$\boldsymbol V(\boldsymbol p)\in T_p  \mathbb R^n $\\
-逐点化原理：$(\boldsymbol V+\boldsymbol W)(\boldsymbol p)=\boldsymbol V(\boldsymbol p)+\boldsymbol W(\boldsymbol p),\ (f \boldsymbol V)(\boldsymbol p)= f(\boldsymbol p)\boldsymbol V (\boldsymbol p)$\\
-自然标架场：定义$\boldsymbol U_i=(\delta _j^i)_{j=1}^n$，按Einstein求和约定，有$\boldsymbol V(\boldsymbol p)=v^i(\boldsymbol p)\boldsymbol U_i(\boldsymbol p)$,称$v^i$为场的Euclid坐标函数，其中Kronecker $\delta$函数定义为：
-\begin{equation}
-\label{Kronecker_delta}
-\delta _i^j=\left\{ 
-    \begin{aligned}
-    1,\  & i =j\\
-    0,\  & i \neq j\\
-    \end{aligned}
-     \right.
-\end{equation}
-
-
-
-
-
-
-\chapter{linear algebra}
-
-\section{linear equation}
+\section{Basic Notation}
 
 Normally, we consider vector space over the fields of real or complex numbers.
 
-\subsection{Ax = B}
+\subsection{linear equation Ax = B}
 
 \subsubsection{Defination}
 
@@ -349,7 +386,25 @@ The equation $\boldsymbol A \boldsymbol x = \boldsymbol b$ has solution, means y
 
 If $\boldsymbol b = \boldsymbol 0$, called homogeneous linear equations, homogeneous because 所有非0项是1次的。if $\boldsymbol b \neq \boldsymbol 0$, it is inhomogeneous. 显然0向量(zero solution, or trivial soltution) 是一个解. A的列向量正交，只有零解；若A的列向量线性相关，有多解，即可按多种方式回到原点。
 
+
+
+\subsubsection{Complex Matrices}
+
+\paragraph{Conjugate Transposition}
+
+for matrix $ \boldsymbol  C \in \mathbb{C}^{m \times n}$, we mark the Conjugate Transposition as $C^H$,
+where $c^T_{ji} = \overline{c}_{ij}$
+
+in representation, $ \boldsymbol  C = \boldsymbol A + i \boldsymbol B$. Usually 4 real matrix multiplications are needed to calculate $(C+iD)(E+ i F)$, actually 3  multiplications  are enough. $(C+iD)(E+ i F) =  (C+D)(E-F)+CF-DE + i(DE+CF)$
+
+
+
+
 \subsubsection{Number of solution}
+
+\paragraph{非齐次线性}
+
+n元线性方程组解的个数等解集结构的研究，期待在不求解的情况下有所了解，就需要研究系数矩阵表示的n维向量空间的性质。
 
 构造增广矩阵$[\boldsymbol A,\boldsymbol b ]$后，初等行变换化为阶梯型，如\ref{fig:number_of_solution}所示，解的个数讨论。
 
@@ -361,7 +416,7 @@ If $\boldsymbol b = \boldsymbol 0$, called homogeneous linear equations, homogen
       \draw (0,6)--(2,6)--(4,2)--(6,2);
       \draw (7.5,0)--(8,0);
       \draw (7.5,2)--(8,2);
-      \draw (7.8,1) node {r};
+      \draw (7.8,1) node {R};
 
       \draw (4,1)--(4,1.5);
       \draw (5,1.3) node {d};
@@ -369,11 +424,31 @@ If $\boldsymbol b = \boldsymbol 0$, called homogeneous linear equations, homogen
   \caption{【number of solution】}\label{fig:number_of_solution}
 \end{figure}
 
-$r \neq 0$, no solution;
+总共有n+1列，下面r行都是0.
 
-$d = 1$, one solution, $tr \boldsymbol A_{mn} = m$,;
+(1)$d = 0$，即最后一个个主元在第n+1列，即存在方程0=1，无解, no solution。\\
+(2)$d = 1$，即最后一个个主元在第n列，唯一解, one solution, $tr \boldsymbol A_{mn} = m$。\\
+(3)$d > 1$，即最后一个个主元在第t列，$t < n$。高度R所在的行号记为r。有无穷个解。解可以这样写出，共R行，即R个主元，每个主元都用所在行的常数项d和n-r个自由元表示出来。
 
-$d \neq 1$, $tr \boldsymbol A_{mn} < m$,inifinity solution，最后一行是解的超平面方程, 图中 d 是解的维度，$d =  n -tr \boldsymbol A_{mn}$, 如d为3，有3列独立的，即解空间是三维的。齐次方程组的未知数个数大于方程个数，有无数解。
+根据主元的构造过程，t的列号一定大于等于r。
+
+
+当$A_{ii}$都是主元的时候,$d \neq 1$, $tr \boldsymbol A_{mn} < m$,inifinity solution，最后一行是解的超平面方程, 图中 d 是解的维度，$d =  n -tr \boldsymbol A_{mn}$, 如d为3，有3列独立的，即解空间是三维的。齐次方程组的未知数个数大于方程个数，有无数解。
+
+
+
+$\det \boldsymbol A = 0$, no solution, or infinite solution.
+$\det \boldsymbol A \neq 0$, one solution.
+
+
+
+
+\paragraph{齐次线性}
+
+一定有0解，因而当有非0解时，有无穷个解。n列时，系数矩阵的秩$r < n$。
+
+方程个数$s < n$时，由于$r  \leqslant s < n$，易知有无穷个解。
+
 
 
 \subsection{Matrix}
@@ -410,7 +485,112 @@ If we have a serious of $\boldsymbol x$, we have a serious of $b$, like this:
 
 The normal definition of the product of two matrix is as above. 
 
+
+
+\subsubsection{Multiplication}
+
+
+There are 6 views sorting with the loop order, we fully understand that. for example, we can think the order jki(j is the outer, i is the inner) as follows
+\begin{equation}
+    \begin{split}
+    &i: | \ \ \cdot = | \\
+    &k: [\ | \ ]  \ \ | =  \sum|  \\
+    &j:  [\ | \ ]  \ \  [\ | \ ]=  [\ | \ ]\\
+\end{split}
+\end{equation}
+
+
+We collect the 6 vews into one table as fallows.
+
+\begin{table}[htbp]
+    \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end
+    {tabular}}
+    \centering
+    \begin{threeparttable}
+    \caption{$\boldsymbol A_{ik} \boldsymbol X_{kj} = \boldsymbol B_{ij}$ }
+    \label{tab:label}
+    \begin{tabular}{cccccc}
+        \toprule
+        Order & innerLoop & MiddleLoop & dataAccess & view & comment\\
+        \midrule
+        ijk & S-S:dot & rowV-M 
+        & $\boldsymbol A_{\alpha:},[\boldsymbol X_{:\beta}], \boldsymbol B_{\alpha:} $ 
+        & $ [\overline{\ \ } ] \cdot [|||] =  [\overline{\ \ } ]$
+        & dot view $\rightharpoonup \downharpoonright$ \\
+
+        jik & S-S:dot & M-columnV
+        & $[\boldsymbol A_{\alpha:}],\boldsymbol X_{:\beta}, \boldsymbol B_{:\beta} $ 
+        & $ [\equiv ] \cdot [|]=  [|]$
+        & dot view $ \downharpoonright \rightharpoonup$\\
+
+        ikj & S-rowV:saxpy & rowV-M:gaxpy
+        & $\boldsymbol A_{\alpha:},[\boldsymbol X_{\beta:}], \boldsymbol B_{\alpha:} $ 
+        & $[\overline{\ \ } ] gaxpy [\equiv ] = [\overline{\ \ } ]$
+        & useOfA $\rightharpoonup \downharpoonright$\\
+
+        jki & colV-S:saxpy & M-colV:gaxpy
+        & $[\boldsymbol A_{:\alpha}],\boldsymbol X_{:\beta}, \boldsymbol B_{:\alpha} $ 
+        & $[||| ] gaxpy [| ] = [| ]$
+        & useOfB $ \downharpoonright \rightharpoonup$\\
+
+        kij& S-rowV:saxpy & colV-rowV:outP
+        & $\boldsymbol A_{:\alpha},\boldsymbol X_{\beta:},\sum \boldsymbol B_{row} $ 
+        & $\sum[| ] outProd [\overline{\ \ } ] =\sum[\equiv ]$
+        & $ on \  A \downharpoonright outProd \rightharpoonup$\\
+
+        kji& colV-S:saxpy & colV-rowV:outP
+        & $\boldsymbol A_{:\alpha},\boldsymbol X_{\beta:},\sum \boldsymbol B_{col} $ 
+        & $\sum[| ] outProd [\overline{\ \ } ] =\sum[||| ]$
+        & $on \  X  \downharpoonright outProd \rightharpoonup$\\
+        \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+        \item[1] S for scalar, V for vector, M for matrix；colV for column vector；outP for out product.
+        \item[2] $[\overline{\ \ } ] gaxpy [\equiv ] = [\overline{\ \ } ]$ is 
+$\sum[\cdot] gaxpy [\overline{\ \ } ] = \sum[\overline{\ \ }]$.
+        \item[3] $[||| ] gaxpy [| ] = [| ]$ is $\sum[| ] gaxpy [\cdot] = \sum[| ]$.
+      \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+
+\begin{table}[htbp]
+    \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end
+    {tabular}}
+    \centering
+    \begin{threeparttable}
+    \caption{$\boldsymbol A_{ik} \boldsymbol X_{kj} = \boldsymbol B_{ij}$ }
+    \label{tab:label}
+    \begin{tabular}{cccc}
+        \toprule
+        Order & InnerLoop & MiddleLoop & OuterLoop \\
+        \midrule
+        ijk & $(rowV, colV) = S$ & $(rowV, [colV]) = rowV$ & collection \\
+        jik & $(rowV, colV) = S$ & $([rowV], colV) = rowV$ & collection \\
+
+        ikj & $(S, colV) = colV$ & $(rowV, [colV]) = \sum colV$ & collection \\
+        jki& $(colV, S) = colV$ & $([colV], colV) = \sum colV$ & collection \\
+
+        kij& $(S, rowV) = rowV$ & $(colV, rowV) = [rowV] $ & collection and $\sum [rowV] $ \\
+        kji& $(colV, S) = colV$ & $(colV, rowV) = [colV] $ & collection and $\sum [colV] $ \\
+        \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+        \item[1] $\sum$ comes with k.
+      \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+
+
+%[\equiv ]
+
+
 \subsubsection{Transposition}
+
+
 Defination: $a_{ij}^T = a_{ji}$
 
 \begin{proposition}
@@ -425,17 +605,230 @@ Defination: $a_{ij}^T = a_{ji}$
 \end{proposition}
 
 
+
+
+
+\subsection{operation}
+
+
+
+\subsubsection{dot procuct AX = B}
+
+Focus on each element of B.
+
+\paragraph{vector vector}
+
+for vector, $\boldsymbol x  . * \boldsymbol y  = \boldsymbol x^T \boldsymbol y$, 
+
+
+
+
+
+
+\paragraph{matrix matrix}
+
+for matrix, this is the definition of the multiplication of the matrix, $\boldsymbol A_{mn}  . * \boldsymbol B_{mn}  = [a_{ij} \cdot b_{ij} ]_{mn}$
+
+
+
+\subsubsection{outer procuct AX = B}
+
+Focus on each element of X, with X is seperated as row by row.
+
+\paragraph{vector vector}
+
+$\boldsymbol x \boldsymbol y^T := [x_i]_{m1} \cdot  [y_j]_{1n} =[x_i y_j]_{mn}   $
+
+In row view, we have $i \rightarrow : \boldsymbol A _{i:} = x_i \cdot \boldsymbol y^T$, this notation means that for each i, we do the follows. And $ \boldsymbol A _{i:}$ means the ith row of the row seperation of $ \boldsymbol A$
+
+In column view, we have $j \rightarrow : \boldsymbol A _{:j} = \boldsymbol x \cdot  y_j$
+
+\paragraph{matrix matrix}
+
+
+$ [|||]  outerProduct [\overline{\ \ } ] =  [ \ \ ]$, we just sum each matrix $\boldsymbol M$, where $\boldsymbol M =[|]  outerProduct [\overline{\ \ } ]  $.
+
+$\boldsymbol X_{mk} \cdot \boldsymbol Y_{kn} = k \rightarrow : outerProduct \ of (\boldsymbol X_{:k}, \boldsymbol  Y_{k:})$
+
+We carefully focus on the use of each element of the matrix $\boldsymbol Y$, like  $A_{11}, A_{12},A_{13}, \cdots$, we can see it is true.
+
+
+\paragraph{question }
+
+\question{power function 001 }
+solve $(\boldsymbol x \boldsymbol y^T)^k$. If k=1, easy. if k>1, ans = $ (\boldsymbol y^T \boldsymbol x )^{k-1}  \boldsymbol x \boldsymbol y^T$
+
+\question{power function 002}
+
+solve $(\boldsymbol X \boldsymbol Y^T)^k, X,Y \in \mathbb{R}^{n \times 2}$. Same trick like power function 001.
+
+
+\subsubsection{saxpi}
+
+\paragraph{scalar scalar}
+$y = ax + y$
+
+\paragraph{scalar vector}
+$ \boldsymbol y = a \cdot  \boldsymbol  x + \boldsymbol y$
+
+
+\paragraph{matrix vector}
+$ \boldsymbol y = \boldsymbol A \cdot  \boldsymbol  x + \boldsymbol y$
+
+
+
+% $ [\overline{\ \ } ] \cdot [|||] =  [\overline{\ \ } ]$
+
+
+\subparagraph{view row: $ [\overline{\ \ } ] \cdot | =  [\overline{\ \ } ]$}
+
+This is the basic view of the dot product of the matrix.
+
+in view row first, we have:
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorRowAlgo1}\label{algo:saxpyMatrixVectorRowAlgo1}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn},\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$i \leftarrow 0$ \KwTo $m-1$}{
+        \For{$j \leftarrow 0$ \KwTo $n-1$}{
+            $ y_i \leftarrow A_{ij}x_j + y_i $
+        }
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+
+We seperate $  \boldsymbol A $ as row, $  \boldsymbol A_{mn} = [\boldsymbol r_{i}^T,...] ^T$, the j range can be shinked, the algorithm is as follows. This means that, we operate each row at a time, and think each row is one whole object.
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorRowAlgo2}\label{algo:saxpyMatrixVectorRowAlgo2}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn}= [\boldsymbol r_{i}^T,...] ^T,\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$i \leftarrow 0$ \KwTo $m-1$}{
+        $ y_i \leftarrow \boldsymbol r_{i}^T \cdot \boldsymbol x + y_i $
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+
+
+
+\subparagraph{view column: $ [|||]  outerProduct [\overline{\ \ } ] =  [ \ \ ]$}
+
+
+
+$\boldsymbol A_{mn} \boldsymbol x = \boldsymbol y $, we seperate A column by column, x row by row, use outer product , focus on the use of x.
+
+
+in column view, we add each column of $\boldsymbol A$ to the same output column to get the new $\boldsymbol y$, and the weight of each column comes from each row of  $\boldsymbol x$
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorColumnAlgo1}\label{algo:saxpyMatrixVectorColumnAlgo1}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn},\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$j \leftarrow 0$ \KwTo $n-1$}{
+        \For{$i \leftarrow 0$ \KwTo $m-1$}{
+            $ y_i \leftarrow A_{ij}x_j + y_i $
+        }
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+Also with column seperation of $\boldsymbol A_{mn} = [\boldsymbol c_i, ...]$, we have the vector view algorithm:
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorColumnAlgo2}\label{algo:saxpyMatrixVectorColumnAlgo2}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn}= [\boldsymbol c_i, ...],\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$j \leftarrow 0$ \KwTo $n-1$}{
+        $\boldsymbol y \leftarrow \boldsymbol c_i \cdot  x_j + \boldsymbol y $
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+
+
+
+
 \subsection{solve equation}
+
+$\boldsymbol A_{mn} \boldsymbol x  =  \boldsymbol y$
 求解方法，如消元法、迭代法等。
 
-\subsubsection{消元法}
-利用初等变换化为“阶梯形（或称上三角形）”，从下往上回代。
+\subsubsection{elimination 消元法}
 
+
+\paragraph{Gaussian Elimination}
+
+基础步骤的$O(n)$的，但是最终组合起来就是$O(n^3)$的。
+
+
+利用初等变换化（同解变换）为“阶梯形（或称上三角形）”，从下往上回代。
+
+阶梯型：1）0行在下方；2）每行首个非0元的列号随行号增大而严格增大。
+
+简化阶梯型：1）阶梯型；2）主元是1；3）主元所在列其他元素是0.
+
+
+
+简化阶梯型后，可直接写出一般解，如下方程，其中主变量是$x_1, x_3$， 其余是自由未知量。
+\begin{equation}
+    \begin{split}
+    & \begin{bmatrix}
+            1 & -1 & 0\\
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3\\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        2 \\
+        -1 \\
+        0 \\
+        \end{bmatrix} \\
+        &Ans: x_1 = x_2 + 2; x_3 = -1\\
+    \end{split}
+\end{equation}
 
 Augmented matrix
 
+
+
 \section{determinant}
 行列式，定义、性质、展开、Gramer法则等
+
+
+\subsection{排列}
+
+\paragraph{偶排列}
+
+如 2431，顺序对有${24,23}$,逆序对有${21,43,41,31}$，逆序数是4，记为$\tau(2431) = 4 $,是偶数则为偶排列。
+
+\begin{lemma}
+    对换改变奇偶性，如2431是偶排列，对换4和1后得到的2134是奇排列。
+
+    证明：对换ab，\\
+    若ab相邻：偏序函数原来查询(ab),记为$P(a,b)$, 对换后改为$P(b,a)$，反号，而b更后面的元素相关的查询不受影响，因而改变符号；\\
+    若ab不相邻：记为$a x_1 \cdots x_t b$,经过t次对换变为$ x_1 \cdots x_ta b$,经过t+1次对换变为$ bx_1 \cdots x_ta $，即改变符号。
+    若ab不相邻，还可以这样考虑：对换前后，与a和b有关的查询为$(a,[x_i, b]), (x_i,b)$,对换后即将其中a和b互换，影响的查询共有2t+1个，即改变符号。
+    即证。
+\end{lemma}
+
+
+
 
 \section{polynomial}
 因式分解定理，多项式的根，多元多项式。
