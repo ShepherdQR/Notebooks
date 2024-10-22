@@ -2,8 +2,8 @@
 %%  ** Author: Shepherd Qirong
 %%  ** Date: 2022-06-05 00:02:38
 %%  ** Github: https://github.com/ShepherdQR
-%%  ** LastEditors: Shepherd Qirong
-%%  ** LastEditTime: 2022-06-05 20:30:20
+%%  ** LastEditors: Qirong ZHANG
+%%  ** LastEditTime: 2024-10-01 17:12:26
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -303,6 +303,33 @@ DMA，DMA不需要CPU执行程序指令。专门的控制器。
 
 
 \chapter{应用软件}
+
+\section{系统软件}
+
+\subsection{windows}
+
+\subsubsection{windows10}
+
+\paragraph{Win10更改任务栏快速跳转列表显示数量}
+
+
+
+\begin{lstlisting}
+    1、按下Win键+X键或者在开始菜单右键点击，出现的菜单中选择“运行”，弹出运行对话框。或者Win键+R键弹出运行对话框。
+    
+       输入regedit点击确定，打开注册表编辑器。
+    
+    2、进入 
+    HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+    
+    3、选择Advanced项目，然后在右边空白处右键新建一个 32位 的DWORD值。改名为JumpListItems_Maximum。
+    
+    4、双击JumpListItems_Maximum键值，选择“十进制”，然后修改数量为自己想要的，我们这里输入24。
+    
+    5、若未生效，则需要重启explorer进程使其生效
+\end{lstlisting}
+
+
 
 \section{并行与分布式软件}
 ParallelAndDistribution
