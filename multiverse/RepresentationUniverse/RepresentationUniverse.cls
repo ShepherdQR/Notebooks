@@ -29,7 +29,7 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 %%\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
 \renewcommand{\figurename}{Figure }
 
-
+\setcounter{secnumdepth}{7}
 
 %\usepackage[square,numbers,sectionbib]{natbib}      
 %% 引入natbib包，参考文献格式相关

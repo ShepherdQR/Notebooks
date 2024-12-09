@@ -1,0 +1,905 @@
+%%============
+%%  ** Author: Qirong ZHANG
+%%  ** Date: 2023-04-05 10:23:55
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Qirong ZHANG
+%%  ** LastEditTime: 2024-12-07 00:03:32
+%%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
+%%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
+%%============
+
+
+\documentclass[UTF8]{../../09-Mathematics}
+\bibliographystyle{../../GBT7714-2005NLang}
+\begin{document}
+
+
+
+\title{09-04-05-04-MatrixTheory}
+\date{Created on 20241206.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+\chapter{Overall}
+
+Matrix Theory
+
+
+
+Augmented matrix
+
+
+
+\chapter{Matrix Space}
+
+\subsection{Matrix}
+
+
+\subsubsection{Defination}
+
+If we have a serious of $\boldsymbol x$, we have a serious of $b$, like this:
+\begin{equation}
+  A_{mn} \cdot X_{nt} = B_{mt}
+  \Longrightarrow
+  \begin{bmatrix}
+     a_{11} & \cdots & a_{1n}\\
+     & \ddots & \\
+     a_{m1} & \cdots & a_{mn} \\
+  \end{bmatrix}
+  \cdot
+  \left[
+    \begin{array}{c:c:c}
+      x_{11} & \cdots & x_{1t}\\
+     \vdots&  & \vdots \\
+     x_{n1} & \cdots & x_{nt} \\
+    \end{array}
+ \right] 
+  =
+ \left[
+    \begin{array}{c:c:c}
+      b_{11} & \cdots & b_{1t}\\
+      \vdots& \cdots & \vdots \\
+      b_{m1} & \cdots & b_{mt} \\
+    \end{array}
+ \right] 
+\end{equation}
+
+The normal definition of the product of two matrix is as above. 
+
+\subsubsection{Complex Matrices}
+
+\paragraph{Conjugate Transposition}
+
+for matrix $ \boldsymbol  C \in \mathbb{C}^{m \times n}$, we mark the Conjugate Transposition as $C^H$,
+where $c^T_{ji} = \overline{c}_{ij}$
+
+in representation, $ \boldsymbol  C = \boldsymbol A + i \boldsymbol B$. Usually 4 real matrix multiplications are needed to calculate $(C+iD)(E+ i F)$, actually 3  multiplications  are enough. $(C+iD)(E+ i F) =  (C+D)(E-F)+CF-DE + i(DE+CF)$
+
+
+
+\subsubsection{Multiplication}
+
+
+There are 6 views sorting with the loop order, we fully understand that. for example, we can think the order jki(j is the outer, i is the inner) as follows
+\begin{equation}
+    \begin{split}
+    &i: | \ \ \cdot = | \\
+    &k: [\ | \ ]  \ \ | =  \sum|  \\
+    &j:  [\ | \ ]  \ \  [\ | \ ]=  [\ | \ ]\\
+\end{split}
+\end{equation}
+
+
+We collect the 6 vews into one table as fallows.
+
+\begin{table}[htbp]
+    \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end
+    {tabular}}
+    \centering
+    \begin{threeparttable}
+    \caption{$\boldsymbol A_{ik} \boldsymbol X_{kj} = \boldsymbol B_{ij}$ }
+    %\label{tab:label}
+    \begin{tabular}{cccccc}
+        \toprule
+        Order & innerLoop & MiddleLoop & dataAccess & view & comment\\
+        \midrule
+        ijk & S-S:dot & rowV-M 
+        & $\boldsymbol A_{\alpha:},[\boldsymbol X_{:\beta}], \boldsymbol B_{\alpha:} $ 
+        & $ [\overline{\ \ } ] \cdot [|||] =  [\overline{\ \ } ]$
+        & dot view $\rightharpoonup \downharpoonright$ \\
+
+        jik & S-S:dot & M-columnV
+        & $[\boldsymbol A_{\alpha:}],\boldsymbol X_{:\beta}, \boldsymbol B_{:\beta} $ 
+        & $ [\equiv ] \cdot [|]=  [|]$
+        & dot view $ \downharpoonright \rightharpoonup$\\
+
+        ikj & S-rowV:saxpy & rowV-M:gaxpy
+        & $\boldsymbol A_{\alpha:},[\boldsymbol X_{\beta:}], \boldsymbol B_{\alpha:} $ 
+        & $[\overline{\ \ } ] gaxpy [\equiv ] = [\overline{\ \ } ]$
+        & useOfA $\rightharpoonup \downharpoonright$\\
+
+        jki & colV-S:saxpy & M-colV:gaxpy
+        & $[\boldsymbol A_{:\alpha}],\boldsymbol X_{:\beta}, \boldsymbol B_{:\alpha} $ 
+        & $[||| ] gaxpy [| ] = [| ]$
+        & useOfB $ \downharpoonright \rightharpoonup$\\
+
+        kij& S-rowV:saxpy & colV-rowV:outP
+        & $\boldsymbol A_{:\alpha},\boldsymbol X_{\beta:},\sum \boldsymbol B_{row} $ 
+        & $\sum[| ] outProd [\overline{\ \ } ] =\sum[\equiv ]$
+        & $ on \  A \downharpoonright outProd \rightharpoonup$\\
+
+        kji& colV-S:saxpy & colV-rowV:outP
+        & $\boldsymbol A_{:\alpha},\boldsymbol X_{\beta:},\sum \boldsymbol B_{col} $ 
+        & $\sum[| ] outProd [\overline{\ \ } ] =\sum[||| ]$
+        & $on \  X  \downharpoonright outProd \rightharpoonup$\\
+        \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+        \item[1] S for scalar, V for vector, M for matrix；colV for column vector；outP for out product.
+        \item[2] $[\overline{\ \ } ] gaxpy [\equiv ] = [\overline{\ \ } ]$ is 
+$\sum[\cdot] gaxpy [\overline{\ \ } ] = \sum[\overline{\ \ }]$.
+        \item[3] $[||| ] gaxpy [| ] = [| ]$ is $\sum[| ] gaxpy [\cdot] = \sum[| ]$.
+      \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+
+\begin{table}[htbp]
+    \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end
+    {tabular}}
+    \centering
+    \begin{threeparttable}
+    \caption{$\boldsymbol A_{ik} \boldsymbol X_{kj} = \boldsymbol B_{ij}$ }
+    %\label{tab:label}
+    \begin{tabular}{cccc}
+        \toprule
+        Order & InnerLoop & MiddleLoop & OuterLoop \\
+        \midrule
+        ijk & $(rowV, colV) = S$ & $(rowV, [colV]) = rowV$ & collection \\
+        jik & $(rowV, colV) = S$ & $([rowV], colV) = rowV$ & collection \\
+
+        ikj & $(S, colV) = colV$ & $(rowV, [colV]) = \sum colV$ & collection \\
+        jki& $(colV, S) = colV$ & $([colV], colV) = \sum colV$ & collection \\
+
+        kij& $(S, rowV) = rowV$ & $(colV, rowV) = [rowV] $ & collection and $\sum [rowV] $ \\
+        kji& $(colV, S) = colV$ & $(colV, rowV) = [colV] $ & collection and $\sum [colV] $ \\
+        \bottomrule
+    \end{tabular}
+    \begin{tablenotes}
+        \item[1] $\sum$ comes with k.
+      \end{tablenotes}
+    \end{threeparttable}
+\end{table}
+
+
+
+
+%[\equiv ]
+
+
+\subsubsection{Transposition}
+
+
+Defination: $a_{ij}^T = a_{ji}$
+
+\begin{proposition}
+    $(\boldsymbol {AB})^T = \boldsymbol B ^T \boldsymbol A^T$
+
+    Proof: $L = (a_{ik}b_{kj})^T = c_{ij}^T = c_{ji} = b_{jk}a_{ki} = R \ \Box$
+\end{proposition}
+
+\begin{proposition}
+    We take a look a the product with reflect $T : \boldsymbol x \rightarrow  \boldsymbol{T} \cdot \boldsymbol{x}$.
+    $(\boldsymbol {Tx})^T \boldsymbol {Ty} = \boldsymbol x^T(\boldsymbol T^T \boldsymbol T) \boldsymbol y = [(\boldsymbol T \boldsymbol T^T) \boldsymbol x]^T \boldsymbol y$. $0 \leqslant \|\boldsymbol T \boldsymbol T^T\| < 1$, $\boldsymbol T$ is a contractive mapping.
+\end{proposition}
+
+
+
+
+
+\subsection{operation}
+
+
+\subsubsection{procuct }
+
+$ \boldsymbol A \boldsymbol x =\boldsymbol y$
+
+
+
+\subsubsection{dot procuct AX = B}
+
+Focus on each element of B.
+
+\paragraph{vector vector}
+
+for vector, $\boldsymbol x  . * \boldsymbol y  = \boldsymbol x^T \boldsymbol y$, 
+
+
+
+\paragraph{matrix matrix}
+
+for matrix, this is the definition of the multiplication of the matrix, $\boldsymbol A_{mn}  . * \boldsymbol B_{mn}  = [a_{ij} \cdot b_{ij} ]_{mn}$
+
+
+
+\subsubsection{outer procuct AX = B}
+
+Focus on each element of X, with X is seperated as row by row.
+
+\paragraph{vector vector AX = B}
+
+$\boldsymbol x \boldsymbol y^T := [x_i]_{m1} \cdot  [y_j]_{1n} =[x_i y_j]_{mn}   $
+
+In row view, we have $i \rightarrow : \boldsymbol A _{i:} = x_i \cdot \boldsymbol y^T$, this notation means that for each i, we do the follows. And $ \boldsymbol A _{i:}$ means the ith row of the row seperation of $ \boldsymbol A$
+
+In column view, we have $j \rightarrow : \boldsymbol A _{:j} = \boldsymbol x \cdot  y_j$
+
+\paragraph{matrix matrix}
+
+
+$ [|||]  outerProduct [\overline{\ \ } ] =  [ \ \ ]$, we just sum each matrix $\boldsymbol M$, where $\boldsymbol M =[|]  outerProduct [\overline{\ \ } ]  $.
+
+$\boldsymbol X_{mk} \cdot \boldsymbol Y_{kn} = k \rightarrow : outerProduct \ of (\boldsymbol X_{:k}, \boldsymbol  Y_{k:})$
+
+We carefully focus on the use of each element of the matrix $\boldsymbol Y$, like  $A_{11}, A_{12},A_{13}, \cdots$, we can see it is true.
+
+
+\paragraph{question }
+
+\question{power function 001 }
+solve $(\boldsymbol x \boldsymbol y^T)^k$. If k=1, easy. if k>1, ans = $ (\boldsymbol y^T \boldsymbol x )^{k-1}  \boldsymbol x \boldsymbol y^T$
+
+\question{power function 002}
+
+solve $(\boldsymbol X \boldsymbol Y^T)^k, X,Y \in \mathbb{R}^{n \times 2}$. Same trick like power function 001.
+
+
+\subsubsection{saxpi}
+
+\paragraph{scalar scalar}
+$y = ax + y$
+
+\paragraph{scalar vector}
+$ \boldsymbol y = a \cdot  \boldsymbol  x + \boldsymbol y$
+
+
+\paragraph{matrix vector}
+$ \boldsymbol y = \boldsymbol A \cdot  \boldsymbol  x + \boldsymbol y$
+
+
+
+% $ [\overline{\ \ } ] \cdot [|||] =  [\overline{\ \ } ]$
+
+
+\subparagraph{view row: $ [\overline{\ \ } ] \cdot | =  [\overline{\ \ } ]$}
+
+This is the basic view of the dot product of the matrix.
+
+in view row first, we have:
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorRowAlgo1}\label{algo:saxpyMatrixVectorRowAlgo1}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn},\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$i \leftarrow 0$ \KwTo $m-1$}{
+        \For{$j \leftarrow 0$ \KwTo $n-1$}{
+            $ y_i \leftarrow A_{ij}x_j + y_i $
+        }
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+
+We seperate $  \boldsymbol A $ as row, $  \boldsymbol A_{mn} = [\boldsymbol r_{i}^T,...] ^T$, the j range can be shinked, the algorithm is as follows. This means that, we operate each row at a time, and think each row is one whole object.
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorRowAlgo2}\label{algo:saxpyMatrixVectorRowAlgo2}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn}= [\boldsymbol r_{i}^T,...] ^T,\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$i \leftarrow 0$ \KwTo $m-1$}{
+        $ y_i \leftarrow \boldsymbol r_{i}^T \cdot \boldsymbol x + y_i $
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+
+
+
+\subparagraph{view column: $ [|||]  outerProduct [\overline{\ \ } ] =  [ \ \ ]$}
+
+
+
+$\boldsymbol A_{mn} \boldsymbol x = \boldsymbol y $, we seperate A column by column, x row by row, use outer product , focus on the use of x.
+
+
+in column view, we add each column of $\boldsymbol A$ to the same output column to get the new $\boldsymbol y$, and the weight of each column comes from each row of  $\boldsymbol x$
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorColumnAlgo1}\label{algo:saxpyMatrixVectorColumnAlgo1}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn},\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$j \leftarrow 0$ \KwTo $n-1$}{
+        \For{$i \leftarrow 0$ \KwTo $m-1$}{
+            $ y_i \leftarrow A_{ij}x_j + y_i $
+        }
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+Also with column seperation of $\boldsymbol A_{mn} = [\boldsymbol c_i, ...]$, we have the vector view algorithm:
+
+\begin{algorithm}[H]
+    \caption{saxpyMatrixVectorColumnAlgo2}\label{algo:saxpyMatrixVectorColumnAlgo2}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn}= [\boldsymbol c_i, ...],\boldsymbol x,\boldsymbol y $}
+    \KwOut{ $\boldsymbol y $}
+    Initialization:$i=0,j=0$\;
+    \For{$j \leftarrow 0$ \KwTo $n-1$}{
+        $\boldsymbol y \leftarrow \boldsymbol c_i \cdot  x_j + \boldsymbol y $
+    }
+    \KwRet $\boldsymbol y$\;
+\end{algorithm}
+
+
+
+\subsection{geometry properties}
+
+\subsubsection{orthogonal bases}
+
+
+\subsubsection{Gram-Schmidt Algorithm}
+
+In 1907, Erhard Schmidt introduced an orthogonalizaiton algoritm, and he claimed the procedure was essentially the same as a paper by J. P. Gram in 1883.
+
+\paragraph{description}
+form an orthogonal sequence${\boldsymbol{q}_n}$ from  a linearly independent sequence${\boldsymbol{x}_n}$ of members from inner-product space by defining ${\boldsymbol{q}_n}$ inductively as:
+
+$$
+\boldsymbol{q}_1 = \boldsymbol{x}_1,
+\boldsymbol{q}_n = \boldsymbol{x}_n - \sum_{k=1}^{n-1}\frac{<\boldsymbol{q}_k,\boldsymbol{x}_n>}{||\boldsymbol{q}_k||^2}\boldsymbol {q}_k, n\geqslant2.
+$$
+
+
+\paragraph{proof}
+
+the construction is like this, first we have 
+$\boldsymbol{q}_1 = \boldsymbol{x}_1$, then $\boldsymbol{q}_2 = \boldsymbol{x}_2 - k_1 \boldsymbol{q}_1$.
+
+for now, we have 
+$span(\boldsymbol{q}_1,\boldsymbol{q}_2) =span(\boldsymbol{x}_1,\boldsymbol{x}_2) $. With constraints $<\boldsymbol{x}_1,\boldsymbol{x}_2>=0$,$k_1 = \frac{<\boldsymbol{q}_1,\boldsymbol{x}_n>}{||\boldsymbol{q}_1||^2}$. Keep doing, like 
+
+$\boldsymbol{q}_3 = \boldsymbol{x}_3 - k_1 \boldsymbol{q}_1- k_2 \boldsymbol{q}_2$. From the construction, we can see it is right.
+
+
+数学归纳法（Mathematical Induction, MI）
+
+\paragraph{QR factorization}
+the construction is like this:
+
+$$
+[\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots, \boldsymbol{a}_n ]
+=
+[\boldsymbol{q}_1,\boldsymbol{q}_2,\cdots, \boldsymbol{q}_n ]
+\cdot 
+\begin{bmatrix}
+    r_{11} &  r_{12} &\cdots & r_{1n}\\
+    &  r_{22} & & \\
+    &   &\ddots & \\
+    0 & 0 & 0 &r_{nn}  \\
+ \end{bmatrix}
+$$
+\paragraph{least squares problems}
+
+\paragraph{projection problem}
+
+\paragraph{example}
+
+\paragraph{exercises}
+
+
+
+
+
+
+
+\newpage
+\chapter{Linear System}
+
+Normally, we consider vector space over the fields of real or complex numbers.
+
+\subsection{linear equation Ax = B}
+
+\subsubsection{Defination}
+
+linear equation in n variables.$\sum_{i = 1}^{i=n}a_ix^i = b$, which can be written as $\boldsymbol a^T \boldsymbol x = b$. We collect m equations and write like this:
+
+\begin{equation}
+  \begin{bmatrix}
+    \boldsymbol a^T_1 \\
+    \vdots \\
+    \boldsymbol a^T_m \\
+  \end{bmatrix}
+  \cdot
+  \begin{bmatrix}
+    \boldsymbol x
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+     b_1 \\
+    \vdots \\
+     b_m \\
+  \end{bmatrix}
+\end{equation}
+
+Noticed that $x_1$ is only applied toe the first column of the left matrix, we can say that $ \boldsymbol x$ is one point, or a specific composition, of the space spanned by the column vector of the matrix. Then it is easy to see that this equation has the solution, only if the vector $ \boldsymbol b$ is in the space spanned by the column vector of the matrix.
+
+
+Or we can write like this:
+\begin{equation}
+  \begin{bmatrix}
+     a_{11} & \cdots & a_{1n}\\
+     & \ddots & \\
+     a_{m1} & \cdots & a_{mn} \\
+  \end{bmatrix}
+  \cdot
+  \begin{bmatrix}
+    x_1 \\
+    \vdots \\
+    x_n \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    b_1 \\
+    \vdots \\
+    b_m \\
+  \end{bmatrix}
+\end{equation}
+
+The equation $\boldsymbol A \boldsymbol x = \boldsymbol b$ has solution, means y可由A的列向量线性表出。
+
+If $\boldsymbol b = \boldsymbol 0$, called homogeneous linear equations, homogeneous because 所有非0项是1次的。if $\boldsymbol b \neq \boldsymbol 0$, it is inhomogeneous. 显然0向量(zero solution, or trivial soltution) 是一个解. A的列向量正交，只有零解；若A的列向量线性相关，有多解，即可按多种方式回到原点。
+
+
+
+
+
+
+\subsubsection{Number of solution}
+
+\paragraph{非齐次线性}
+
+n元线性方程组解的个数等解集结构的研究，期待在不求解的情况下有所了解，就需要研究系数矩阵表示的n维向量空间的性质。
+
+构造增广矩阵$[\boldsymbol A,\boldsymbol b ]$后，初等行变换化为阶梯型，如\ref{fig:number_of_solution}所示，解的个数讨论。
+
+\begin{figure}[h]
+  \centering
+    \begin{tikzpicture}
+      \draw (0,0) rectangle (6,8);
+      \draw (6,0) rectangle (7,8);
+      \draw (0,6)--(2,6)--(4,2)--(6,2);
+      \draw (7.5,0)--(8,0);
+      \draw (7.5,2)--(8,2);
+      \draw (7.8,1) node {R};
+
+      \draw (4,1)--(4,1.5);
+      \draw (5,1.3) node {d};
+    \end{tikzpicture}
+  \caption{【number of solution】}\label{fig:number_of_solution}
+\end{figure}
+
+总共有n+1列，下面r行都是0.
+
+(1)$d = 0$，即最后一个个主元在第n+1列，即存在方程0=1，无解, no solution。\\
+(2)$d = 1$，即最后一个个主元在第n列，唯一解, one solution, $tr \boldsymbol A_{mn} = m$。\\
+(3)$d > 1$，即最后一个个主元在第t列，$t < n$。高度R所在的行号记为r。有无穷个解。解可以这样写出，共R行，即R个主元，每个主元都用所在行的常数项d和n-r个自由元表示出来。
+
+根据主元的构造过程，t的列号一定大于等于r。
+
+
+当$A_{ii}$都是主元的时候,$d \neq 1$, $tr \boldsymbol A_{mn} < m$,inifinity solution，最后一行是解的超平面方程, 图中 d 是解的维度，$d =  n -tr \boldsymbol A_{mn}$, 如d为3，有3列独立的，即解空间是三维的。齐次方程组的未知数个数大于方程个数，有无数解。
+
+
+
+$\det \boldsymbol A = 0$, no solution, or infinite solution.
+$\det \boldsymbol A \neq 0$, one solution.
+
+
+
+
+\paragraph{齐次线性}
+
+一定有0解，因而当有非0解时，有无穷个解。n列时，系数矩阵的秩$r < n$。
+
+方程个数$s < n$时，由于$r  \leqslant s < n$，易知有无穷个解。
+
+
+\subsection{solve equation}
+
+$\boldsymbol A_{mn} \boldsymbol x  =  \boldsymbol y$
+求解方法，如消元法、迭代法等。
+
+\subsubsection{elimination 消元法}
+
+
+\paragraph{Gaussian Elimination}
+
+基础步骤的$O(n)$的，但是最终组合起来就是$O(n^3)$的。
+
+
+利用初等变换化（同解变换）为“阶梯形（或称上三角形）”，从下往上回代。
+
+阶梯型：1）0行在下方；2）每行首个非0元的列号随行号增大而严格增大。
+
+简化阶梯型：1）阶梯型；2）主元是1；3）主元所在列其他元素是0.
+
+
+
+简化阶梯型后，可直接写出一般解，如下方程，其中主变量是$x_1, x_3$， 其余是自由未知量。
+\begin{equation}
+    \begin{split}
+    & \begin{bmatrix}
+            1 & -1 & 0\\
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+            x_3\\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        2 \\
+        -1 \\
+        0 \\
+        \end{bmatrix} \\
+        &Ans: x_1 = x_2 + 2; x_3 = -1\\
+    \end{split}
+\end{equation}
+
+
+
+
+
+
+\subsection{排列}
+
+\paragraph{偶排列}
+
+如 2431，顺序对有${24,23}$,逆序对有${21,43,41,31}$，逆序数是4，记为$\tau(2431) = 4 $,是偶数则为偶排列。
+
+\begin{lemma}
+    对换改变奇偶性，如2431是偶排列，对换4和1后得到的2134是奇排列。
+
+    证明：对换ab，\\
+    若ab相邻：偏序函数原来查询(ab),记为$P(a,b)$, 对换后改为$P(b,a)$，反号，而b更后面的元素相关的查询不受影响，因而改变符号；\\
+    若ab不相邻：记为$a x_1 \cdots x_t b$,经过t次对换变为$ x_1 \cdots x_ta b$,经过t+1次对换变为$ bx_1 \cdots x_ta $，即改变符号。
+    若ab不相邻，还可以这样考虑：对换前后，与a和b有关的查询为$(a,[x_i, b]), (x_i,b)$,对换后即将其中a和b互换，影响的查询共有2t+1个，即改变符号。
+    即证。
+\end{lemma}
+
+
+
+
+\chapter{Eigenvalue problem}
+
+\subsection{Eigenvalue of Linear transformation}
+《矩阵理论-陈大新》
+
+\subsection{Eigenvalue of special matrix}
+《矩阵理论-陈大新》
+
+\subsection{最小多项式}
+《矩阵理论-陈大新》
+
+\subsection{圆盘定理}
+
+《矩阵理论-陈大新》
+
+
+
+\chapter{polynomial}
+因式分解定理，多项式的根，多元多项式。
+
+
+\chapter{operation}
+代数运算、分块运算、乘法、秩
+
+
+
+\chapter{Transformation}
+
+坐标变换、像与核、特征向量、特征子空间、商空间
+
+
+
+
+正交变换
+规范变换
+
+酉相似
+
+\subsection{Elementary Transformation}
+初等变换。
+
+1) 交换两行: $ \boldsymbol A \xrightarrow {(i,j)} \boldsymbol B$ \\
+
+2) 某行乘以不为0的数: $ \boldsymbol A \xrightarrow {\lambda(i)} \boldsymbol B$ \\
+
+3) 某行乘以不为0的数加到另一行上: $ \boldsymbol A \xrightarrow {\lambda(i) + (j)} \boldsymbol B$
+
+初等矩阵: 单位矩阵执行一系列初等变换得到的矩阵. 
+
+初等变换作用于矩阵$\boldsymbol A$, 等于初等变换作用于单位阵之后得到的初等矩阵$\boldsymbol E$再作用于$\boldsymbol A$. 
+
+
+\subsection{Linear Transformation}
+线性变换
+
+
+
+\subsection{Base Transformation}
+
+[Defination: similarity] Transformation Simplification
+
+The motivation is about the base.Changing the bases of a transformation can help simplify the computation. We want to compure $\boldsymbol y = \boldsymbol B \boldsymbol x$, in current base, $\boldsymbol B$ is difficult to compute, we have a simple transformation $\boldsymbol A$, and we want to find a good base transformation $\boldsymbol P$ where we have $\boldsymbol P \boldsymbol y = \boldsymbol A  \boldsymbol P \boldsymbol x $, therefore we have $\boldsymbol B  = \boldsymbol P ^{-1}\boldsymbol A  \boldsymbol P  $. If $ \exists \boldsymbol P$, we  note as $\boldsymbol A \sim \boldsymbol B$.
+
+
+\begin{lemma}
+    If $\boldsymbol A \sim \boldsymbol B$, then $\lambda_A = \lambda_B$.
+
+[Prove] 
+We use the defination of $\lambda_A $, for $\boldsymbol x$, we have $\boldsymbol P\boldsymbol B \boldsymbol P ^{-1} \boldsymbol x = \lambda_A \boldsymbol x$, which means $\boldsymbol B  (\boldsymbol P ^{-1} \boldsymbol x) = \lambda_A (\boldsymbol P ^{-1} \boldsymbol x)= \lambda_B (\boldsymbol P ^{-1} \boldsymbol x) \qed$.
+\end{lemma}
+
+For the simpest $\boldsymbol A$ is diag.
+
+
+
+
+
+
+
+\chapter{正交矩阵和酉矩阵}
+
+
+\section{Orthogonal matrix}
+
+$$
+\boldsymbol{A}^T\boldsymbol{A} = \boldsymbol{A}\boldsymbol{A} ^T = \boldsymbol{I}
+$$
+which means, $\boldsymbol{A}^T = \boldsymbol{A} ^{-1}$
+
+For complex matrix, we use conjugate transpose, and note as Unitary matrix.
+
+
+\section{Orthogonal Bases}
+
+\subsection{GS正交化}
+
+
+
+
+\subsection{Householder Reflection}
+
+point $\boldsymbol p$, hyperplane with normal  $\boldsymbol n$, the reflection of  $\boldsymbol p$ about the plane:
+$$
+\begin{aligned}
+    \boldsymbol q &= \boldsymbol p - 2<\boldsymbol p ,\boldsymbol n >\boldsymbol n \\
+    &= (\boldsymbol I -2\boldsymbol n \boldsymbol n^T )\boldsymbol p\\
+    &= \boldsymbol H \boldsymbol p
+\end{aligned}
+$$
+$\boldsymbol H$ is Householder matrix.
+
+
+
+
+
+\begin{lemma}
+    $\boldsymbol H$ is orthogonal.
+
+    [prove]
+    $$
+    (\boldsymbol H)_{ij}=\left\{ 
+        \begin{aligned}
+        -2 n_in_j,\  & i \neq j\\
+        1-2 n_in_j,\  & i = j\\
+        \end{aligned}
+         \right.
+    $$
+
+    we calculate $c =((\frac{1}{2}\boldsymbol H)(\frac{1}{2}\boldsymbol H^T))_{ij} $.For $i \neq j$, we have,
+    $$
+    \begin{aligned}
+        c = &+(-n_in_0)(-n_jn_0)+\cdots\\
+        &+(\frac{1}{2}-n_in_i)(-n_jn_i)+\cdots\\
+        &+(-n_in_j)(\frac{1}{2}-n_jn_j)+\cdots\\
+        &+(-n_in_{n-1})(-n_jn_{n-1})=0
+        \end{aligned}
+    $$
+    For $i =j$, we have,
+    $$
+    \begin{aligned}
+        c = &+(-n_in_0)(-n_in_0)+\cdots\\
+        &+(\frac{1}{2}-n_in_i)(\frac{1}{2}-n_in_i)+\cdots\\
+        &+(-n_in_{n-1})(-n_in_{n-1})=\frac{1}{4} \qed.
+        \end{aligned}
+    $$
+\end{lemma}
+
+
+
+
+
+\subsection{Application}
+
+When we need the reflection collinear to the vector $\boldsymbol e_1 = [1,0,\cdots,0]^T$, the normal of the reflection superplane is 
+$$
+\boldsymbol n = \frac{\boldsymbol p - ||\boldsymbol p || \boldsymbol e_1}{||\boldsymbol p - ||\boldsymbol p || \boldsymbol e_1||}
+$$
+
+and 
+$$
+\boldsymbol H_1 \boldsymbol A = 
+\begin{bmatrix}
+\alpha _1& & \cdots &\\
+0& &  &\\
+\vdots& & \boldsymbol A_1' &\\
+0& &  &\\
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\alpha _1& & &\\
+0& &  \boldsymbol A_1''&\\
+\vdots& &  &\\
+0& &   \cdots&\\
+\end{bmatrix}
+$$
+
+$$
+\boldsymbol H_k  = 
+\begin{bmatrix}
+\boldsymbol I_{k-1}& 0\\
+0& \boldsymbol H_{k}'\\
+\end{bmatrix},
+\boldsymbol T_k  = 
+\begin{bmatrix}
+\boldsymbol I_{k-1}& 0\\
+0& \boldsymbol H_{k}''\\
+\end{bmatrix}
+$$
+
+where $\boldsymbol H_{k}'$ is the Householder of $\boldsymbol A_{k}'$, it is obviously orthogonal. And we have
+$\boldsymbol H_n \cdots \boldsymbol H_{1} \boldsymbol A= \boldsymbol R$, 
+
+therefore we have the QR decomposition of $\boldsymbol A$
+$$
+\boldsymbol A= \boldsymbol H_{1}^T \cdots \boldsymbol H_{n}^T  \boldsymbol R =  \boldsymbol Q  \boldsymbol R 
+$$.
+
+We want to rewrite each line, we can apply a householder $ \boldsymbol H$ to $ \boldsymbol A_k''^T$, and then transpolate the result, $(\boldsymbol H \boldsymbol A_k''^T)^T =\boldsymbol A_k''\boldsymbol H $, we mark the row-Householder as $ \boldsymbol T$, and we have
+
+$\boldsymbol H_n \cdots \boldsymbol H_1 \boldsymbol A \boldsymbol T_2 \cdots \boldsymbol T_n= \boldsymbol B$,
+
+where $\boldsymbol B$ is the bidiagonal, therefore,
+
+$$
+\boldsymbol A= \boldsymbol H_{1}^T \cdots \boldsymbol H_{n}^T  \boldsymbol B 
+\boldsymbol T_{n}^T \cdots \boldsymbol T_{2}^T
+$$.
+
+
+
+\chapter{special matrix}
+\section{schur定理}
+
+\section{正规矩阵}
+
+\section{实对称矩阵和Hermite矩阵}
+
+
+
+
+\chapter{Decomposition}
+
+\section{Transformation Decomposition}
+
+If we have 
+$\boldsymbol y = \boldsymbol B \boldsymbol x= \boldsymbol P^{-1} \boldsymbol A \boldsymbol P \boldsymbol x = \boldsymbol U \boldsymbol \Sigma  \boldsymbol U^T \boldsymbol x$, where $ \boldsymbol U $ is rotation or reflection, $ \boldsymbol \Sigma  $ is scaling, the transformation is simplified.
+
+
+
+
+
+\section{Eigen Decomposition}
+
+For square matrix.
+ 
+\subsection{Defination by transformation}
+  $\boldsymbol A =\boldsymbol U \boldsymbol \Sigma  \boldsymbol U^{-1} $, where $ \boldsymbol U $ is rotation or reflection, $ \boldsymbol \Sigma  $ is scaling.
+ 
+ 
+\subsection{Defination by defination}
+ 
+For the given transformation$\boldsymbol A $, if $\exists \boldsymbol v, \lambda$, such that $\boldsymbol A \boldsymbol v = \lambda \boldsymbol v$, and maybe we have some equations with different $\lambda$, we collect as $\boldsymbol  \lambda$ as a diagonal matrix, and the equations as  $\boldsymbol A \boldsymbol Q =  \boldsymbol Q\boldsymbol \lambda$, where $\boldsymbol Q = [\boldsymbol  v_0, \cdots, \boldsymbol  v_{n-1}]$, therefore we have  $\boldsymbol A =  \boldsymbol Q\boldsymbol \lambda\boldsymbol Q ^T$, we call this is the Eigen Decomposition of $\boldsymbol  A$.
+ 
+ 
+
+
+\section{QR}
+
+
+\section{SVD: Singular Value Decomposition}
+
+
+\subsection{Defination}
+
+When the matrix is not square, the form$\boldsymbol  A = \boldsymbol  U  \boldsymbol \Sigma \boldsymbol V^T$.
+
+\begin{lemma}
+    $\boldsymbol  C$ is the  Gram matrix of $\boldsymbol  A$, $  \boldsymbol\Sigma^2 = \boldsymbol \lambda_C $
+
+    [Prove] $\boldsymbol  C = \boldsymbol  A^T \boldsymbol  A =
+    \boldsymbol  V  \boldsymbol \Sigma \boldsymbol U^T
+    \boldsymbol  U  \boldsymbol \Sigma \boldsymbol V^T
+    =\boldsymbol  V  \boldsymbol \Sigma^2 \boldsymbol  V^T$ \qed.
+\end{lemma}
+
+
+\subsection{Algorithm 1: QR}
+
+\begin{algorithm}[H]
+    \caption{SVD:QR}\label{algo:SVD:QR}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A_{mn}$}
+    \KwOut{ $\boldsymbol U, \boldsymbol \Sigma,\boldsymbol V $}
+    $\boldsymbol  C = \boldsymbol  A^T \boldsymbol  A$\;
+    use symmetric QR: $\boldsymbol  C = \boldsymbol  V  \boldsymbol \Sigma^2 \boldsymbol  V^T$\;
+    $\boldsymbol U = \boldsymbol A \boldsymbol  V \boldsymbol \Sigma^{-1}$\;
+    \KwRet $\boldsymbol U, \boldsymbol \Sigma,\boldsymbol V $\;
+\end{algorithm}
+
+
+\chapter{Form}
+
+\subsection{Jordan}
+
+Jordan型、根子空间分解、循环子空间、多项式矩阵相抵不变量、特征方阵与相似标准型
+
+
+\subsubsection{不变子空间
+}
+
+《矩阵理论-陈大新》
+
+\subsubsection{特征值全0矩阵的Jordan标准型}
+
+《矩阵理论-陈大新》
+
+
+
+\subsubsection{Jordan标准型计算}
+
+
+\subsection{二次}
+配方法构造、对称方阵的相合、相合不变量
+
+
+\chapter{参考文献说明}
+《矩阵理论-陈大新》\upcite{5ch001shepherdQR2020paper}：好的观点的来源。
+
+
+\bibliography{reference1}%, reference2
+
+\end{document}

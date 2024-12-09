@@ -15,6 +15,33 @@ headheight=1.0cm,footskip=0.7cm]{geometry}
 \usepackage{multirow,booktabs, verbatim}
 \usepackage{chemarrow}
 
+
+
+%% reference
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+%\definecolor{navyblue}{RGB}{0,0,128}   %增加海军蓝颜色
+\hypersetup{
+  bookmarksnumbered,%
+  linktoc=all,
+  colorlinks=true,
+  citecolor=blue,
+  filecolor=cyan,
+  linkcolor=blue,
+  linkbordercolor=blue,
+  urlcolor=blue,
+  plainpages=false,%
+  pdfstartview=FitH
+}
+%% sort and compress citations
+\RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
+% 上标引用
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+
+
+
+
+
 \usepackage{tikz}
 \usetikzlibrary{arrows, shapes, chains}
 
