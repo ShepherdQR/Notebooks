@@ -3,7 +3,7 @@
 %%  ** Date: 2023-04-05 10:23:55
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Qirong ZHANG
-%%  ** LastEditTime: 2024-12-07 00:03:32
+%%  ** LastEditTime: 2024-12-15 23:26:54
 %%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
 %%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
 %%============
@@ -19,6 +19,12 @@
 \date{Created on 20241206.\\   Last modified on \today.}
 \maketitle
 \tableofcontents
+
+
+% \begin{lstlisting}
+
+% \end{lstlisting}
+
 
 
 \chapter{Overall}
@@ -350,64 +356,28 @@ Also with column seperation of $\boldsymbol A_{mn} = [\boldsymbol c_i, ...]$, we
 
 
 
-\subsection{geometry properties}
 
-\subsubsection{orthogonal bases}
-
-
-\subsubsection{Gram-Schmidt Algorithm}
-
-In 1907, Erhard Schmidt introduced an orthogonalizaiton algoritm, and he claimed the procedure was essentially the same as a paper by J. P. Gram in 1883.
-
-\paragraph{description}
-form an orthogonal sequence${\boldsymbol{q}_n}$ from  a linearly independent sequence${\boldsymbol{x}_n}$ of members from inner-product space by defining ${\boldsymbol{q}_n}$ inductively as:
-
-$$
-\boldsymbol{q}_1 = \boldsymbol{x}_1,
-\boldsymbol{q}_n = \boldsymbol{x}_n - \sum_{k=1}^{n-1}\frac{<\boldsymbol{q}_k,\boldsymbol{x}_n>}{||\boldsymbol{q}_k||^2}\boldsymbol {q}_k, n\geqslant2.
-$$
+\subsection{properties}
 
 
-\paragraph{proof}
+\subsubsection{geometry properties}
 
-the construction is like this, first we have 
-$\boldsymbol{q}_1 = \boldsymbol{x}_1$, then $\boldsymbol{q}_2 = \boldsymbol{x}_2 - k_1 \boldsymbol{q}_1$.
+\subsubsection{4 subspace}
 
-for now, we have 
-$span(\boldsymbol{q}_1,\boldsymbol{q}_2) =span(\boldsymbol{x}_1,\boldsymbol{x}_2) $. With constraints $<\boldsymbol{x}_1,\boldsymbol{x}_2>=0$,$k_1 = \frac{<\boldsymbol{q}_1,\boldsymbol{x}_n>}{||\boldsymbol{q}_1||^2}$. Keep doing, like 
+% \begin{lstlisting}
 
-$\boldsymbol{q}_3 = \boldsymbol{x}_3 - k_1 \boldsymbol{q}_1- k_2 \boldsymbol{q}_2$. From the construction, we can see it is right.
+% \end{lstlisting}
 
+$R(\boldsymbol A)$: A的列空间\\
+$N(\boldsymbol A)$: A的右零空间，即满足$\boldsymbol A \boldsymbol x = \boldsymbol 0$的所有$\boldsymbol x$在的空间\\
+$R(\boldsymbol A^T)$: A的行空间\\
+$N(\boldsymbol A^T)$: A的左零空间\\
 
-数学归纳法（Mathematical Induction, MI）
+\begin{lemma}
+$N(\boldsymbol A) = R(\boldsymbol A^T)^\perp$
 
-\paragraph{QR factorization}
-the construction is like this:
-
-$$
-[\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots, \boldsymbol{a}_n ]
-=
-[\boldsymbol{q}_1,\boldsymbol{q}_2,\cdots, \boldsymbol{q}_n ]
-\cdot 
-\begin{bmatrix}
-    r_{11} &  r_{12} &\cdots & r_{1n}\\
-    &  r_{22} & & \\
-    &   &\ddots & \\
-    0 & 0 & 0 &r_{nn}  \\
- \end{bmatrix}
-$$
-\paragraph{least squares problems}
-
-\paragraph{projection problem}
-
-\paragraph{example}
-
-\paragraph{exercises}
-
-
-
-
-
+proof: $ \forall \boldsymbol x \in N(\boldsymbol A)$, $\boldsymbol \beta \in R(\boldsymbol A^T)$, we have $\boldsymbol x \cdot \boldsymbol \beta = 0$, which means that $\boldsymbol x \in R(\boldsymbol A^T)^\perp$,$\qed$.
+\end{lemma}
 
 
 \newpage
@@ -685,7 +655,77 @@ For complex matrix, we use conjugate transpose, and note as Unitary matrix.
 
 \section{Orthogonal Bases}
 
-\subsection{GS正交化}
+\subsection{Gram-Schmidt Algorithm：GS正交化}
+
+
+
+normalize a given set $\{ \boldsymbol \alpha_i\}$ to $\{\boldsymbol  \beta_i\}$, such that $\boldsymbol  \beta_i \boldsymbol  \beta_j = 0, \forall i,j$, and $span\{ \boldsymbol \alpha_i\} = span\{ \boldsymbol \beta_i\}$
+
+\begin{algorithm}[H]
+    \caption{Algorithm Normalize:GS}\label{algo:Normalize:GS}
+    \SetAlgoLined
+    \KwIn{ $\{\boldsymbol  \alpha_i\}$}
+    \KwOut{ a normalized base $\{\boldsymbol  \beta_i\}$}
+    $\boldsymbol \beta _1 = \boldsymbol \alpha _1$\;
+    $\boldsymbol \beta _2 = \boldsymbol \alpha _2 - k_1 \boldsymbol  \beta _1$\;
+    let $\boldsymbol \beta _1 \boldsymbol \beta _2 = 0 \Rightarrow k_1 = \frac{\boldsymbol \beta _1 \boldsymbol \alpha _2}{ \boldsymbol \beta _1 \boldsymbol \beta _1}$\;
+    keep doing, we have
+    $$\boldsymbol  \beta _k = \boldsymbol \alpha _k-\sum_{i=1}^{k}\frac{\boldsymbol \beta _i \boldsymbol \alpha _k}{\boldsymbol \beta _i \boldsymbol \beta _i} \boldsymbol \beta _i$$
+    \KwRet $\{\boldsymbol  \beta_i\}$\;
+\end{algorithm}
+
+
+
+
+
+
+
+
+\subsubsection{description}
+
+In 1907, Erhard Schmidt introduced an orthogonalizaiton algoritm, and he claimed the procedure was essentially the same as a paper by J. P. Gram in 1883.
+
+form an orthogonal sequence${\boldsymbol{q}_n}$ from  a linearly independent sequence${\boldsymbol{x}_n}$ of members from inner-product space by defining ${\boldsymbol{q}_n}$ inductively as:
+
+$$
+\boldsymbol{q}_1 = \boldsymbol{x}_1,
+\boldsymbol{q}_n = \boldsymbol{x}_n - \sum_{k=1}^{n-1}\frac{<\boldsymbol{q}_k,\boldsymbol{x}_n>}{||\boldsymbol{q}_k||^2}\boldsymbol {q}_k, n\geqslant2.
+$$
+
+
+\subsubsection{proof}
+
+the construction is like this, first we have 
+$\boldsymbol{q}_1 = \boldsymbol{x}_1$, then $\boldsymbol{q}_2 = \boldsymbol{x}_2 - k_1 \boldsymbol{q}_1$.
+
+for now, we have 
+$span(\boldsymbol{q}_1,\boldsymbol{q}_2) =span(\boldsymbol{x}_1,\boldsymbol{x}_2) $. With constraints $<\boldsymbol{x}_1,\boldsymbol{x}_2>=0$,$k_1 = \frac{<\boldsymbol{q}_1,\boldsymbol{x}_n>}{||\boldsymbol{q}_1||^2}$. Keep doing, like 
+
+$\boldsymbol{q}_3 = \boldsymbol{x}_3 - k_1 \boldsymbol{q}_1- k_2 \boldsymbol{q}_2$. From the construction, we can see it is right.
+
+
+数学归纳法（Mathematical Induction, MI）
+
+
+\subsubsection{least squares problems}
+
+\subsubsection{projection problem}
+
+\subsubsection{example}
+
+\subsubsection{exercises}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -838,6 +878,23 @@ For the given transformation$\boldsymbol A $, if $\exists \boldsymbol v, \lambda
 
 
 \section{QR}
+
+
+\paragraph{QR factorization}
+the construction is like this:
+
+$$
+[\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots, \boldsymbol{a}_n ]
+=
+[\boldsymbol{q}_1,\boldsymbol{q}_2,\cdots, \boldsymbol{q}_n ]
+\cdot 
+\begin{bmatrix}
+    r_{11} &  r_{12} &\cdots & r_{1n}\\
+    &  r_{22} & & \\
+    &   &\ddots & \\
+    0 & 0 & 0 &r_{nn}  \\
+ \end{bmatrix}
+$$
 
 
 \section{SVD: Singular Value Decomposition}

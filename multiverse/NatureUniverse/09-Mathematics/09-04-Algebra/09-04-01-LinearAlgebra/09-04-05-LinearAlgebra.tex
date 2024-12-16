@@ -3,7 +3,7 @@
 %%  ** Date: 2023-04-05 10:23:55
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Qirong ZHANG
-%%  ** LastEditTime: 2024-12-07 00:30:49
+%%  ** LastEditTime: 2024-12-09 20:50:15
 %%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
 %%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
 %%============
@@ -370,12 +370,57 @@ Distance function satisfies the following:
 
 \section{单边逆}
 
-\section{Moore-Penrose Inverse}
+\section{Moore-Penrose Pseudoniverse}
+
+$$
+\begin{aligned}
+    \boldsymbol A \boldsymbol G \boldsymbol A &= \boldsymbol A\\
+    \boldsymbol G \boldsymbol A \boldsymbol G &= \boldsymbol G\\
+    (\boldsymbol G \boldsymbol A )^T &= \boldsymbol G \boldsymbol A\\
+    (\boldsymbol A \boldsymbol G )^T &= \boldsymbol A \boldsymbol G\\
+\end{aligned}
+$$
+
+
+\begin{lemma}
+    $\boldsymbol G$ is unique.
+    
+    Prove: suppose $\boldsymbol G_1 \neq \boldsymbol G_2$,
+    $$
+    \begin{aligned}
+        \boldsymbol G_2 &= \boldsymbol G_2 \underline{\boldsymbol A}  \boldsymbol G_2\\
+        &= \boldsymbol G_2 \underline{\boldsymbol A \boldsymbol G_1} \cdot \underline{\boldsymbol A \boldsymbol G_2} = \boldsymbol G_2 [(\boldsymbol A \boldsymbol G_1)^T \cdot (\boldsymbol A \boldsymbol G_2)^T] = \boldsymbol G_2(\boldsymbol A \boldsymbol G_2\boldsymbol A \boldsymbol G_1)^T= \boldsymbol G_2(\boldsymbol A  \boldsymbol G_1)^T\\
+        &= \boldsymbol G_2 \underline{\boldsymbol A}  \boldsymbol G_1\\
+        &=\underline{\boldsymbol G_2 \boldsymbol A} \cdot \underline{\boldsymbol G_1 \boldsymbol A } \boldsymbol G_1 =\boldsymbol G_1 \boldsymbol A \cdot \boldsymbol G_2 \boldsymbol A  \cdot \boldsymbol G_1=\boldsymbol G_1 \boldsymbol A \boldsymbol G_1\\
+        &= \boldsymbol G_1 \qed
+    \end{aligned}
+    $$
+
+\end{lemma}
+
 
 
 \subsection{Properties}
+
+\subsubsection{solution of Ax=y}
 $\boldsymbol A \boldsymbol x = \boldsymbol y$, where$\boldsymbol A_{mn},m>n$
 
+
+\begin{algorithm}[H]
+    \caption{Algorithm LinearEquation:MP}\label{algo:LinearEquation:MP}
+    \SetAlgoLined
+    \KwIn{ $\boldsymbol A \boldsymbol x = \boldsymbol y$, where $\boldsymbol A_{mn},m>n$, and $ \boldsymbol y$ are unknown.}
+    \KwOut{$\boldsymbol x$}
+    $\boldsymbol A (\boldsymbol A^T \boldsymbol A^{-T}) \boldsymbol x = \boldsymbol y$\;
+    let $\boldsymbol C = \boldsymbol A \boldsymbol A^T$, $\boldsymbol I = \boldsymbol A^{-T} \boldsymbol x$, $\boldsymbol C \boldsymbol I = \boldsymbol y$\;
+    solve $\boldsymbol I$\;
+    $\boldsymbol x = $\;
+    \KwRet $\boldsymbol x = \boldsymbol A^T \boldsymbol I$\;
+\end{algorithm}
+
+The algorithm meas $\boldsymbol x = (\boldsymbol A \boldsymbol A^T \boldsymbol A^{-T})^{-1} \boldsymbol y = [(\boldsymbol A \boldsymbol A^T )\boldsymbol A^{-T}]^{-1} \boldsymbol y = \boldsymbol A^T (\boldsymbol A \boldsymbol A^T )^{-1} \boldsymbol y$.
+
+$\boldsymbol A^T (\boldsymbol A \boldsymbol A^T )^{-1}$, and $(\boldsymbol A^T \boldsymbol A )^{-1}\boldsymbol A^T$ are Moore-Penrose Pseudoniverse
 
 
 \subsection{相容方程的解}
