@@ -1,0 +1,398 @@
+%%============
+%%  ** Author: Qirong ZHANG
+%%  ** Date: 2023-04-05 10:23:55
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Qirong ZHANG
+%%  ** LastEditTime: 2024-12-22 00:52:46
+%%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
+%%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
+%%============
+
+
+\documentclass[UTF8]{../../09-Mathematics}
+\bibliographystyle{../../GBT7714-2005NLang}
+\begin{document}
+
+
+
+\title{09-04-04-Space}
+\date{Created on 20241221.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+\chapter{Overall}
+
+ 
+Space and its mapping
+
+
+
+\chapter{Basic}
+
+线性空间（加法、乘法） -> 线性映射 <->矩阵
+
+现实几何空间还有距离和角度的概念，可用内积（双线性函数）来刻画。具有度量的线性空间。分类：欧几里得空间（实数域、有限维、线性空间、内积，内积有交换律）、酉空间（复数域、有限维、线性空间、内积，内积有共轭交换律）。
+
+线性变换：空间A到空间AZ自身的线性映射。
+
+
+\section{Properties}
+
+
+\subsection{Linear}
+
+\subsection{open set}
+
+\subsection{Metric}
+
+a metric or a distance function, satisfies the following:
+\begin{equation}\label{Defination:Distance_function}
+    \begin{split}
+    &d(\boldsymbol x, \boldsymbol y) \geqslant 0,正定性\\
+    &d(\boldsymbol x, \boldsymbol y) = d(\boldsymbol y, \boldsymbol x),对称性\\
+    &d(\boldsymbol x, \boldsymbol y) \leqslant d(\boldsymbol x, \boldsymbol z) + d(\boldsymbol z, \boldsymbol y),三角不等式\\
+\end{split}
+\end{equation}
+
+\subsubsection{相似性:聚类}
+
+
+
+\subsubsection{收敛性: 不动点定理}
+
+用于证明解的唯一性：线性代数方程(n维欧氏空间)， 常微分方程(连续函数空间)， 积分方程(连续函数空间)。
+
+
+\subsection{norm}
+
+与metric的区别是，norm多了线性性。因而当讨论完备性时，可以研究级数的敛散性。
+
+
+
+
+\subsection{dot product}
+
+内积，引入角度。推广正交性相关的概念（正交投影，正交分解，正交基）。
+
+
+\subsection{completeness}
+
+\begin{definition}
+    收敛：sequence $\{ x_n \}$ 收敛到c，means that $\lim_{x \to \infty} d(x_n, c) = 0$, noted as $\lim_{x \to \infty} x_n = c $
+\end{definition}
+
+\begin{definition}
+    Cauchy基本列：$\lim_{m \to \infty,n \to \infty}d(x_m, x_n)=0  $
+\end{definition}
+
+\begin{definition}
+    完备距离空间：所有Cauchy基本列收敛于一点
+\end{definition}
+
+\begin{definition}
+  不完备：对于苹果空间，从宇宙开始到宇宙结束的所有苹果序列，收敛到我，则不完备。
+\end{definition}
+
+
+
+\subsection{Measurable}
+
+再放弃距离和角度，保留（几何体的）体积，就得到了测度。根据柯尔莫果洛夫的概率论方法，在体积之外，测度还可以是面积、长度、质量（或电荷）分布、概率分布等概念。
+
+经典数学中的“几何体”远比一组点更有规律。几何体的边界体积为零，因此集合体的体积就是内部的体积，可以由无限个立方体序列穷尽。相反，任意点集的边界体积可以非零（例如给定立方体内部所有有理点的集合）。测度论成功地将体积概念扩展到了一大类集合，即所谓可测集。事实上，不可测集在应用中几乎从未出现过。
+
+在可测空间中给出的可测集会产生可测函数与映射。为将拓扑空间转为可测空间，要赋予它σ-代数。最常用的是博雷尔集的σ-代数，也有其他选择（有时也用贝尔集、普遍可测集等）。 拓扑并不由博雷尔σ-代数唯一确定；例如，可分希尔伯特空间上的赋范拓扑和弱拓扑会产生相同的博雷尔σ-代数。 并非每个σ-代数都是某个拓扑的博雷尔σ-代数[3]。实际上，σ-代数可由给定集合（或函数）生成，而与任何拓扑无关。可测空间的每个子集本身就是一个可测空间。
+
+标准可测空间（也称为标准博雷尔空间）与紧空间有相似性，因而特别有用（见EoM）。标准可测空间之间的每个双射可测映射都同构，即反映射也可测。而此类空间之间的映射可测，当且仅当图在积空间中也可测。相似地，紧可测空间之间的每个连续双射都是同胚映射，即逆映射也连续。当且仅当其图在积空间中为闭，此类空间之间的映射采才连续。
+
+欧氏空间（更广义地说，是完备可分可测空间）中的每一个博雷尔集，只要赋予博雷尔σ代数，就是标准可测空间。所有不可数标准可测空间都相互同构。
+
+测度空间是赋予了测度的可测空间。具备勒贝格测度的欧氏空间就是测度空间。积分论定义了测度空间上可测函数的可积分性和积分。
+
+测度为0的集合称为空集，是可忽略的。因此“模0同构”被定义为全测度（即有可忽略补集）子集间的同构。
+
+概率空间也是可测空间，整个空间的测度为1。任何概率空间族（有限或无限）的积仍是概率空间；相对地，对一般测度空间，只有有限多空间的积才有定义。因此，有许多无限维概率测度（特别是高斯测度），但没有无限维勒贝格测度。
+
+标准概率空间非常有用。标准概率空间上，条件期望可视作对条件度量的积分（常规条件概率，另见离散测度）。给定两个标准概率空间，它们的测度代数的每个同态都是由某个保测映射引入的。标准可测空间上的每个概率测度都会产生标准概率空间。标准概率空间序列（有限或无限）的积还是标准概率空间。所有非元标准概率空间都互为模0同构，其中一个是具有勒贝格测度的区间(0,1)。
+
+这些空间不那么几何。特别是，维度的概念（以各种形式）适用于所有其他空间，却不适用于可测空间、测度空间和概率空间。
+
+
+\chapter{Subspace}
+
+\section{子空间基本定理}
+
+\begin{lemma}
+    Given $S \in \mathbb R^m$, $\forall b \in \mathbb R^m$, $\exists p \in S$, such that $min ||b-p||$, we have p is unique, and $(b-p)\in S^ \bot $.
+
+    prove: $b = p+z, p\in S, z \in S^ \bot$, $\forall y \in S$, $L= ||b-y||^2 = ||b-p+p-y||^2 ,b-p \in S^ \bot, p-y \in S$,therefore, $ ||b-p+p-y||^2= ||b-p||^2 + ||p-y||^2 $, b and p is known, therefore when $y=p$ we have the minimum $L$, $\qed.$
+\end{lemma}
+
+
+
+\chapter{L0.0: Linear Space}
+
+Linear Space or vector space
+
+向量空间，又称线性空间。
+
+
+向量加法、标量乘法构成的单位环。
+
+
+
+
+\section{Unitary Linear Space}
+
+酉空间 
+
+
+与度量有关的线性变换：
+酉变换
+Hermite变换
+
+
+\section{仿射空间}
+
+
+\section{射影空间}
+
+仿射空间是非紧流形，而射影空间是紧流形。
+
+
+
+
+
+\chapter{L0.1: Topological Space}
+
+
+open set
+
+
+拓扑空间具有分析性质。根据其定义，拓扑空间中的开集可引出连续函数、路径、映射；收敛数列、极限；内部、边界、外部等概念。而一致连续、有界集、柯西序列、可微函数（路径、映射）则仍未定义。拓扑空间之间的同构叫做同胚，它们是两个方向上连续的一一对应关系。
+
+
+
+拓扑空间的维度也难以定义，有归纳维数（图形的边界维度通常比图形维度小1的归纳）和拓扑维数等。
+
+
+
+光滑流形不叫做“空间”但可以是。光滑流形都是拓扑流形，可以嵌入有限维线性空间。有限维线性空间中的光滑面是光滑流形：例如，椭球面是光滑流形，而多面体表面则不是。实或复有限维线性、仿射、射影空间也是光滑流形。
+
+光滑流形中的光滑路径的每点上都有切向量，其属于流形在这一点上的切空间。n维光滑流形的切空间是n维线性空间。光滑流形上光滑函数的微分提供了切空间上每一点的线性函数。
+
+黎曼流形或黎曼空间是切空间有内积、满足部分条件的光滑流形。欧氏空间是黎曼空间，欧氏空间中的光滑面也是黎曼空间，双曲非欧空间也是黎曼空间。黎曼空间中的曲线有长度，两点之间最短曲线的长度定义了距离，因此黎曼空间是度量空间。交于一点的两条曲线间的夹角是切线间的夹角。
+
+若放弃切空间内积的正定性，就得到了伪黎曼流形，包括对广义相对论非常重要的洛伦兹空间。
+
+
+
+
+
+
+\chapter{L1.0: Locally Convex Space-L0.0+L0.1}
+
+Seminorm
+
+
+
+\chapter{L1.1X: Uniform Space-L0.1}
+
+
+豪斯多夫维数（与覆盖给定集的小球数有关）适用于度量空间，可以不是整数（特别是对于分形）。n维欧氏空间的豪斯多夫维数都是n。
+
+一致空间没有距离，但仍允许均匀连续与柯西序列（或柯西滤子或柯西网）、紧与完备。一致空间都是拓扑空间；线性拓扑空间（无论可否度量）也是一致空间，在有限维时完备，在无限维时通常不完备。更一般地说，交换拓扑群都是一致空间。非交换拓扑群则蕴含左不变、右不变两个一致结构。
+
+
+\chapter{L1.1: Metric Space-L1.1X}
+
+弗雷歇（Fréchet，M.R.）将欧几里得空间的距离概念抽象化，于1906年定义了度量空间。
+
+\begin{definition}
+    The set X with a distance function d, d satisfies\ref{Defination:Distance_function}. Metric Space is noted as $(X,d)$.
+\end{definition}
+
+\begin{definition}
+    紧集：$(X,d)$中的子集A，A中任意序列都存在一子列$x_n$,$x_n$收敛到A中某点。
+\end{definition}
+
+\begin{definition}
+    稠密集：$(X,d)$中的子集A，对于X中的任意点x，A中存在点a，使得$d(x,a)< \varepsilon $
+\end{definition}
+
+\begin{definition}
+    X可分：$(X,d)$中存在一个可数稠密集。
+\end{definition}
+
+
+\subsubsection{Complete Metric Space}
+
+度量+完备。
+
+
+
+
+\chapter{L1.2: Manifold-L0.2}
+
+
+
+
+\chapter{L2.0:Inner Product Space-L1.0}
+
+线性+内积
+
+\begin{equation}%\label{}
+\begin{aligned}
+  &(\alpha x + \beta y ) \cdot z = \alpha x \cdot z + \beta y \cdot z, &   \mbox{线性}\\
+  &x \cdot (\alpha y + \beta z) = \bar{ \alpha}    x \cdot y + \bar{ \beta}    x \cdot z,&   \mbox{共轭线性}\\
+  &x \cdot y = \bar{ y \cdot x}, &   \mbox{共轭对称}\\
+  &x \cdot x \geqslant 0 , &\mbox{正定} \Rightarrow || x || = \sqrt{x \cdot x} \\
+  &|x \cdot y| \leqslant || x || \cdot || y ||, &satisfies  Cauchy-Schwarz \\
+\end{aligned}
+\end{equation}
+ 
+
+\section{给定基中的内积表示}
+
+《矩阵理论-陈大新》
+
+
+
+
+
+
+\section{L3.0:Hilbert Space-L2.0}
+
+完备，内积。
+
+核心是正交性。逼近论、信号处理中常用。
+
+内积$\Rightarrow$范数$\Rightarrow$完备
+
+
+\begin{proposition}
+  $[0,1]$上的复连续函数空间$ C([0, 1])$,定义内积$f \cdot g = \int_{0}^{1} f(t)g(t) \,dt $, proof that $ C([0, 1])$不是Hilbert Space
+
+  \begin{equation}
+    \begin{aligned}
+    &f_n(t) =
+    \begin{cases}
+    &1,\qquad 0 \leqslant t \leqslant \frac{1}{2}\\
+    &-2n(t- \frac{1}{2}) + 1,\qquad \frac{1}{2} < t \leqslant \frac{1}{2n} + \frac{1}{2}\\
+    &0, \qquad \frac{1}{2n} + \frac{1}{2} < t \leqslant 1\\
+    \end{cases}\\
+    &|| f_n - f_m|| \leqslant (\frac{1}{n} + \frac{1}{m})^{\frac{1}{2}} \rightarrow 0, is \  Cauchy \  Sequence.\\
+    & \lim f_n = 
+    \begin{cases}
+      &1,  0 \leqslant t \leqslant \frac{1}{2}\\
+      &0,  \frac{1}{2} < t \leqslant 1\\
+    \end{cases}\\
+    & \therefore \lim f_n \notin C([0, 1])
+    \end{aligned}
+  \end{equation}
+
+\end{proposition}
+
+
+\chapter{L2.1:Normed Space-L1.0-L1.1}
+
+线性 + Norm
+
+
+从赋范空间到赋范空间的映射叫做算子，从赋范空间到实数R或者复数C的映射叫做泛函。
+
+
+\section{L3.1:Banach Space-L2.1}
+
+赋范、线性 + 赋范 + 完备。
+
+
+
+\subsection{Hahn-Banach定理}
+一个泛函从一个小的子空间延拓到整个空间
+
+见欧文.克雷斯齐格，《泛函分析导论及应用》的4.3-3定理。
+
+\subsection{共鸣定理：一致有界定理}
+
+研究Fourier级数的发散、数值积分收敛性和插值公式发散性等问题，详细见：王声望和郑维行的《实变与泛函分析概要（第2册）》中的8.3节
+
+
+\subsection{开映射定理}
+
+什么样的条件下有界线性算子是开映射
+
+\subsection{闭图像定理}
+
+闭线性算子有界的充分条件
+
+\chapter{L4.0:Euclid Space-L3.0-L3.1-L0.2}
+
+
+
+有序的n元组的全体称为n维Euclid空间，记为$\mathbb R^n$，称$\boldsymbol p=(p_i)_{i=1}^n \in \mathbb R^n$是$\mathbb R^n$的一个点。\\
+为便于研究，本论文以$ \mathbb R^3$为背景空间，所涉及的函数默认为可微实值函数。如果实函数$f$的任意阶偏导数存在且连续，则称函数是可微的（或无限可微的，或光滑的，或$C^\infty$的）。\\
+由于微分运算是函数的局部运算，限制所讨论函数的定义域在$ \mathbb R^3$中的任意开集，所讨论的结论仍然成立。\\
+自然坐标函数：定义在$\mathbb R^n$上的实值函数$x_i: \mathbb R^n \to  \mathbb R$，使得$\boldsymbol p=(p_i)_{i=1}^n = \left( x_i(\boldsymbol p) \right)_{i=1}^n   $\\
+切向量：由$\mathbb R^n$ 中的二元组构成，$\boldsymbol v_{\boldsymbol p}=(\boldsymbol p,\boldsymbol v)$，其中$\boldsymbol p$是作用点，$\boldsymbol v$是向量部分\\
+切空间$T_p  \mathbb R^n$: 作用点$\boldsymbol p \in \mathbb R^n$的所有切向量的集合。利用向量加法与数量乘法使某点的切空间称为向量空间，与背景空间存在非平凡同构。\\
+向量场$\boldsymbol V$:作用于空间点的向量函数，$\boldsymbol V(\boldsymbol p)\in T_p  \mathbb R^n $\\
+逐点化原理：$(\boldsymbol V+\boldsymbol W)(\boldsymbol p)=\boldsymbol V(\boldsymbol p)+\boldsymbol W(\boldsymbol p),\ (f \boldsymbol V)(\boldsymbol p)= f(\boldsymbol p)\boldsymbol V (\boldsymbol p)$\\
+自然标架场：定义$\boldsymbol U_i=(\delta _j^i)_{j=1}^n$，按Einstein求和约定，有$\boldsymbol V(\boldsymbol p)=v^i(\boldsymbol p)\boldsymbol U_i(\boldsymbol p)$,称$v^i$为场的Euclid坐标函数，其中Kronecker $\delta$函数定义为：
+\begin{equation}
+\label{Kronecker_delta}
+\delta _i^j=\left\{ 
+    \begin{aligned}
+    1,\  & i =j\\
+    0,\  & i \neq j\\
+    \end{aligned}
+     \right.
+\end{equation}
+
+
+与度量有关的线性变换：
+正交变换
+对称变换
+
+
+
+
+
+
+\chapter{函数空间}
+
+\subsection{Sobolev space}
+
+函数组成的赋范向量空间，主要用来研究偏微分方程理论. 
+
+偏微分方程的弱解问题。
+
+
+
+\chapter{光滑函数空间}
+
+
+\subsection{Schwarz space}
+
+$\mathbb R^n$中函数本身与任意阶偏导数急减的无穷次连续可微函数类称为施瓦兹空间，又称为急降函数空间。
+
+泛函分析中，分布理论中的一类重要基本函数空间。
+
+
+分析代数化的思想：求解卷积方程，施瓦兹通过傅里叶变换将其转化为乘积方程。这就需要定义分布的傅里叶变换，进而他引入了施瓦兹空间。
+
+施瓦兹的这一工作丰富了广义函数理论，发展了经典的傅里叶变换，求解了卷积方程，给出了研究线性偏微分方程的新思路。
+
+
+
+
+
+
+\chapter{参考文献说明}
+《矩阵理论-陈大新》\upcite{5ch001shepherdQR2020paper}：好的观点的来源。
+
+
+\bibliography{reference1}%, reference2
+
+\end{document}
