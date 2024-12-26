@@ -3,7 +3,7 @@
  * @Date: 2022-06-05 15:27:09
  * @Github: https://github.com/ShepherdQR
  * @LastEditors: Qirong ZHANG
- * @LastEditTime: 2024-12-22 23:49:27
+ * @LastEditTime: 2024-12-27 00:38:15
  * Copyright (c) 2019 Qirong ZHANG. All rights reserved.
  * SPDX-License-Identifier: LGPL-3.0-or-later.
 -->
@@ -12,7 +12,7 @@
 参考： 《中国图书馆分类法》(http://clc.nlc.cn)
 
 todo:
-G
+G：4开始--- \subsubsection{教育}
 H
 I
 J
