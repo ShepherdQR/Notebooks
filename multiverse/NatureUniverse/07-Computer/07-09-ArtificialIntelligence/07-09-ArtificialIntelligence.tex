@@ -425,25 +425,7 @@ b\\0
 
 \subsection{基础3-数学}
 
-\subsubsection{微积分}
-梯度写作列向量，Hessian matrix: 
-\begin{equation}
-%\label{hessian}
-\begin{split}
- \nabla f(\mathbf x)&= \frac{\partial f(\mathbf x)}{\partial x}\\
-\mathbf H (\mathbf x)&= \nabla ^2 f(\mathbf x)=\left[ \frac{\partial ^2 f(\mathbf x)}{\partial x_i \partial x_j} \right]\\
-\end{split}
-\end{equation}
- 一阶导数为0，可能是极值点，同时二阶导数为0的时候就是鞍点saddle point，判断鞍点可用三阶导数。
-矢量的泰勒级数展开
-\begin{equation}
-%\label{taylor}
-f(\mathbf x_i +\mathbf \delta) \approx f(\mathbf x_i)+
-\nabla ^T f(\mathbf x_i) \mathbf \delta +
-\frac{1}{2}\mathbf \delta ^T \nabla ^2 f(\mathbf x_i)\mathbf \delta
-\end{equation}
-为什么梯度方向是上升最快的方向，因为泰勒公式中可以看到，取梯度方向时，向量共线，夹角0，模最大；同样有负梯度方向最小。通常而言，方向更重要，步长没有方向那么重要\\
-把二次项也考虑进来，就叫牛顿法
+
 
 \subsubsection{概率论部分}
 累积分布函数$F(x)=P(x \leqslant x_0)$\\

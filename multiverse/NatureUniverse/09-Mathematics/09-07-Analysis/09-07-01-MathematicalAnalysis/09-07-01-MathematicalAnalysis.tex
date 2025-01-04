@@ -3,7 +3,7 @@
 %%  ** Date: 2023-05-24 21:51:38
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Qirong ZHANG
-%%  ** LastEditTime: 2024-12-21 21:48:20
+%%  ** LastEditTime: 2025-01-04 23:43:15
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -45,19 +45,99 @@
 \end{question} 
 
 
+
+
+
+
+
+
+
 \chapter{微分学}
 
-\section{中值定理}
-\section{洛必达法则}
-\section{单调性与极值}
-\section{凹凸性}
+
+\section{导数与求法}
+
+
+\section{微分基础}
+
+
+\section{微分学基本定理}
+
+
+
+\section{高阶导数与高阶微分}
+
+
+
+
+
+
+
 
 \section{多元函数-偏导数和全微分}
 
 \section{多元函数-复合函数和隐函数微分}
 
 
+\section{泰勒公式}
+
+
+
+
+梯度写作列向量，Hessian matrix: 
+\begin{equation}
+    %\label{hessian}
+\begin{aligned}
+    \nabla f(\boldsymbol x)&= \left[\frac{\partial f(\boldsymbol x)}{\partial x_i},\cdots\right]\\
+    \mathbf H (\boldsymbol x)&= \nabla ^2 f(\boldsymbol x)=\left[ \frac{\partial ^2 f(\boldsymbol x)}{\partial x_i \partial x_j} \right]\\
+\end{aligned}
+\end{equation}
+ 一阶导数为0，可能是极值点，同时二阶导数为0的时候就是鞍点saddle point，判断鞍点可用三阶导数。
+
+
+矢量的泰勒级数展开
+\begin{equation}
+%\label{taylor}
+f(\mathbf x_i +\mathbf \delta) \approx f(\mathbf x_i)+
+\nabla ^T f(\mathbf x_i) \mathbf \delta +
+\frac{1}{2}\mathbf \delta ^T \nabla ^2 f(\mathbf x_i)\mathbf \delta
+\end{equation}
+
+
+Given function $f(\boldsymbol x)$, we want to find a function $g(\boldsymbol y)$, such that $f^{(n)}(\boldsymbol x^*)=g^{(n)}(\boldsymbol x^*)$.
+
+Step1: For $f^{(0)}(\boldsymbol x^*)=g^{(0)}(\boldsymbol x^*)$, we can just let $g(\boldsymbol y)=f^{(0)}(\boldsymbol x^*)$.
+
+Step2: For $f^{(1)}(\boldsymbol x^*)=g^{(1)}(\boldsymbol x^*)$, $g(\boldsymbol y)=[f^{(1)}(\boldsymbol x^*)]^T *\boldsymbol y$. If we shift the $\boldsymbol y$, like this $g(\boldsymbol y)=[f^{(1)}(\boldsymbol x^*)]^T *(\boldsymbol y- \boldsymbol x^*)$, we find that this step has no effect on all the previous steps. The order of this step is higher than all the previous steps, so all the previous steps have no effect on this step. So all steps are isolated.
+
+\begin{equation}
+    %\label{taylor}
+    f(\boldsymbol x) = f(\boldsymbol a)+
+    \nabla ^T f(\boldsymbol a) (\boldsymbol x - \boldsymbol a) +
+    \frac{1}{2} (\boldsymbol x - \boldsymbol a) ^T \nabla ^2 f(\boldsymbol a)(\boldsymbol x - \boldsymbol a)
+\end{equation}
+为什么梯度方向是上升最快的方向，因为泰勒公式中可以看到，取梯度方向时，向量共线，夹角0，模最大；同样有负梯度方向最小。通常而言，方向更重要，步长没有方向那么重要\\
+把二次项也考虑进来，就叫牛顿法
+
+
+\section{其他}
+\subsection{中值定理}
+\subsection{洛必达法则}
+\subsection{单调性与极值}
+\subsection{凹凸性}
+
+
 \section{应用}
+
+
+
+
+
+
+
+
+
+
 
 
 
