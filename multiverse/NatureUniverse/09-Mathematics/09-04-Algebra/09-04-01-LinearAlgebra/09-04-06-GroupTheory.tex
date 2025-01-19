@@ -3,7 +3,7 @@
 %%  ** Date: 2024-12-01 22:57:46
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Qirong ZHANG
-%%  ** LastEditTime: 2024-12-01 23:06:43
+%%  ** LastEditTime: 2025-01-05 16:03:31
 %%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
 %%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
 %%============
@@ -26,32 +26,7 @@
 
 GroupTheory
 
-
-
-
-\chapter{有限群论}
-\chapter{交换群论 (阿贝尔群论 )}
-\chapter{线性群论}
-\chapter{拓扑群论}
-
-
-\chapter{李群和李代数}
-lie group
-
-
-
-\chapter{GroupRepresentation}
-
-
-\subsection{Introduction}
-丘维声。\\
-运算: 笛卡尔积$S \times S \mapsto S$是集合S的二元代数运算。现代数学的鲜明特征是研究有各种运算的集合, 称为代数系统。\\
-现代数学的两大特征, 1）研究代数系统的结构;2）利用同态映射研究代数系统结构。\\
-核心: 群表示论是研究G到各个线性空间的可逆线性变换群的各种同态映射, 以获得G结构的完整信息。\\
-群表示论是研究群结构的最强有力的工具。应用如晶体学, 量子力学, 抽象调和分析, 组合数学, 密码学, 纠错编码\\
-必备参考书, 《抽象代数基础》丘维声, 高教出版社, 《高等代数学习指导书 下》丘维声, 清华大学。
-
-《高等代数》丘维声, 清华大学出版社, 
+\chapter{基础}
 
 \subsubsection{环, 域, 群}
 
@@ -287,6 +262,54 @@ G关于正规子群H的商群: 规定正规子群H的商群G/H乘法: $(aH)(bH)=
 从是映射、是单射、是满的, 得到是双射；\\
 Let $K=\ker \sigma$, $\psi [(aK)(bK)]=\psi (abK)=\sigma(ab)=\psi(aK)\psi(bK)$,所以保持运算, 所以是同构, 所以$G/ \ker \sigma \cong Im \sigma$\\
 群同态基本定理: $\ker \sigma \lhd G \ \& \   G/ \ker \sigma \cong Im \sigma  $ 
+
+
+\chapter{有限群论}
+\chapter{交换群论 (阿贝尔群论 )}
+\chapter{线性群论}
+\chapter{拓扑群论}
+
+
+\chapter{Galois theory}
+
+\section{Basic}
+\subsection{broken-symmetry}
+$ax^2+bc+c=0,a\neq0$,we have
+$$
+\left\{
+    \begin{aligned}
+        x_1+x_2=&-\frac{b}{a}\\
+        x_1x_2=&\frac{c}{a}\\
+    \end{aligned}
+\right.
+$$
+To solve the equation, we introduce the unsymmetric equations, for example, $(x_1-x_2)^2=\frac{b^2-4ac}{a^2}$, which is $x_1-x_2=\pm \sqrt{b^2-4ac}$. This means, $x_1-x_2 \in \mathbb Q( \sqrt{b^2-4ac})$.
+
+增加不对称多项式$\Longrightarrow $
+扩域$\Longrightarrow $
+扩域后G是原来G的子群$\Longrightarrow $
+持续增加$\Longrightarrow $
+域持续扩$\Longrightarrow $
+G减小到$\{e\}$,因而可解。
+
+\chapter{李群和李代数}
+lie group
+
+
+
+\chapter{GroupRepresentation}
+
+
+\subsection{Introduction}
+丘维声。\\
+运算: 笛卡尔积$S \times S \mapsto S$是集合S的二元代数运算。现代数学的鲜明特征是研究有各种运算的集合, 称为代数系统。\\
+现代数学的两大特征, 1）研究代数系统的结构;2）利用同态映射研究代数系统结构。\\
+核心: 群表示论是研究G到各个线性空间的可逆线性变换群的各种同态映射, 以获得G结构的完整信息。\\
+群表示论是研究群结构的最强有力的工具。应用如晶体学, 量子力学, 抽象调和分析, 组合数学, 密码学, 纠错编码\\
+必备参考书, 《抽象代数基础》丘维声, 高教出版社, 《高等代数学习指导书 下》丘维声, 清华大学。
+
+《高等代数》丘维声, 清华大学出版社, 
+
 
 
 

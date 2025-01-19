@@ -1,0 +1,73 @@
+%%============
+%%  ** Author: Qirong ZHANG
+%%  ** Date: 2022-05-06 20:38:41
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Qirong ZHANG
+%%  ** LastEditTime: 2025-01-07 20:21:09
+%%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
+%%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
+%%============
+
+
+
+\documentclass[UTF8]{../../09-Mathematics}
+\begin{document}
+
+\title{09-13-04-OptimizationTheory}
+\date{Created on 20250105.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+
+
+
+
+\chapter{Introduction}
+
+最优化的数学理论
+
+
+\section{Books}
+
+\begin{lstlisting}
+    最优化理论与方法, 袁亚湘
+\end{lstlisting}
+
+
+
+
+
+\chapter{问题定义}
+\chapter{一维搜索}
+\chapter{Newton Method}
+
+\section{梯度下降法}
+
+$f(\boldsymbol x^*)=f(\boldsymbol x)+\nabla f(x)(\boldsymbol x^*-\boldsymbol x)$,
+for nonlinear function, we have $f(\boldsymbol x^*) \leqslant f(\boldsymbol x)+\nabla f(x)(\boldsymbol x^*-\boldsymbol x)$, which is $R=f(\boldsymbol x^*) - f(\boldsymbol x)  \leqslant \nabla f(x)(\boldsymbol x^*-\boldsymbol x)=\nabla f(x) \cdot \alpha \boldsymbol d $, $min R \Rightarrow \boldsymbol d = -(\nabla f(x))^T$
+
+$R=\boldsymbol J \Delta \boldsymbol x \Rightarrow  \Delta \boldsymbol x = \boldsymbol J^+ R$, via $ \Delta \boldsymbol x$, we move from the current position to the next position, when $R=\delta$, we reach the target position.
+
+\chapter{共轭梯度法}
+\chapter{拟牛顿法}
+
+\chapter{非二次模型最优化方法}
+\chapter{非线性最小二乘问题}
+\chapter{约束优化最优性条件}
+\chapter{二次规划}
+\chapter{逐步二次规划}
+
+\chapter{罚函数法}
+\chapter{可行方向法}
+\chapter{信赖域法}
+\chapter{非光滑优化}
+
+
+
+\chapter{END}
+
+
+
+\end{document}
+
