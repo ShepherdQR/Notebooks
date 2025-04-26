@@ -3,7 +3,7 @@
 %%  ** Date: 2023-05-24 21:51:38
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Qirong ZHANG
-%%  ** LastEditTime: 2025-01-04 23:43:15
+%%  ** LastEditTime: 2025-02-22 12:45:36
 %%  ** Copyright (c) 2019--20xx Shepherd Qirong. All rights reserved.
 %%============
 
@@ -201,6 +201,40 @@ Step2: For $f^{(1)}(\boldsymbol x^*)=g^{(1)}(\boldsymbol x^*)$, $g(\boldsymbol y
 
 
 \section{特殊级数}
+
+
+\subsection{调和级数}
+
+\subsubsection{调和级数部分和}
+
+$$
+H_n = \sum_{k=1}^{n}\frac{1}{k}
+$$
+$$
+\gamma = \lim_{n \rightarrow \infty}(H_n - ln(n))= \lim_{n \rightarrow \infty}(T_n)
+$$
+
+欧拉-马歇罗尼常数 (Euler-Mascheroni Constant) $\gamma = 0.5772156649$
+
+Let us prove the limit of $T_n$ exits. 
+
+$x\in A = [k,k+1]$, 
+$$
+\frac{1}{k+1} \leqslant\frac{1}{x} \leqslant\frac{1}{k} 
+$$
+ 分别计算x在A上的积分，有：
+$$
+\frac{1}{k+1} \leqslant ln(k+1)-ln(k) \leqslant\frac{1}{k} 
+$$
+noted as $L \leqslant M \leqslant R$,all with $\sum_{1}^{n}$,
+
+$L = H_{n+1}-1, M = ln(n+1), R = H_n$, we have $ln(n+1) \leqslant H_n \leqslant 1+ ln(n)$.
+
+we prove $T_n \geqslant 0$, which is $H_n \geqslant ln(n)$. Since we have $H_n \geqslant ln(n+1)$, both side add $-ln(n)$, we have $T_n \geqslant  ln(1+ \frac{1}{n})>0$.
+
+we prove $T_{n+1}- T_{n}<0$, which is $\frac{1}{n+1} \leqslant ln(n+1) - ln(n)$, which is $ \int_{n}^{n+1} \frac{1}{n}dx \leqslant \int_{n}^{n+1}\frac{1}{x}dx$, since  $x \in[n, n+1], \frac{1}{n+1} \leqslant \frac{1}{x}$.
+
+
 
 
 \subsection{傅里叶级数}

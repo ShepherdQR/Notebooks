@@ -1,0 +1,152 @@
+%%============
+%%  ** Author: Qirong ZHANG
+%%  ** Date: 2022-06-05 00:00:41
+%%  ** Github: https://github.com/ShepherdQR
+%%  ** LastEditors: Qirong ZHANG
+%%  ** LastEditTime: 2025-01-26 23:44:19
+%%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
+%%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
+%%============
+
+
+\documentclass[UTF8]{../../computerUniverse}
+
+%\SetAlgoSkip{} % 用于移除算法与文字之间的额外间距
+
+\begin{document}
+\title{07-03-04-DataStructure}
+\date{Created on 20250126.\\   Last modified on \today.}
+\maketitle
+\tableofcontents
+
+
+
+\chapter{Basic}
+
+数据结构
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+线性表是一种逻辑结构。其存储结构分为顺序存储（如数组），链式存储（如链表）。
+
+
+
+
+\chapter{数组}
+
+\section{基础数组}
+
+
+a[i] = a+i*len ;//i from 0;
+a[i][j]  按行存: a+ (i*len +j )*len ;
+a[i][j]  按列存: a+ (j*len +i )*len ;
+
+5*5的二维数组a，各元素2字节，a[2][3]行有限存，地址？
+2*5+3 = 13, 13*2 = 26, a+26;
+
+
+\section{后缀数组}
+
+
+
+ 
+\chapter{链表}
+ 
+
+
+\chapter{栈}
+
+
+\chapter{队列}
+
+\section{基础队列}
+
+\section{优先队列}
+
+
+
+\chapter{哈希表}
+
+\section{哈希函数}
+哈希函数: y=H(x), 输出长度不变；相同输入每次得到相同输出；输入差距小也会导致输出差距大，输入差距大也可能导致输出相同。x求y容易，y求x困难。
+
+MD5, message digest algorithm 5
+SHA-1, SHA-2, source hash algorithm.
+MD5, SHA-1 存在安全隐患。
+
+
+
+
+\chapter{堆}
+上浮和下沉，用于实现priority queues
+
+
+\chapter{树}
+
+
+\section{二叉树}
+
+二叉树遍历: 前序、后续、中序。
+反向构造二叉树: 利用 前+中，或后+中遍历结果，推出树的结构。只利用前+后不行。
+
+树转二叉树: 第一个孩子在左，兄弟都是右。
+
+
+查找二叉树: 左<根<右
+1) 左子树的值<根的值<右子树的值；
+2) 一直向左达到最小值，一直向右达到最大值；
+3) 增加节点: 从根开始，向末端方向，插入值更小就左转，否则右转，到达末端增加一个叶子节点；
+4) 删除节点A: A的左子树的最大节点替代删除的A的位置；
+5) 扩展: 平衡二叉查找树；B树（m个节点的形状平衡的) 。
+
+
+
+最优二叉树、哈夫曼树: 带权路径长度最小。 
+1,2,8,4构造哈夫曼树: 
+step1: 1,2-->3; 3,8,4;
+step2: 3,4-->7;7,8
+so:        15
+      7       8
+   3    4
+1    2
+权值:  1*3+2*3 +4*2+8*1 = 25
+
+线索二叉树: 前序、后续、中序，列举各元素后，叶子LR指针指向前后元素。
+
+平衡二叉树: 
+任意结点左子树与右子树深度差不大于1。
+平衡度=左子树深度-右子树深度。
+
+\section{可持久化线段树}
+\section{树链剖分}
+
+
+\chapter{图}
+有向图，无向图。
+完全图。
+
+存储: 
+邻接矩阵。n个点，n*n。i到j有邻接边，Rij=1，否则为0。
+邻接表，$V1-->[2,6,--]-->[4,1,--]-->[6,50,^]//$V1到2号结点距离6，到4号结点距离1，到6号结点距离50
+
+【遍历】深度优先，广度优先。
+
+【拓扑排序，AOV网络】有向边表示活动之间开始的先后关系。
+
+【图的最小生成树，普里姆算法】留下的权值最小。
+树没有环路，n个节点的树边最多n-1个。
+染色红，逐个收集最短的一个元素进来。注意过程中不能形成环。
+
+【图的最小生成树，克鲁斯卡尔算法】从最短的边开始选边。
+
+
+
+
+
+
+
+\chapter{END}
+
+\end{document}
