@@ -3,7 +3,7 @@
 %%  ** Date: 2024-12-01 22:57:46
 %%  ** Github: https://github.com/ShepherdQR
 %%  ** LastEditors: Qirong ZHANG
-%%  ** LastEditTime: 2025-04-25 21:39:11
+%%  ** LastEditTime: 2025-04-26 22:20:08
 %%  ** Copyright (c) 2019 Qirong ZHANG. All rights reserved.
 %%  ** SPDX-License-Identifier: LGPL-3.0-or-later.
 %%============
@@ -28,6 +28,9 @@
 
 \section{Notes}
 
+\subsection{basic}
+
+
 $\mathscr{E} (S) := \{ e =(u,v), u\in S, or\ v \in S\}, S \in V$.
 
 path from v to w is noted as $p:v \stackrel{*}{\Rightarrow} w $.
@@ -35,6 +38,26 @@ path from v to w is noted as $p:v \stackrel{*}{\Rightarrow} w $.
 Tree T is directed, rooted. 
 An edge within T is noted as $p:v \rightarrow w $, v is the father of w, w is the son of v.
 The path within T is noted as $p:v \stackrel{*}{\rightarrow} w $, v is the ancestor of w, w is the descendant of v. $D(v)$ is the set of all descendants of v.
+
+frond edge is noted as $w --> v$, means $v \stackrel{*}{\rightarrow} w $.
+
+Palm tree, a tree with some fronds.
+
+
+\subsection{structure}
+
+separation point, or articulation point: for a, there exits 2 distinct vertices v,w, and a is on every path  $p:v \stackrel{*}{\rightarrow} w $.
+
+biconnected multifraph: no separation point. Which means, for each triple of distinct vertices v, w, a, there is a path $p:v \stackrel{*}{\rightarrow} w $ that a is not on the path.
+
+biconnected components: use G to generate a set subgraph Gi, 4 properties: \\
+(1) Gi is biconnected;\\
+(2) No Gi is a prope subgraph of a biconnected subgraph of G   \\ %%todo  
+(3) all vertices of {Gi}, non-separation point occurs exactly once, separation point occurs more than onec.
+(4) every two Gi and Gj, contains at most one common vertex, which (if any) is a separation point.
+
+biconnected components is unique. %%todo 
+
 
 
 \chapter{群的推广}
